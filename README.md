@@ -1,11 +1,21 @@
-# CovidCentral
-CovidCentral
+# Covid-Central
+Covid-Central
 
 ## User Stories
 1. User should be able to visit webpage and see latest covid19 data
-2. User should be able to register/login 
-3. User should be able to search for nearby services by city/location
-4. User should get back results from search with nearby covid19 services (vaccinations, testing and ppe)
+2. User is prompted to choose 1 of 2 categories (vaccinations or testings)
+3. User is prompted to accept google location settings (yes/no) 
+4. User is presented with nearby locations of the services category selected
+5. User should be able to register/login
+6. User should be able to see the history of queries/searches done on the website (stored in our database based on user_id) IF logged-in
+7. User should be able to search in a search bar for nearby services by city/postal code (visual map)
+8. User should get back results from search with nearby covid19 services (vaccinations, testing and ppe)
+9. User should be able to get a link to redirect onto website that provides the service requested
+
+**STRETCH USER Stories**
+1. User should be able to register/login (with phone number)
+2. QR code to text to your number with appointment data
+3. 3rd category is e-commerce (amazon for PPE, covid tests, etc)
 
 ### Project Git Workflow
 NEVER code on Main!

@@ -14,8 +14,6 @@ NavBar: Carrousel  (Bootstrap)
 FONT: Questrial / 
 
 
- 
-
 ## User Stories
 1. User should be able to visit webpage and see latest covid19 data
 2. User is prompted to choose 1 of 2 categories (vaccinations or testings)
@@ -66,3 +64,38 @@ git checkout -b feature/my-feature
 16. git commit (commit the merge) 
 17. git push (So it's not only local)
 
+## NEW Workflow - Vasily 
+1. Step 1 - git pull origin main
+Make sure to pull all recent changes to main to start the branch-off process.
+
+2. Step 2 - Add a branch 
+To add a branch 
+```sh
+git checkout -b branchname
+```
+3. Step 3 - work on feature branch
+Commit as OFTEN as you can! Commits really matter. Don't do everything in 1 commit.
+
+4. ### Feature complete!
+
+Now that you are done, and everything has been commited, push the `BRANCH` into github.com
+
+```sh
+git push origin_branchname_
+```
+On github, create a pull request bym clicking `pull requests` button, then clicking the `new pull request` button on the apge. Pick your branch then fill out the form to generate pull request.
+
+#this already checks for conflicts for me
+#this also shows all file changes made
+
+
+### If you have a merge conflict github will tell you
+
+- There are 2 was to fix it, 1, github will five you tools (bad way)
+- Switch to main, pull all changes, switch back to your branch, MERGE main into your branch and fix conflicts
+
+Once you fixed them, push the branch back out, and your `pull request` will be updated.
+
+
+#### Merging pull requests
+#### Once reviewed and approved by a team member, merge the pull request by clicking green merge pull request button. Now everything will be added to main branch.

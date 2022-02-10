@@ -8,7 +8,7 @@ CovidCentral
 4. User should get back results from search with nearby covid19 services (vaccinations, testing and ppe)
 
 ### Git Workflow USED
-NEVER code on Master or Main!
+NEVER code on Main!
 
 Create Feature Branches git checkout -b feature/my-feature
 

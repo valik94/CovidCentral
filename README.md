@@ -1,6 +1,21 @@
 # Covid-Central
 Covid-Central
 
+**Project Description**
+
+**Project title:**  Covid CENTRAL
+
+**Problem solved**: Decentralized nature of COVID-19 services. Currently, services (tests/vaccination/PPE) are offered on different website making it difficult to navigate, inconvenient and time consuming. Our value proposition aggregate different websites/services on one Covid central platform allowing the user find easier and faster the service desired.  
+
+**Target audience:** Canadian adults that are looking for Covid-19 services near by their home/location.
+
+NavBar: Carrousel  (Bootstrap)
+
+FONT: Questrial / 
+
+
+ 
+
 ## User Stories
 1. User should be able to visit webpage and see latest covid19 data
 2. User is prompted to choose 1 of 2 categories (vaccinations or testings)
@@ -49,3 +64,4 @@ git checkout -b feature/my-feature
 15. Should not be any conflict since you cleaned them in the branch first 
 16. git commit (commit the merge) 
 17. git push (So it's not only local)
+

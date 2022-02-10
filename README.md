@@ -13,8 +13,8 @@ NEVER code on Main!
 **Create Feature Branches** 
 git checkout -b feature/my-feature
 
-**Main branch is your production branch, never directly work on it!
-**
+**Main branch is your production branch, never directly work on it!**
+
 **Starting a new branch**
 1. git checkout main (Start new branches from the main branch)
 2. git pull (Make sure you have the most recent version)

@@ -31,6 +31,7 @@ FONT: Questrial /
 1. User should be able to register/login (with phone number)
 2. QR code to text to your number with appointment data
 3. 3rd category is e-commerce (amazon for PPE, covid tests, etc)
+4. Chatbox to help navigate the site
 
 ### Project Git Workflow
 NEVER code on Main!

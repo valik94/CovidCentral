@@ -7,7 +7,7 @@ CovidCentral
 3. User should be able to search for nearby services by city/location
 4. User should get back results from search with nearby covid19 services (vaccinations, testing and ppe)
 
-### Git Workflow USED
+### Project Git Workflow
 NEVER code on Main!
 
 **Create Feature Branches** 

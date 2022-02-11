@@ -1,10 +1,10 @@
 import './index.scss'
-import Navbar from './components/Navbar';
+import NavigationBar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-        <Navbar/>
+        <NavigationBar/>
     </div>
   );
 }

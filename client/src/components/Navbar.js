@@ -1,34 +1,39 @@
 import React from "react";
 import './navbar.scss'
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
-export default function Navbar (props) {
+export default function NavigationBar (props) {
   return (
-    <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light ">
-      <a className="navbar-brand logo-size" href="#">
-      <img src="./images/logo.png" alt="logo" width="30%" height="30%"/>
-      </a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Covid Test / Vaccination</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Covid Statistics</a>
-          </li>
-          <li class="nav-item active">
-            <a type="button" href="#" class="button-18">Login</a>
-          </li>
-          <li class="nav-item active">
-            <a type="button" href="#" class="button-18">Sing-up</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <>
+      <Navbar bg="light" fixed="top">
+        <Container>
+          <Navbar.Brand href="#home">
+            <img
+              alt=""
+              src="./images/logo.png"
+              width="300"
+              height="80"
+              className="d-inline-block align-center"
+            />{' '}
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#features">Covid Testing/Vaccination</Nav.Link>
+              <Nav.Link href="#pricing">Covid Statistics</Nav.Link>
+            </Nav>
+            <Nav variant="pills">
+              <Nav.Item>
+                <Nav.Link href="/home">Login</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/home">Sign Up</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   )
 }
-
-
- 

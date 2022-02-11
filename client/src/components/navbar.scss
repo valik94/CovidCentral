@@ -1,12 +1,16 @@
 @import "../styles/variables.scss";
 
-.logo-size {
-  margin-left: 4em;
+.nav {
+  color: #ffffff;
 }
 
-.button-18 {
+.me-auto{
+  font-family:  $font-family-PT;
+}
+
+.nav-item {
   align-items: center;
-  background-color: #311B80;
+  background-color: #0F003D;
   border-radius: 100px;
   box-sizing: border-box;
   color: #ffffff;
@@ -24,20 +28,21 @@
   padding-left: 20px;
   padding-right: 20px;
   text-align: center;
-  touch-action: manipulation;
-  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  user-select: none;
-  -webkit-user-select: none;
+  margin-right: 1em;
+  // touch-action: manipulation;
+  // transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  // user-select: none;
+  // -webkit-user-select: none;
   vertical-align: middle;
-
   &:hover, &:focus{
-    background-color: #311B80;
+    background-color: #0F003D;
     color: #ffffff;
   }
   &:active {
-    background: #311B80;
+    background: #0F003D;
     color: rgb(255, 255, 255, .7);  
   }
 }
 
+@import "../styles/variables.scss";
 @import '~bootstrap/scss/bootstrap.scss';

@@ -1,25 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import useForm from "./useForm";
 
-const Registration = () => {
-  const [values, setValues] = useState({
-    first_name: "",
-    last_name: "",
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-  };
-
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
-  };
-
+const Registration = ({ submitForm }) => {
+  const { handleChange, handleFormSubmit, values, errors } =
+    useForm(submitForm);
   return (
     <section className="Form my-4 mx-5">
       <div className="container">
@@ -36,6 +20,9 @@ const Registration = () => {
                 value={values.first_name}
                 onChange={handleChange}
               />
+              {errors.first_name && (
+                <p className="error">*{errors.first_name}</p>
+              )}
             </div>
             <div className="form-row col-lg-7">
               <input
@@ -46,6 +33,7 @@ const Registration = () => {
                 value={values.last_name}
                 onChange={handleChange}
               />
+              {errors.last_name && <p className="error">*{errors.last_name}</p>}
             </div>
             <div className="form-row col-lg-7">
               <input
@@ -56,6 +44,7 @@ const Registration = () => {
                 value={values.username}
                 onChange={handleChange}
               />
+              {errors.username && <p className="error">*{errors.username}</p>}
             </div>
 
             <div className="form-row col-lg-7">
@@ -65,7 +54,9 @@ const Registration = () => {
                 placeholder="Email"
                 name="email"
                 value={values.email}
+                onChange={handleChange}
               />
+              {errors.email && <p className="error">*{errors.email}</p>}
             </div>
 
             <div className="form-row col-lg-7">
@@ -77,6 +68,7 @@ const Registration = () => {
                 value={values.password}
                 onChange={handleChange}
               />
+              {errors.password && <p className="error">*{errors.password}</p>}
             </div>
             <div className="form-row col-lg-3">
               <button

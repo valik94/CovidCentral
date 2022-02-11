@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
-export default function NavCarousel(props) {
+const NavCarousel=()=> {
   return (
     <Carousel>
       <Carousel.Item interval={2500}>
@@ -66,3 +66,5 @@ export default function NavCarousel(props) {
     </Carousel>
   );
 }
+
+export default NavCarousel;

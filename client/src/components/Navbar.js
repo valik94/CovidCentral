@@ -5,7 +5,7 @@ export default function Navbar(props) {
   return (
       
   <div>
-    <p>HELLO IM HERE</p>
+    <p>NavBar come here</p>
   </div>
   )
 }

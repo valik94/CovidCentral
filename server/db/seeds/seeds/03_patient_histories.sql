@@ -4,4 +4,4 @@ VALUES
 ('Hypertension', 'DM2, HTN', 'Lantus, Insulin R, Lasix, Metropolol', 'CABG 2010, Cataract surgery 3y ago', 2),
 ('Cold', 'N.A.', 'Tylenol, Atrovastatin', 'Appendectomy 6y ago ', 3),
 ('Poorly controlled DM2', 'DM2, HTN', 'Atrovastatin, Lasix, Metropolol', 'Cholecystectomy 10y ago', 4),
-('Migraines', 'HTN', 'Excedrin, Anaprox DS', 'N.A.', 0)
+('Migraines', 'HTN', 'Excedrin, Anaprox DS', 'N.A.', 5)

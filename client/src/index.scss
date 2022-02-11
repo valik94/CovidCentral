@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon:ital@0;1&family=PT+Sans+Caption:wght@700&family=Questrial&display=swap%27');
 @import "./styles/variables.scss";
 
+
 * {
   box-sizing: border-box;
 }
@@ -30,3 +31,12 @@ body {
 //     font-size: 10px;
 //   }
 // }
+
+.btn {
+  margin-bottom:10px;
+
+}
+
+.btn-lg {
+  margin-bottom:100px;
+}

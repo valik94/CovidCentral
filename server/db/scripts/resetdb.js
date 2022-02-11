@@ -2,8 +2,8 @@
 // reset your database
 require("dotenv").config();
 const { Client } = require('pg');
-const SCHEMA_PATH = './db/schema';
-const SEEDS_PATH = './db/seeds';
+const SCHEMA_PATH = './db/schema/schema';
+const SEEDS_PATH = './db/seeds/seeds';
 
 const {DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, DB_PORT} = process.env;
 const fs = require("fs").promises;
@@ -15,6 +15,7 @@ const connObj = {
 	port: DB_PORT,
 	database: DB_DATABASE,
 }
+console.log(`!!!!!!!!!!!!!, `, connObj);
 
 const runMigrations = async db => {
 	const migrations = await fs.readdir(SCHEMA_PATH);

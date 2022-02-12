@@ -9,6 +9,9 @@ const db = require("./configs/db.config");
 
 const indexRouter = require("./routes/index");
 const practitionersRouter = require("./routes/practitioners");
+const registerRouter = require("./routes/register");
+const loginRouter = require("./routes/login");
+
 
 const app = express();
 
@@ -23,5 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/practitioners", practitionersRouter(db));
 // app.use("/appointment", practitionersRouter(db));
+app.use("/register", registerRouter(db));
+app.use("/login", loginRouter(db));
 
 module.exports = app;

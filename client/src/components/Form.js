@@ -11,7 +11,7 @@ const Form = () => {
 
   const getDummyData = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8080/users/monday");
+      const { data } = await axios.get("/practitioners");
       console.log("CLOSE==================:", data)
       return data;
     } catch (error) {
@@ -21,7 +21,7 @@ const Form = () => {
 
   useEffect(() => {
     // const data = getDummyData()
-    axios.get("http://localhost:8080/users/monday")
+    axios.get("http://localhost:8080/practitioners")
     .then(response => {
       console.log(response)
     })

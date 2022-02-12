@@ -33,8 +33,14 @@
   &__mainFont {
     font-family: $font-family-PT;
     font-weight: bold;
-    color: $dark-blue;
+    color: $white;
     font-size: 2em;
+    text-align: center;
+  }
+
+  &__mainFont__background {
+    background-color: $dark-blue;
+    margin-top: 1em;
   }
 
   &__secondFont {
@@ -69,6 +75,12 @@
     margin-left: 0.5em;
   }
 
+  &__lowerPart {
+    margin-top: 20rem;
+    margin-bottom: 0rem;
+    text-align: center;
+  }
+
 }
 
 button {
@@ -97,9 +109,6 @@ button {
   margin-left: 0.5em;
   border: none;
 }
-
-
-
 
 .schedule {
   display: flex;

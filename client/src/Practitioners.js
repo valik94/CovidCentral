@@ -29,7 +29,7 @@ export default function HomePage (props) {
         alt="Interview Scheduler"
       />
       <nav className="sidebar__menu">
-        <div className="sidebar__greeting">
+        <div className="sidebar__mainFont__background">
           <p className="sidebar__mainFont">Hello Dr. Alex</p>
         </div>
         <div className="">
@@ -37,6 +37,9 @@ export default function HomePage (props) {
         </div>
         <div className="">
           <button className={clickedCalendar} onClick={() => {setCalendar(true)}}> Calendar </button>
+        </div>
+        <div className="sidebar__lowerPart">
+          <p>© dRecords 2022</p>
         </div>
       </nav>
     </section>

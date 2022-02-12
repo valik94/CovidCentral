@@ -35,17 +35,7 @@ const Registration = ({ submitForm }) => {
               />
               {errors.last_name && <p className="error">*{errors.last_name}</p>}
             </div>
-            <div className="form-row col-lg-7">
-              <input
-                type="text"
-                className="form-control my-3 p-2"
-                placeholder="Username"
-                name="username"
-                value={values.username}
-                onChange={handleChange}
-              />
-              {errors.username && <p className="error">*{errors.username}</p>}
-            </div>
+          
 
             <div className="form-row col-lg-7">
               <input

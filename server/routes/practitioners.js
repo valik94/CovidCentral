@@ -43,6 +43,36 @@ module.exports = (db) => {
       });
   });
 
+
+  router.post("/", function (req, res, next) {
+    console.log("POST: we got here")
+    const {first_name, last_name, email, password, specialty} = req.body
+    res.json(req.body)
+    console.log(req.body) 
+    return ;
+    
+
+
+
+
+    
+
+    const addUser = function (user) {
+      return db
+        .query(
+          `INSERT INTO practitioners (first_name, last_name, email, password, specialty)
+VALUES ($1, $2, $3, $4, $5) RETURNING *;`,
+          [first_name, last_name, email, password, specialty]
+        )
+        .then((result) => {
+          console.log("RESULT==========", result);
+          return result.rows[0];
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    };
+    
   // db.query(command)
   //   .then((data) => {
   //     res.json(data.rows);

@@ -5,7 +5,6 @@ const useForm = (submitForm) => {
   const [values, setValues] = useState({
     first_name: "",
     last_name: "",
-    username: "",
     email: "",
     password: "",
   });
@@ -19,8 +18,8 @@ const useForm = (submitForm) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    setErrors(validation(values));
-    setDataIsCorrect(true);
+    setErrors(validation(values)); //setError validation values
+    setDataIsCorrect(true); //setData updated state to true
   };
 
   const [errors, setErrors] = useState({});

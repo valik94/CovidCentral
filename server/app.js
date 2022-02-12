@@ -6,8 +6,9 @@ const bcrypt = require("bcrypt");
 const cors = require("cors");
 const db = require("./configs/db.config");
 
+
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const practitionersRouter = require("./routes/practitioners");
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter(db));
-app.use("/appointment", usersRouter(db));
+app.use("/practitioners", practitionersRouter(db));
+// app.use("/appointment", practitionersRouter(db));
 
 module.exports = app;

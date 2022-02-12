@@ -21,10 +21,10 @@ const Form = () => {
 
   useEffect(() => {
     // const data = getDummyData()
-    axios.get("http://localhost:8080/practitioners")
+    axios.get("/api/practitioners")
     // fetch("/practitioners")
     .then(response => {
-      console.log(response)
+      console.log(`response data is HERE:`,response.data)
     })
 
     // console.log('DATA:', data)

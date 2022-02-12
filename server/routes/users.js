@@ -12,13 +12,13 @@ module.exports = (db) => {
     })
   });
 
-  router.get('/monday', (req, res) =>{
-    return res.status(200) .send({
-      status: "okay", 
-      message: "We are the doctor medical records app",
+  router.get('/monday', (req, res) => {
+    return res.status(200).send({
+      status: 'OK', 
+      message: 'THANK YOU',
       date: new Date()
     })
-  })
+  });
 
   return router;
 }

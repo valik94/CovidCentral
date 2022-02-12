@@ -9,23 +9,26 @@ const Form = () => {
     setFormIsSubmitted(true);
   };
 
-  const getDummyData =  async () =>{
-
+  const getDummyData = async () => {
     try {
-      const { data } = await axios.get('http://localhost:8080/users/monday')
+      const { data } = await axios.get("http://localhost:8080/users/monday");
+      console.log("CLOSE==================:", data)
       return data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
-  useEffect(() =>{
-    // const data = await getDummyData()
-    axios.get('http://localhost:8080/users/monday')
-    .then( response =>{
+  useEffect(() => {
+    // const data = getDummyData()
+    axios.get("http://localhost:8080/users/monday")
+    .then(response => {
       console.log(response)
     })
-  }, [])
+
+    // console.log('DATA:', data)
+  }, []);
+
   return (
     <div>
       {!formIsSubmitted ? (

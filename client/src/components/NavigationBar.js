@@ -11,18 +11,12 @@ export default function NavigationBar (props) {
             <img
               alt=""
               src="./images/logo.png"
-              width="300"
-              height="80"
+              
               className="d-inline-block align-center"
             />{' '}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Covid Testing/Vaccination</Nav.Link>
-              <Nav.Link href="#pricing">Covid Statistics</Nav.Link>
-            </Nav>
             <Nav variant="pills">
               <Nav.Item>
                 <Nav.Link href="/home">Login</Nav.Link>

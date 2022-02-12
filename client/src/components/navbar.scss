@@ -10,7 +10,7 @@
 
 .nav-item {
   align-items: center;
-  background-color: #0F003D;
+  background-color: #c5e060;
   border-radius: 100px;
   box-sizing: border-box;
   color: #ffffff;
@@ -35,11 +35,11 @@
   // -webkit-user-select: none;
   vertical-align: middle;
   &:hover, &:focus{
-    background-color: #0F003D;
+    background-color: #c5e060;
     color: #ffffff;
   }
   &:active {
-    background: #0F003D;
+    background: #c5e060;
     color: rgb(255, 255, 255, .7);  
   }
 }

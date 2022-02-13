@@ -3,6 +3,7 @@ import classNames from "classnames"
 import { useState } from 'react'
 import Calendar from './components/calendar/Calendar'
 import PatientsList from './components/patientsList/PatientsList'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 export default function HomePage (props) {
   const [ state, setState ] = useState({
@@ -54,6 +55,9 @@ export default function HomePage (props) {
         </div>
         <div className="">
           <button className={clickedCalendar} onClick={() => {setCalendar(true)}}> Calendar </button>
+        </div>
+        <div className="sidebar__backButton">
+          <button> <ArrowBackIosNewIcon/> Home Page </button>
         </div>
         <div className="sidebar__lowerPart">
           <p>© dRecords 2022</p>

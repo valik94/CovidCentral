@@ -1,6 +1,7 @@
 import React from "react";
 import './navbar.scss'
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import Button from '@mui/material/Button';
 
 export default function NavigationBar (props) {
   return (
@@ -19,10 +20,10 @@ export default function NavigationBar (props) {
           <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
             <Nav variant="pills">
               <Nav.Item>
-                <Nav.Link href="/home">Login</Nav.Link>
+                <Button variant="contained">Login</Button>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/home">Sign Up</Nav.Link>
+                <Button variant="contained">Register</Button>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>

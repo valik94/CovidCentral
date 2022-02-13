@@ -36,7 +36,7 @@ module.exports = (db) => {
       });
   });
   router.get("/register", (req, res) => {
-    res.render("register");
+    res.send();
   });
   return router;
 };

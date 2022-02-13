@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-// import useForm from "./useForm";
+import React, { useState } from "react";
 import axios from "axios";
+
 
 const Registration = () => {
   const [firstNameReq, setFirstNameReq] = useState("");
@@ -9,16 +9,53 @@ const Registration = () => {
   const [passwordReq, setPasswordReq] = useState("");
   const [specialtyReq, setSpecialtyReq] = useState("");
 
+
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setFirstNameReq("");
+    setLastNameReq("");
+    setEmailReq("");
+    setPasswordReq("");
+    setSpecialtyReq("");
+  };
+
+
+
   const register = () => {
-    axios.post("api/register", {
-      first_name: firstNameReq,
-      last_name: lastNameReq,
-      email: emailReq,
-      password: passwordReq,
-      specialty: specialtyReq,
-    }).then((response)=> {
-      console.log(response)
-    });
+
+    if (firstNameReq === "") {
+      alert("FIRST NAME CANT BE EMPTY")
+      return
+    }
+    if (lastNameReq === "") {
+      alert("LAST NAME CANT BE EMPTY")
+      return
+    }
+    if (emailReq === "") {
+      alert("EMAIL CANT BE EMPTY")
+      return
+    }
+    if (passwordReq === "") {
+      alert("PASSWORD CANT BE EMPTY")
+      return
+    }
+    if (specialtyReq === "") {
+      alert("SPECIALTY CANT BE EMPTY")
+      return
+    }
+
+    axios
+      .post("api/register", {
+        first_name: firstNameReq,
+        last_name: lastNameReq,
+        email: emailReq,
+        password: passwordReq,
+        specialty: specialtyReq,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   };
   // const Registration = ({ submitForm }) => {
   // const { handleChange, handleFormSubmit, values, errors } =
@@ -29,18 +66,18 @@ const Registration = () => {
         <div className="col-lg-7 px-5 pt-5">
           <h1 className="font-weight-bold py-3">Sign Up</h1>
 
-          <form onSubmit={(e)=>e.preventDefault()}>
+          <form onSubmit={handleSubmit} >
             <div className="form-row col-lg-7">
               <input
                 type="text"
                 className="form-control my-3 p-2"
                 placeholder="First Name"
-                // name="first_name"
-                // value={values.first_name}
+                name="first_name"
+                value={firstNameReq}
                 onChange={(e) => {
-                  setFirstNameReq(e.target.value)
+                  setFirstNameReq(e.target.value);
                 }}
-                // onChange={handleChange}
+              // onChange={handleChange}
               />
               {/* {errors.first_name && (
                 <p className="error">*{errors.first_name}</p>
@@ -52,10 +89,10 @@ const Registration = () => {
                 className="form-control my-3 p-2"
                 placeholder="Last Name"
                 name="last_name"
-                // value={values.last_name}
+                value={lastNameReq}
                 // onChange={handleChange}
                 onChange={(e) => {
-                  setLastNameReq(e.target.value)
+                  setLastNameReq(e.target.value);
                 }}
               />
               {/* {errors.last_name && <p className="error">*{errors.last_name}</p>} */}
@@ -67,10 +104,10 @@ const Registration = () => {
                 className="form-control my-3 p-2"
                 placeholder="Email"
                 name="email"
-                // value={values.email}
+                value={emailReq}
                 // onChange={handleChange}
                 onChange={(e) => {
-                  setEmailReq(e.target.value)
+                  setEmailReq(e.target.value);
                 }}
               />
               {/* {errors.email && <p className="error">*{errors.email}</p>} */}
@@ -82,10 +119,10 @@ const Registration = () => {
                 className="form-control my-3 p-2"
                 placeholder="Password"
                 name="password"
-                // value={values.password}
+                value={passwordReq}
                 // onChange={handleChange}
                 onChange={(e) => {
-                  setPasswordReq(e.target.value)
+                  setPasswordReq(e.target.value);
                 }}
               />
               {/* {errors.password && <p className="error">*{errors.password}</p>} */}
@@ -96,10 +133,10 @@ const Registration = () => {
                 className="form-control my-3 p-2"
                 placeholder="Specialty"
                 name="specialty"
-                // value={values.password}
+                value={specialtyReq}
                 // onChange={handleChange}
                 onChange={(e) => {
-                  setSpecialtyReq(e.target.value)
+                  setSpecialtyReq(e.target.value);
                 }}
               />
               {/* {errors.password && <p className="error">*{errors.password}</p>} */}

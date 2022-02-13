@@ -1,26 +1,21 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
-const NavCarousel=()=> {
+const NavCarousel = () => {
   return (
     <Carousel>
       <Carousel.Item interval={2500}>
         <img
           className="d-block w-100"
-          src="./photos/virus.jpg"
+          src="./photos/medicalThree.png"
           alt="First slide"
         />
         <Carousel.Caption>
-          <div className="carousel-caption text-start">
+          <div className="carousel-caption text-start mr-5">
             <h1>Example headline.</h1>
             <p>
               Some representative placeholder content for the first slide of the
               carousel.
-            </p>
-            <p>
-              <a className="btn btn-lg btn-primary" href="#">
-                Schedule Test
-              </a>
             </p>
           </div>
         </Carousel.Caption>
@@ -28,7 +23,7 @@ const NavCarousel=()=> {
       <Carousel.Item interval={2500}>
         <img
           className="d-block w-100"
-          src="./photos/virusTwo.jpg"
+          src="./photos/medicalTwo.jpeg"
           alt="Second slide"
         />
         <Carousel.Caption>
@@ -65,6 +60,6 @@ const NavCarousel=()=> {
       </Carousel.Item>
     </Carousel>
   );
-}
+};
 
 export default NavCarousel;

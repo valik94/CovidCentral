@@ -7,6 +7,7 @@ import axios from "axios";
 // import Form from './components/Form';
 import HomePage from './HomePage'
 import Practitioners from './Practitioners'
+import Registration from './components/Registration'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Switch>
         <Route path='/' element={<HomePage/>} />
         <Route path='/practitioners' element={<Practitioners />} />
+        <Route path='/register' element={<Registration/>} />
       </Switch>
     </div>
     </Router>

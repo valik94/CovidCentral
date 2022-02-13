@@ -24,8 +24,6 @@ module.exports = (db) => {
           console.log(err.message);
         });
     };
-    
-    
 
     addPractitioner(req.body)
     

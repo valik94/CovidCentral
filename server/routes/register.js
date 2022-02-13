@@ -28,25 +28,10 @@ module.exports = (db) => {
     
 
     addPractitioner(req.body)
-    //   .then((result) => { // 
-    //     if (result) {
-    //       return result;
-    //     } else {
-    //     //   return getUserWithEmail(email);
-    //     }
-    //   })
+    
       .then((result) => { //sends result to client as response -- truncated result from query
         if (result) {
             res.send(result)
-
-        //   res.redirect("/login");
-        // } else {
-        //   addPractitioner(user).then((user) => {
-        //     if (user) {
-        //       req.session["user_id"] = user.id;
-        //     }
-        //     res.redirect("/");
-        //   });
         }
       });
   });

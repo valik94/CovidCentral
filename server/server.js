@@ -15,7 +15,7 @@ db.connect();
 const practitionersRouter = require("./routes/practitioners");
 
 const registerRouter = require("./routes/register");
-// const loginRouter = require("./routes/login");
+const loginRouter = require("./routes/login");
 
 const app = express();
 
@@ -34,7 +34,7 @@ app.use("/api/practitioners", practitionersRouter(db));
 // app.use("/appointment", practitionersRouter(db));
 app.use("/api/register", registerRouter(db));
 // app.get('/users', db2.getUsers);
-// app.use("/login", loginRouter(db));
+app.use("/api/login", loginRouter(db));
 // console.log(process.env)
 
 app.listen(8080, ()=> {console.log("LISTENING ON PORT 8080")})

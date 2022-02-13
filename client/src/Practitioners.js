@@ -1,25 +1,42 @@
 import './components/practitionersComp/practitioners.scss'
 import classNames from "classnames"
 import { useState } from 'react'
+import Calendar from './components/calendar/Calendar'
+import PatientsList from './components/patientsList/PatientsList'
 
 export default function HomePage (props) {
   const [ state, setState ] = useState({
-    patients: false,
+    patients: true,
     calendar: false
   })
 
+  //changing the state is button selected
   const setPatients = (patients) => setState({patients: patients, calendar: false})
-
   const setCalendar = (calendar) => setState({patients: false, calendar: calendar})
 
+  //change button class if selected 
   const clickedCalendar = classNames('sidebar__secondFont', {
     "sidebar__secondFont clicked" : state.calendar
   })
-
   const clickedPatient = classNames('sidebar__secondFont', {
     "sidebar__secondFont clicked" : state.patients,
   })
   
+  //helper function allowing the render different components based on the button selected 
+  function getOption(state) {
+    if (state.patients === true) {
+      return (
+        <PatientsList />
+      )
+    } else if (state.calendar === true) {
+      return (
+        <Calendar />
+      )
+    }
+  }
+
+  const getState = getOption(state)
+
   return (
     <main className="layout">
     <section className="sidebar">
@@ -44,7 +61,7 @@ export default function HomePage (props) {
       </nav>
     </section>
     <section className="schedule">
-     <h1>Rest will be here</h1>
+     {getState}
     </section>
   </main>
   );

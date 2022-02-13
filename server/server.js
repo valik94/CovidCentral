@@ -14,7 +14,7 @@ db.connect();
 // const indexRouter = require("./routes/index");
 const practitionersRouter = require("./routes/practitioners");
 
-// const registerRouter = require("./routes/register");
+const registerRouter = require("./routes/register");
 // const loginRouter = require("./routes/login");
 
 const app = express();
@@ -32,7 +32,7 @@ app.use(express.json());
 app.use("/api/practitioners", practitionersRouter(db));
 
 // app.use("/appointment", practitionersRouter(db));
-// app.use("/api/register", registerRouter(db));
+app.use("/api/register", registerRouter(db));
 // app.get('/users', db2.getUsers);
 // app.use("/login", loginRouter(db));
 // console.log(process.env)

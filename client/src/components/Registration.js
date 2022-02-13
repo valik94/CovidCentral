@@ -9,6 +9,8 @@ const Registration = () => {
   const [passwordReq, setPasswordReq] = useState("");
   const [specialtyReq, setSpecialtyReq] = useState("");
 
+  
+
   const register = () => {
     axios.post("api/register", {
       first_name: firstNameReq,

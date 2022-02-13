@@ -7,6 +7,7 @@ const useForm = (submitForm) => {
     last_name: "",
     email: "",
     password: "",
+    specialty: ""
   });
 
   const handleChange = (event) => {

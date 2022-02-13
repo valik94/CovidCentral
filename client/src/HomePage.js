@@ -1,14 +1,13 @@
 import NavigationBar from './components/NavigationBar';
 import NavCarousel from './components/NavCarousel';
-import Form from './components/Form';
 
-export default function HomePage (props) {
+
+export default function HomePage () {
   
   return (
     <div className="App">
       <NavigationBar/>
       <NavCarousel/>
-      <Form/>
     </div>
   );
 }

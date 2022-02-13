@@ -35,7 +35,7 @@ module.exports = (db) => {
     //     //   return getUserWithEmail(email);
     //     }
     //   })
-      .then((result) => { //sends result to client as response
+      .then((result) => { //sends result to client as response -- truncated result from query
         if (result) {
             res.send(result)
 

@@ -18,36 +18,39 @@ import axios from "axios";
 const theme = createTheme();
 
 export default function Login() {
-  let navigate= useNavigate();
+  let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [alert, setAlert] = useState(false);
 
-
-
   function handleSubmit(e) {
     e.preventDefault();
+    setEmail("");
+    setPassword("");
+
     if (!email || !password) {
       setError(true);
     } else {
       axios
         .post("/api/login", { email: email, password: password })
-        .then((data) => {
-          // console.log("if no match", data.data);
-          if (!data.data) {
+        .then((response) => {
+          console.log("HIIIIIIIIII", response);
+          if (response.error) {
             setAlert(true);
+            console.log("ERROOOOR", response.error);
+            return
+            
           } else {
-            const user = data.data;
+            const user = response.data;
             localStorage.setItem("user", JSON.stringify(user));
             navigate("/");
             console.log(user);
+            console.log("USER", user);
           }
         });
     }
   }
-
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -119,13 +122,14 @@ export default function Login() {
                 }}
               />
 
-              <Button onClick={handleSubmit}
+              <Button
+                onClick={handleSubmit}
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Login In
+                Login
               </Button>
               <Grid container>
                 <Grid item>

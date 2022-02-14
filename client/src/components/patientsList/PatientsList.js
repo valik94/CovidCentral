@@ -32,10 +32,11 @@ useEffect(() => {
         <TableHead>
           <TableRow>
             <TableCell>Patients List</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell align="left">Data of Birth</TableCell>
+            <TableCell align="left">Gender</TableCell>
+            <TableCell align="left">Phone</TableCell>
+            <TableCell align="left">Email</TableCell>
+            <TableCell align="left">Emergency Contact</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -47,10 +48,11 @@ useEffect(() => {
               <TableCell component="th" scope="row">
                 {patient.first_name} {patient.last_name}
               </TableCell>
-              <TableCell align="right">{patient.first_name}</TableCell>
-              <TableCell align="right">{patient.last_name}</TableCell>
-              <TableCell align="right">{patient.email}</TableCell>
-              <TableCell align="right">{patient.gender}</TableCell>
+              <TableCell align="left">{patient.date_of_birth}</TableCell>
+              <TableCell align="left">{patient.gender}</TableCell>
+              <TableCell align="left">{patient.phone}</TableCell>
+              <TableCell align="left">{patient.email}</TableCell>
+              <TableCell align="left">{patient.emergency_contact}</TableCell>
             </TableRow>
           ))}
         </TableBody>

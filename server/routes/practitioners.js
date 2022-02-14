@@ -4,7 +4,7 @@ const express = require('express');
 
 
 module.exports = (db) => {
-  // all routes will go here
+  // GET PRACTITIONERS information route
   router.get("/", (req, res) => {
     const promises = [];
     const practitioners = db.query(`SELECT *

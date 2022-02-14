@@ -3,6 +3,8 @@ const express = require('express');
 const cookieSession = require('cookie-session');
 const router = express.Router();
 
+
+//GET login page
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const { first_name, last_name, email, password, specialty } = req.query; //req.body OR req.params

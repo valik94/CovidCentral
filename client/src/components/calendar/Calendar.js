@@ -22,13 +22,14 @@ export default function Calendar (props) {
   //   })
   // }, []);
 
-  const [selectedView, setSelectedView] = useState(CALENDAR_VIEW.MONTH);
+  const [selectedView, setSelectedView] = useState(CalendarView.MONTH);
+
 
   const events = [
     {
         id: 1,
-        startAt: '2022-10-13T16:00:00.000Z',
-        endAt: '2022-10-13T17:00:00.000Z',
+        startAt: '2022-02-13T16:00:00.000Z',
+        endAt: '2022-02-13T17:00:00.000Z',
         // timezoneStartAt: 'Europe/Berlin', // optional
         summary: 'alex',
         color: 'blue',
@@ -36,8 +37,8 @@ export default function Calendar (props) {
     },
     {
         id: 2,
-        startAt: '2022-10-13T18:00:00.000Z',
-        endAt: '2022-10-13T19:00:00.000Z',
+        startAt: '2022-02-13T18:00:00.000Z',
+        endAt: '2022-02-13T19:00:00.000Z',
         // timezoneStartAt: 'Europe/Berlin', // optional
         summary: 'helloo nooo',
         color: 'blue',
@@ -64,15 +65,15 @@ export default function Calendar (props) {
 
   return (
     <Kalend
-      onEventClick={onEventClick}
-      onNewEventClick={onNewEventClick}
+      // onEventClick={onEventClick}
+      // onNewEventClick={onNewEventClick}
       events={events}
       initialDate={new Date().toISOString()}
       hourHeight={60}
       initialView={CalendarView.WEEK}
       disabledViews={[CalendarView.DAY]}
-      onSelectView={selectedView}
-      selectedView={selectedView}
+      // onSelectView={selectedView}
+      //selectedView={selectedView}
       // onPageChange={onPageChange}
       timeFormat={'24'}
       weekDayStart={'Monday'}
@@ -81,3 +82,4 @@ export default function Calendar (props) {
     />
   )
 }
+

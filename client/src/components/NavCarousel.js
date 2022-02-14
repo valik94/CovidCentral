@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import './navcarousel.scss';
 
 const NavCarousel = () => {
   return (
@@ -11,8 +12,8 @@ const NavCarousel = () => {
           alt="First slide"
         />
         <Carousel.Caption>
-          <div className="carousel-caption text-start mr-5">
-            <h1>Example headline.</h1>
+          <div className="carousel-caption-a text-start">
+            <h1>Innovation</h1>
             <p>
               Some representative placeholder content for the first slide of the
               carousel.
@@ -23,26 +24,23 @@ const NavCarousel = () => {
       <Carousel.Item interval={2500}>
         <img
           className="d-block w-100"
-          src="./photos/medicalTwo.jpeg"
+          src="./photos/medicalOne.jpeg"
           alt="Second slide"
         />
         <Carousel.Caption>
+        <div className="carousel-caption-b text-start">
           <h1>Example headline.</h1>
           <p>
             Some representative placeholder content for the first slide of the
             carousel.
           </p>
-          <p>
-            <a className="btn btn-lg btn-primary" href="#">
-              Got a Vaccine
-            </a>
-          </p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./photos/four.jpg"
+          src="./photos/medicalTwo.jpeg"
           alt="Third slide"
         />
         <Carousel.Caption>
@@ -51,11 +49,7 @@ const NavCarousel = () => {
             Some representative placeholder content for the first slide of the
             carousel.
           </p>
-          <p>
-            <a className="btn btn-lg btn-primary" href="#">
-              Statistics
-            </a>
-          </p>
+      
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

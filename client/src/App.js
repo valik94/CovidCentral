@@ -8,6 +8,7 @@ import axios from "axios";
 import HomePage from './HomePage'
 import Practitioners from './Practitioners'
 import Registration from './components/Registration'
+import Login from './components/Login'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' element={<HomePage/>} />
         <Route path='/practitioners' element={<Practitioners />} />
         <Route path='/register' element={<Registration/>} />
+        <Route path='/login' element={<Login/>} />
       </Switch>
     </div>
     </Router>
@@ -25,9 +27,3 @@ function App() {
 
 export default App;
 
-    // <div className="App">
-    //     <NavigationBar/>
-    //     <Navbar/>
-    //     <NavCarousel/>
-    //     <Form/>
-    // </div>

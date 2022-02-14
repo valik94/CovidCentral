@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import Link from "@mui/material/Link";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
+  let navigate= useNavigate();
   const [firstNameReq, setFirstNameReq] = useState("");
   const [lastNameReq, setLastNameReq] = useState("");
   const [emailReq, setEmailReq] = useState("");
@@ -18,6 +20,7 @@ const Registration = () => {
     setEmailReq("");
     setPasswordReq("");
     setSpecialtyReq("");
+ 
   };
 
 
@@ -54,6 +57,7 @@ const Registration = () => {
         specialty: specialtyReq,
       })
       .then((response) => {
+      
         console.log(response);
       });
   };
@@ -151,9 +155,11 @@ const Registration = () => {
                 Register
               </button>
             </div>
-            <p>
-              Do you have an account? <a href="/login">Login</a>
-            </p>
+           
+               <Link href="/login" variant="body2">
+              {"Do you have an account? Log In"}
+                  </Link>
+          
           </form>
         </div>
       </div>

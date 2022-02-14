@@ -2,12 +2,13 @@ const express = require('express');
 // const loginRoute = express.Router();
 const cookieSession = require('cookie-session');
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
 
 //GET login page
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    const { first_name, last_name, email, password, specialty } = req.query; //req.body OR req.params
+  router.post("/", (req, res) => {
+    const { first_name, last_name, email, password, specialty } = req.body; //req.body OR req.params
     // console.log("LOGIN: REQ QUERY IS HERE ", req.query); //req.body OR req.params
     // console.log(`REQ`, Object.keys(req))
     //user validation by id
@@ -17,19 +18,32 @@ module.exports = (db) => {
     //   return Promise.resolve(false);
     // };
     
-    if (email && password) {
-      const query = `SELECT * FROM practitioners WHERE email = $1 AND password = $2`;
-      return db.query(query, [email, password])
-        .then(result => {
-          if (result.rows[0]){
-            res.send(result.rows[0])
+  
+console.log(bcrypt.hashSync(password, 10))
 
-          }
-          else{
+    if (email && password) {
+      const query = `SELECT * FROM practitioners WHERE email = $1`;
+      return db.query(query, [email])
+        .then(result => {
+          const user = result.rows[0]
+          if (user){
+            const passwordCheck = bcrypt.compareSync(password, user.password);
+            if(passwordCheck){
+              res.send(user)
+        }else {
+              res.status(403).send(`Your credential doesn't match`)
+        }
+      }else{
             res.send({error : "User does not exist"})
           }
-        });
+        })    
     }
+    else {
+      res.status(401)
+      res.send({error : "Email and Password required"})
+      
+    }
+  
     // const id = req.session.user_id; //this id pass to query?
     // const idIsExisting = isAuthenticated(email, password, db);
     // idIsExisting.then((value) => {

@@ -2,7 +2,7 @@ import React from "react";
 import './navbar.scss'
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import Button from '@mui/material/Button';
-
+import { Link } from "react-router-dom";
 export default function NavigationBar (props) {
   return (
     <>
@@ -20,10 +20,11 @@ export default function NavigationBar (props) {
           <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
             <Nav variant="pills">
               <Nav.Item>
-                <Button variant="contained">Login</Button>
+                <Button>
+                <Link to="/login">Login</Link></Button>
               </Nav.Item>
               <Nav.Item>
-                <Button variant="contained">Register</Button>
+                <Button><Link to="/register">Register</Link></Button>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>

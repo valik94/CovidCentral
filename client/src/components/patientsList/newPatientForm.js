@@ -34,6 +34,8 @@ export default function NewPatientForm() {
   const [gender, setGender] = useState('')
   const [dateOfBirth, setDateOfBirth] = useState(new Date('2022-02-13T21:11:54'))
 
+  //const [status, setStatus] = useState('null')
+
   const handleChange = (e) => {
     setGender(e.target.value)
   }
@@ -55,21 +57,22 @@ export default function NewPatientForm() {
   }
 
   const addNewPatientBackEnd = ()=> {
+    //setState('updating')
+    console.log("HERE")
     return axios 
-      .post('/api/patients', newPatient)
+      .post('http://localhost:8080/api/patients', newPatient)
       .then((response) =>{
         console.log(response.data);
+        //setState('null')
       })
       .catch((err) =>{
         console.log(err.message)
       })
   }
 
-
-
   return (
     <Box
-     component="form"
+    component="form"
       sx={{
         '& > :not(style)': { m: 1 },
         alignItems: 'center',
@@ -130,9 +133,9 @@ export default function NewPatientForm() {
           /> 
         </LocalizationProvider>
       </FormControl> 
-      <Button variant="contained" onClick = {(e) => addNewPatientBackEnd} > Add Patient </Button>
+      <Button variant="contained" onClick = {(e) => addNewPatientBackEnd()} > Add Patient </Button>
     </Box>
   )
 }
 
-      
+    

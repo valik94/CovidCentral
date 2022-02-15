@@ -13,8 +13,9 @@ db.connect();
 
 // const indexRouter = require("./routes/index");
 
-const patientsRouter= require("./routes/patients")
+const appointmentsRouter = require("./routes/appointments")
 
+const patientsRouter= require("./routes/patients")
 const practitionersRouter = require("./routes/practitioners");
 
 const registerRouter = require("./routes/register");
@@ -30,7 +31,9 @@ app.use(express.json());
 // app.use(express.static(path.join(__dirname, "public")));
 
 
-// app.use("/", indexRouter);
+// app.use("/", indexRouter)0;
+
+app.use("/api/appointments", appointmentsRouter(db));
 app.use("/api/patients", patientsRouter(db));
 app.use("/api/practitioners", practitionersRouter(db));
 

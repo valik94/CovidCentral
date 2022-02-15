@@ -14,36 +14,36 @@ module.exports = (db) => {
     //user validation by id
     // const isAuthenticated = function (email, password, db) {
     //   console.log(`email is and password is`, email, password)
-      
+
     //   return Promise.resolve(false);
     // };
-    
-  
-console.log(bcrypt.hashSync(password, 10))
 
-    if (email && password) {
+
+    console.log(bcrypt.hashSync(password, 10))
+
+    if (email || password) {
       const query = `SELECT * FROM practitioners WHERE email = $1`;
       return db.query(query, [email])
         .then(result => {
           const user = result.rows[0]
-          if (user){
+          if (user) {
             const passwordCheck = bcrypt.compareSync(password, user.password);
-            if(passwordCheck){
+            if (passwordCheck) {
               res.send(user)
-        }else {
+            } else {
               res.status(403).send(`Your credential doesn't match`)
-        }
-      }else{
-            res.send({error : "User does not exist"})
+            }
+          } else {
+            res.send({ error: "User does not exist" })
           }
-        })    
+        })
     }
     else {
       res.status(401)
-      res.send({error : "Email and Password required"})
-      
+      res.send({ error: "Email and Password required" })
+
     }
-  
+
     // const id = req.session.user_id; //this id pass to query?
     // const idIsExisting = isAuthenticated(email, password, db);
     // idIsExisting.then((value) => {

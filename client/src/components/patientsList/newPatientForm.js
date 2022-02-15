@@ -58,11 +58,11 @@ export default function NewPatientForm() {
 
   const addNewPatientBackEnd = ()=> {
     //setState('updating')
-    console.log("HERE")
+    //console.log("HERE")
     return axios 
-      .post('http://localhost:8080/api/patients', newPatient)
+      .post('api/patients', newPatient)
       .then((response) =>{
-        console.log(response.data);
+        console.log("this is DATTTTTTA",response.data);
         //setState('null')
       })
       .catch((err) =>{

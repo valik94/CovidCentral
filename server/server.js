@@ -12,6 +12,9 @@ db.connect();
 // .catch(err => console.log(err.message))
 
 // const indexRouter = require("./routes/index");
+
+const patientsRouter= require("./routes/patients")
+
 const practitionersRouter = require("./routes/practitioners");
 
 const registerRouter = require("./routes/register");
@@ -27,8 +30,8 @@ app.use(express.json());
 // app.use(express.static(path.join(__dirname, "public")));
 
 
-
 // app.use("/", indexRouter);
+app.use("/api/patients", patientsRouter(db));
 app.use("/api/practitioners", practitionersRouter(db));
 
 // app.use("/appointment", practitionersRouter(db));
@@ -39,5 +42,6 @@ app.use("/api/login", loginRouter(db));
 
 app.listen(8080, ()=> {console.log("LISTENING ON PORT 8080")})
 
+// console.log(`this is the login router STACK`, app._router.stack)
 
 module.exports = app;

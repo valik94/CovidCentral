@@ -1,0 +1,22 @@
+@import "../styles/variables.scss";
+@import '~bootstrap/scss/bootstrap.scss';
+
+
+
+.carousel-caption-a  {
+  position: absolute;
+  right: 60%;
+  bottom: 15.25rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+}
+
+.carousel-caption-b {
+  position: absolute;
+  bottom: 5.25rem;
+  left: 70%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+}

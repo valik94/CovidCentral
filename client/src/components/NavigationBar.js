@@ -26,6 +26,9 @@ export default function NavigationBar (props) {
               <Nav.Item>
                 <Button><Link to="/register">Register</Link></Button>
               </Nav.Item>
+              <Nav.Item>
+                <Button><Link to="/">Logout</Link></Button>
+              </Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -13,7 +13,18 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EditNotificationsIcon from '@mui/icons-material/EditNotifications';
 
 export default function DisplayEventItem (props) {
-  const { dataItem } = props;
+  const { dataItem, patientInfo } = props;
+  
+  const getPatientById = function (patientsList, patientID) {
+    let patientName = ''
+    for (let patient of patientsList){
+      if (patient.id === patientID) {
+        patientName = `${patient.first_name } ${patient.last_name}`
+      }
+    }
+    return patientName
+  }
+  
 
   const changeDateFormat = function (date){
     let changedDate = date.slice(0,10)
@@ -59,7 +70,7 @@ export default function DisplayEventItem (props) {
             <PersonIcon />
           </ListItemIcon>
           <ListItemText>
-            {dataItem.patient_id}
+            {getPatientById(patientInfo, dataItem.patient_id)}
           </ListItemText>
         </ListItem>
         <ListItem>

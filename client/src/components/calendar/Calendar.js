@@ -9,6 +9,7 @@ import DisplayEventItem from './DisplayEventItem.js';
 export default function Calendar (props) {
   const [events, setEvents] = useState([])
   //const [displayEvent, setDisplayEvent] = useState(false)
+  const [patientInfo, setPatientInfo] = useState([])
 
   const [displayItem, setDisplayItem] = useState(false)
   const [displayForm, setDisplayForm] = useState(false)
@@ -19,6 +20,7 @@ export default function Calendar (props) {
     axios.get("/api/practitioners")
     .then(response => {
       setEvents(response.data.appointments) 
+      setPatientInfo(response.data.patients)
     })
     .catch ((err) => {
       console.log(err.message);
@@ -62,7 +64,7 @@ export default function Calendar (props) {
         calendarIDsHidden={['work']}
         language={'en'}
       />
-      {displayItem ? <DisplayEventItem dataItem={dataItem}/> : " "}
+      {displayItem ? <DisplayEventItem dataItem={dataItem} patientInfo={patientInfo}/> : " "}
       {displayForm ? <DisplayEventForm dataForm={dataForm}/> : " "}
     </>
   )

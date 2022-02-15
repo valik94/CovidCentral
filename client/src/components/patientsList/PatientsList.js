@@ -8,12 +8,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import NewPatientForm from './newPatientForm.js'
+import NewPatientForm from './newPatientForm.js';
+import Button from '@mui/material/Button';
 
 
 export default function PatientsList() {
-
 const [patients, setPatients] = useState([])
+const [toggleForm, setToggleForm] = useState (false)
 //Axios request to fetch the events in the calendar
 useEffect(() => {
   // const data = getDummyData()
@@ -60,7 +61,8 @@ useEffect(() => {
           </TableBody>
         </Table>
       </TableContainer>
-      <NewPatientForm />
+      <Button variant="contained" onClick = {() => setToggleForm(!toggleForm)}> New Patient</Button>
+      {toggleForm ? <NewPatientForm /> : " "}
     </section>
   );
 }

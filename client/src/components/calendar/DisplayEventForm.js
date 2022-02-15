@@ -17,8 +17,8 @@ export default function DisplayEventForm (props) {
     }}
     >
     <Paper elevation={24}>
-      FROM
+      <h1> FORM</h1>
     </Paper>
   </Box>
   )
-}
+} 

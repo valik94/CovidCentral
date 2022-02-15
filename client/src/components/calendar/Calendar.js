@@ -44,9 +44,6 @@ export default function Calendar (props) {
     setDataForm(data)
     //console.log(data)
   };
-
-  
-
   return (
     <>
       <Kalend

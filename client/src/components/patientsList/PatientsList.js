@@ -15,6 +15,11 @@ import Button from '@mui/material/Button';
 export default function PatientsList() {
 const [patients, setPatients] = useState([])
 const [toggleForm, setToggleForm] = useState (false)
+
+// const [apiStatus, setApiStatus] = useState('null')
+
+
+
 //Axios request to fetch the events in the calendar
 useEffect(() => {
   // const data = getDummyData()

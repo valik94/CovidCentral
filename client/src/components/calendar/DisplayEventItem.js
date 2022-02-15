@@ -3,9 +3,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
 export default function DisplayEventItem (props) {
-  const { displayItemData } = props;
+  const { dataItem } = props;
 
-  console.log("THIS IS ITEM DATA", displayItemData)
+  console.log("THIS IS ITEM DATA", dataItem)
   return (
     <Box
     sx={{

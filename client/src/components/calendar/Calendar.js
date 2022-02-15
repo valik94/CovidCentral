@@ -12,6 +12,8 @@ export default function Calendar (props) {
 
   const [displayItem, setDisplayItem] = useState(false)
   const [displayForm, setDisplayForm] = useState(false)
+  const [dataItem, setDataItem] = useState({})
+  const [dataForm, setDataForm] = useState({})
   //Axios request to fetch the events in the calendar
   useEffect(() => {
     axios.get("/api/practitioners")
@@ -29,15 +31,17 @@ export default function Calendar (props) {
     //setDisplayEvent(!displayEvent)
     setDisplayItem(true)
     setDisplayForm(false)
+    setDataItem(data)
     console.log(data)
-    let displayItemData = data;
-    return displayItemData
+    // let displayItemData = data;
+    // return displayItemData
   };
 
   const onNewEventClick = (data) => {
     //setDisplayEvent(!displayEvent)
     setDisplayItem(false)
     setDisplayForm(true)
+    setDataForm(data)
     //console.log(data)
   };
 
@@ -61,8 +65,8 @@ export default function Calendar (props) {
         calendarIDsHidden={['work']}
         language={'en'}
       />
-      {displayItem ? <DisplayEventItem /> : " "}
-      {displayForm ? <DisplayEventForm /> : " "}
+      {displayItem ? <DisplayEventItem dataItem={dataItem}/> : " "}
+      {displayForm ? <DisplayEventForm dataForm={dataForm}/> : " "}
     </>
   )
 }

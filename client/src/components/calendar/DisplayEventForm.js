@@ -2,7 +2,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import './calendar.scss';
 
-export default function DisplayEventForm () {
+export default function DisplayEventForm (props) {
+  const { dataForm } = props;
   return (
     <Box
     sx={{

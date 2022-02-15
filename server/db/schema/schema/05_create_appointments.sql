@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS appointments CASCADE;
 -- CREATE URLS
 CREATE TABLE appointments (
   id SERIAL PRIMARY KEY,
-  startAt TIMESTAMP,
-  endAt TIMESTAMP,
+  "startAt" TIMESTAMP,
+  "endAt" TIMESTAMP,
   summary VARCHAR(255),
   color VARCHAR(255),
   notification_sent BOOLEAN NOT NULL DEFAULT FALSE,

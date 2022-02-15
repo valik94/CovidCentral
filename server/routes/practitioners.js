@@ -6,17 +6,9 @@ const express = require('express');
 
 
 module.exports = (db) => {
-  // GET PRACTITIONERS information route using SESSION ID?
-  // const sessionId = req.session.user_id; //session id vs localStorage id?
-  // axios.get("/api/practitioners" )
-  // .then((axiosresponse) => {
-  //   console.log(`Axios response was:`, axiosresponse)
-  // })
-  // const localStorageId = localStorage.getItem("user", JSON.stringify(user))
-
 
   
-//Improve route to use practitioner.id, dynamically
+//Improve route to use practitioner.id, dynamically based on cookies session id
   router.get("/", (req, res) => {
     const promises = [];
     const sessionId = req.session.user_id; //getting session using id being sent to client

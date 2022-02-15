@@ -7,13 +7,14 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 export default function NavigationBar (props) {
 
-  let navigate = useNavigate();
+  let navigateBar = useNavigate();
 
   const logout = function() {
     axios.post("/api/logout").then( () => {
       localStorage.removeItem("user") 
-      navigate("/");
+      navigateBar("/");
      })
+
   } //update to POST instead of GET
   
   return (

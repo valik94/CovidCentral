@@ -2,11 +2,16 @@ import Kalend, { CalendarView } from 'kalend' // import component
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import 'kalend/dist/styles/index.css'; // import styles
-import DisplayEvent from './DisplayEvent.js'
+//import DisplayEvent from './DisplayEvent.js'
+import DisplayEventForm from './DisplayEventForm.js'; 
+import DisplayEventItem from './DisplayEventItem.js';
 
 export default function Calendar (props) {
   const [events, setEvents] = useState([])
+  //const [displayEvent, setDisplayEvent] = useState(false)
 
+  const [displayItem, setDisplayItem] = useState(false)
+  const [displayForm, setDisplayForm] = useState(false)
   //Axios request to fetch the events in the calendar
   useEffect(() => {
     axios.get("/api/practitioners")
@@ -18,22 +23,23 @@ export default function Calendar (props) {
     })
   }, []);
 
+
   //Allows to display more information about the event
   const onEventClick = (data) => {
-    const msg = `Click on event action\n\n Callback data:\n\n${JSON.stringify(
-      data
-    )}`;
-    console.log(msg);
+    //setDisplayEvent(!displayEvent)
+    setDisplayItem(true)
+    setDisplayForm(false)
+    console.log(data)
+    let displayItemData = data;
+    return displayItemData
   };
 
-  // const onNewEventClick = (data) => {
-  //   const msg = `New event click action\n\n Callback data:\n\n${JSON.stringify({
-  //     hour: data.hour,
-  //     day: data.day,
-  //     event: 'click event ',
-  //   })}`;
-  //   console.log(msg);
-  // };
+  const onNewEventClick = (data) => {
+    //setDisplayEvent(!displayEvent)
+    setDisplayItem(false)
+    setDisplayForm(true)
+    //console.log(data)
+  };
 
   
 
@@ -41,7 +47,7 @@ export default function Calendar (props) {
     <>
       <Kalend
         onEventClick={onEventClick}
-        //onNewEventClick={onNewEventClick}
+        onNewEventClick={onNewEventClick}
         events={events}
         initialDate={new Date().toISOString()}
         hourHeight={60}
@@ -55,7 +61,8 @@ export default function Calendar (props) {
         calendarIDsHidden={['work']}
         language={'en'}
       />
-      <DisplayEvent />
+      {displayItem ? <DisplayEventItem /> : " "}
+      {displayForm ? <DisplayEventForm /> : " "}
     </>
   )
 }

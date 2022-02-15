@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 module.exports = (db) => {
   router.post("/", function (req, res) {
     console.log("POST: we got here")
-    const {first_name, last_name, email, password, specialty} = req.body
+    const {first_name, last_name, email, password, specialty} = req.body //should be req.body
 
     // const getUserWithEmail = (db, email) =>{
     //     return Promise.resolve({ rows: [] })
@@ -26,7 +26,7 @@ module.exports = (db) => {
         });
     };
 
-    addPractitioner(req.body)
+    addPractitioner(req.body) //req.body
     
       .then((result) => { //sends result to client as response -- truncated result from query
         if (result) {

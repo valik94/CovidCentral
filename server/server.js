@@ -12,6 +12,9 @@ db.connect();
 // .catch(err => console.log(err.message))
 
 // const indexRouter = require("./routes/index");
+
+const patientsRouter= require("./routes/patients")
+
 const practitionersRouter = require("./routes/practitioners");
 
 const registerRouter = require("./routes/register");
@@ -28,6 +31,7 @@ app.use(express.json());
 
 
 // app.use("/", indexRouter);
+app.use("/api/patients", patientsRouter(db));
 app.use("/api/practitioners", practitionersRouter(db));
 
 // app.use("/appointment", practitionersRouter(db));

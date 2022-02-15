@@ -39,6 +39,7 @@ app.use("/api/practitioners", practitionersRouter(db));
 
 // app.use("/appointment", practitionersRouter(db));
 app.use("/api/register", registerRouter(db));
+
 // app.get('/users', db2.getUsers);
 app.use("/api/login", loginRouter(db));
 // console.log(process.env)

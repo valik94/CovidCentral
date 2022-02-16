@@ -1,6 +1,6 @@
 import NavigationBar from './components/NavigationBar';
 import NavCarousel from './components/NavCarousel';
-
+import Patient from './components/patientsList/Patient';
 
 export default function HomePage () {
   
@@ -8,6 +8,8 @@ export default function HomePage () {
     <div className="App">
       <NavigationBar/>
       <NavCarousel/>
+      <Patient/>
+
     </div>
   );
 }

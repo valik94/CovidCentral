@@ -31,7 +31,6 @@ module.exports = (db) => {
   // A patient is selected from list of patients and rendered based on their id sent from frontend to backend
   router.get("/:id", (req, res) => {
     const patientId = req.params.id
-    console.log("!!!!!")
     const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
     const promises = [];
     const patients = db.query(`SELECT * FROM patients WHERE patients.id = $1;`, [patientId]);

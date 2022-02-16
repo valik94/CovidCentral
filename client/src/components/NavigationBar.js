@@ -3,7 +3,20 @@ import './navbar.scss'
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 export default function NavigationBar (props) {
+
+  let navigateBar = useNavigate();
+
+  const logout = function() {
+    axios.post("/api/logout").then( () => {
+      localStorage.removeItem("user") 
+      navigateBar("/");
+     })
+
+  } //update to POST instead of GET
+  
   return (
     <>
       <Navbar bg="light" fixed="top">
@@ -27,7 +40,7 @@ export default function NavigationBar (props) {
                 <Button><Link to="/register">Register</Link></Button>
               </Nav.Item>
               <Nav.Item>
-                <Button><Link to="/">Logout</Link></Button>
+                <Button onClick ={logout}>Logout</Button>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>

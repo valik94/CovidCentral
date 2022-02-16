@@ -3,12 +3,19 @@ const express = require('express');
 const cookieSession = require('cookie-session');
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const { set } = require('../server');
 
 
 //GET login page
 module.exports = (db) => {
+
+
+  
+
   router.post("/", (req, res) => {
-    const { first_name, last_name, email, password, specialty } = req.body; //req.body OR req.params
+    const { first_name, last_name, email, password, specialty } = req.body; 
+    
+    //req.body OR req.params
     // console.log("LOGIN: REQ QUERY IS HERE ", req.query); //req.body OR req.params
     // console.log(`REQ`, Object.keys(req))
     //user validation by id
@@ -29,7 +36,14 @@ module.exports = (db) => {
           if (user) {
             const passwordCheck = bcrypt.compareSync(password, user.password);
             if (passwordCheck) {
-              res.send(user)
+              req.session.user_id = user.id; //setting session using id being sent to client
+              res.send({ id: user.id, 
+                email: user.email,
+                first_name : user.first_name,
+                last_name : user.last_name,
+                specialty : user.specialty
+                })
+                
             } else {
               res.status(403).send(`Your credential doesn't match`)
             }

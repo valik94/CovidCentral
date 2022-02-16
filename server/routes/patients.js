@@ -4,8 +4,9 @@ const express = require('express');
 const cookieSession = require('cookie-session');
 const router = express.Router();
 
-//get Patients page
+
 module.exports = (db) => {
+//PATIENTS POST - UPDATE PATIENT RECORDS
   router.post("/",(req,res) => {
     const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id } = req.body;
 
@@ -25,45 +26,25 @@ module.exports = (db) => {
     updatePatient(first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
 
   })
+
+  //PATIENTS GET - VIEW PATIENT RECORDS BASED ON LOGGED IN PRACTITIONER ID
   router.get("/", (req, res) => {
-    const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id } = req.body; //req.body OR req.params
-    
-    // patient validation by email
-    // const isAuthenticated = function (email, password, db) {
-    //   console.log(`email is and password is`, email, password)
-      
-    //   return Promise.resolve(false);
-    // };
-    
-
-    // const id = req.session.user_id; //this id pass to query?
-    // const idIsExisting = isAuthenticated(email, password, db);
-    // idIsExisting.then((value) => {
-    //   if (value) {
-    //     res.send() //if user in db exists, redirect to homepage
-    //   }
-    //   const templateVars = { value: false };
-
-    // res.send(templateVars)
-    // })
-
-
-    const id = req.session.user_id; //this id only works when session exists (upon logging in)
-    const showPatient = function ({ first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id }) {
-      return db.query(`SELECT * FROM patients
-    
-    WHERE patients.id = $1`, [id]) //req.session.user_id should be used when we start session
+    // const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id } = req.query; //req.body OR req.params
+    console.log("WE ARE INSIDE GET REQUEST: REQ AND RES IS", req, res );
+    const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
+    const showPatient = function () {
+      return db.query(`SELECT * FROM patients WHERE practitioner_id = $1;`, [practitionerId]) //req.session.user_id should be used when we start session
 
         .then((result) => {
-          console.log("RESULT ! IS:", result)
-          return result.rows[0];
+          console.log("RESULT FROM GET REQUEST IS:", result)
+          return result.rows; //return all rows of patients for this practitionersid
         })
         .catch((err) => {
           console.log(err.message)
         })
     }
 
-    showPatient(req.body) //req.body OR req.params
+    showPatient() //req.body OR req.params
       .then((result) => {
         console.log(`THE RESULT INSIDE SHOW USER IS THIS:`, result)
         if (result) {

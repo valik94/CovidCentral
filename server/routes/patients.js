@@ -29,9 +29,9 @@ module.exports = (db) => {
 
   //PATIENTS GET - VIEW PATIENT RECORDS BASED ON SELECTED PATIENT ID 
   // A patient is selected from list of patients and rendered based on their id sent from frontend to backend
-  router.get("/", (req, res) => {
-
-    // const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
+  router.get("/:id", (req, res) => {
+    const patientId = req.params.id
+    const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
     const promises = [];
     const patientId = 3 // --> req.body.id this id comes from the selection of patient from list and send to backend from frontend
     const patients = db.query(`SELECT * FROM patients WHERE patients.id = $1;`, [patientId]);

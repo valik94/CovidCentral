@@ -14,7 +14,7 @@ export default function Calendar (props) {
   const [displayItem, setDisplayItem] = useState(false)
   const [displayForm, setDisplayForm] = useState(false)
   const [dataItem, setDataItem] = useState({})
-  const [dataForm, setDataForm] = useState({})
+  //const [dataForm, setDataForm] = useState({})
   //Axios request to fetch the events in the calendar
   useEffect(() => {
     axios.get("/api/practitioners")
@@ -34,7 +34,6 @@ export default function Calendar (props) {
     setDisplayItem(true)
     setDisplayForm(false)
     setDataItem(data)
-    console.log(data)
     // let displayItemData = data;
     // return displayItemData
   };
@@ -43,7 +42,7 @@ export default function Calendar (props) {
     //setDisplayEvent(!displayEvent)
     setDisplayItem(false)
     setDisplayForm(true)
-    setDataForm(data)
+    //setDataForm(data)
     //console.log(data)
   };
   return (
@@ -65,7 +64,7 @@ export default function Calendar (props) {
         language={'en'}
       />
       {displayItem ? <DisplayEventItem dataItem={dataItem} patientInfo={patientInfo}/> : " "}
-      {displayForm ? <DisplayEventForm dataForm={dataForm}/> : " "}
+      {displayForm ? <DisplayEventForm patientInfo={patientInfo}/> : " "}
     </>
   )
 }

@@ -1,8 +1,8 @@
 //POST Appointments
 
-const express = require('express');
+// const express = require('express');
 // const cookieSession = require('cookie-session');
-const router = express.Router();
+const router = require("express").Router();
 
 //POST book Appointments page
 module.exports = (db) => {

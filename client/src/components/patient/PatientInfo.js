@@ -1,19 +1,14 @@
 import React  from "react";
-import axios from "axios";
-import {useParams} from "react-router-dom";
 
-
-
-function PatientInfo() {
-
-  // const params = useParams()
+function PatientInfo (props) {
+  const { patients, setPatients, patientsHistory, setPatientsHistory} = props
 
   return (
     <section className="infoBar">
       <div className="patientInfo">
         <h3>Patient Contact Info:</h3>
         <label>Full Name:</label>
-        <p>Clinton Schroeder</p>
+        <p>ALEX TEST</p>
         <label>Date Of Birthday:</label>
         <p>2003-01-17</p>
         <label>Gender:</label>

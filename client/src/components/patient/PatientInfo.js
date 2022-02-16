@@ -1,6 +1,12 @@
 import React from "react";
+import axios from "axios";
 
 function PatientInfo() {
+
+
+
+axios.post('/api/')
+
   return (
     <section className="infoBar">
       <div className="patientInfo">

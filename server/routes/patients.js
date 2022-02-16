@@ -33,6 +33,7 @@ module.exports = (db) => {
     const patientId = req.params.id
     const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
     const promises = [];
+    const patientId = 3 // --> req.body.id this id comes from the selection of patient from list and send to backend from frontend
     const patients = db.query(`SELECT * FROM patients WHERE patients.id = $1;`, [patientId]);
     const patientsHistory = db.query(`SELECT * FROM patient_histories
     JOIN patients ON patients.id = patient_id
@@ -55,7 +56,17 @@ module.exports = (db) => {
       .catch((err) => {
         res.status(500).json({ err: err.message })
       })
+
   })
 
   return router;
 }
+
+//Create a routes
+// const patients = `SELECT * FROM patients WHERE patients.id = 1;`, [sessionId]
+// const patientsHistory = `SELECT * FROM patient_histories
+// JOIN patients ON patients.id = patient_id
+// WHERE patients.id = 1;`
+// const patientNotes = `SELECT * FROM patient_notes JOIN patients ON patients.id = patient_id
+// WHERE patients.id = 1;`
+

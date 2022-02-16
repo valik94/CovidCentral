@@ -28,7 +28,10 @@ const colors = [
   }
 ]
 
-export default function DisplayEventForm ({patientInfo}) {
+export default function DisplayEventForm (props) {
+
+  const { patientInfo, events, setEvents } = props
+
   //const [patient, setPatient] = useState("")
   const [startAt, setStartAt] = useState("")
   const [endAt, setEndAt] = useState("")
@@ -71,6 +74,7 @@ export default function DisplayEventForm ({patientInfo}) {
       .post('api/appointments', newAppointment)
       .then((response) => {
         console.log(response.data);
+        setEvents([...events, response.data]);
       })
       .catch((err) => {
         console.log(err.message)

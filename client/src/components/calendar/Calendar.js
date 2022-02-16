@@ -6,7 +6,7 @@ import 'kalend/dist/styles/index.css'; // import styles
 import DisplayEventForm from './DisplayEventForm.js'; 
 import DisplayEventItem from './DisplayEventItem.js';
 
-export default function Calendar (props) {
+export default function Calendar () {
   const [events, setEvents] = useState([])
   //const [displayEvent, setDisplayEvent] = useState(false)
   const [patientInfo, setPatientInfo] = useState([])
@@ -64,7 +64,7 @@ export default function Calendar (props) {
         language={'en'}
       />
       {displayItem ? <DisplayEventItem dataItem={dataItem} patientInfo={patientInfo}/> : " "}
-      {displayForm ? <DisplayEventForm patientInfo={patientInfo}/> : " "}
+      {displayForm ? <DisplayEventForm patientInfo={patientInfo} events={events} setEvents={setEvents}/> : " "}
     </>
   )
 }

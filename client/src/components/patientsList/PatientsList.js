@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -126,7 +127,10 @@ export default function PatientsList() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {patient.first_name} {patient.last_name}
+                    <Link to={{ pathname: `/patients/${patient.id}` }}>
+                      {" "}
+                      {patient.first_name} {patient.last_name}
+                    </Link>
                   </TableCell>
                   <TableCell align="left">{patient.date_of_birth}</TableCell>
                   <TableCell align="left">{patient.gender}</TableCell>
@@ -145,7 +149,11 @@ export default function PatientsList() {
         {" "}
         New Patient
       </Button>
-      {toggleForm ? <NewPatientForm patients={patients} setPatients={setPatients}/> : " "}
+      {toggleForm ? (
+        <NewPatientForm patients={patients} setPatients={setPatients} />
+      ) : (
+        " "
+      )}
     </section>
   );
 }

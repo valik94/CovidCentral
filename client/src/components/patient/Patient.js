@@ -7,28 +7,37 @@ import PatientInfo from "./PatientInfo";
 import axios from "axios";
 
 export default function Patient() {
-  const [patients, setPatients] = useState([]);
   const params = useParams();
+  const [patients, setPatients] = useState([])
+  const [patientNotes, setPatientNotes] = useState([])
+  const [patientsHistory, setPatientsHistory] = useState([])
 
-  console.log("PARAMS", params)
+  // const params = useParams()
   useEffect(() => {
     axios
-      .get("/api/patients/:id")
+      .get(`/api/patients/${params.id}`)
       .then((response) => {
-        console.log(response)
-        setPatients(response.data.patients);
+        setPatients(response.data.patients)
+        setPatientNotes(response.data.patientNotes)
+        setPatientsHistory(response.data.patientsHistory)
       })
       .catch((err) => {
         console.log(err.message);
       });
   }, []);
-
-
-
+  
   return (
     <main className="patientLayout">
-      <PatientInfo />
-      <PatientNotes />
+      <PatientInfo 
+        patients={patients} 
+        setPatients={setPatients}
+        patientsHistory={patientsHistory} 
+        setPatientsHistory={setPatientsHistory}
+      />
+      <PatientNotes 
+        patientNotes={patientNotes} 
+        setPatientNotes={setPatientNotes}
+      />
     </main>
   );
 }

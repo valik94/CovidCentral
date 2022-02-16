@@ -40,7 +40,7 @@ const NavCarousel = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./photos/medicalTwo.jpeg"
+          src="./photos/medicalThree.jpeg"
           alt="Third slide"
         />
         <Carousel.Caption>

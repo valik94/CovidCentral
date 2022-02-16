@@ -58,3 +58,12 @@ module.exports = (db) => {
   return router;
 
 }
+
+//Create a routes
+// const patients = `SELECT * FROM patients WHERE patients.id = 1;`, [sessionId]
+// const patientsHistory = `SELECT * FROM patient_histories
+// JOIN patients ON patients.id = patient_id
+// WHERE patients.id = 1;`
+// const patientNotes = `SELECT * FROM patient_notes JOIN patients ON patients.id = patient_id
+// WHERE patients.id = 1;`
+

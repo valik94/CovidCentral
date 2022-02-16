@@ -9,18 +9,19 @@ import axios from "axios";
 export default function Patient() {
   const [patients, setPatients] = useState([]);
   const params = useParams();
+
   console.log("PARAMS", params)
-  // useEffect(() => {
-  //   axios
-  //     .post("/api/patients/:id")
-  //     .then((response) => {
-  //       console.log(response)
-  //       setPatients(response.data.patients);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("/api/patients/:id")
+      .then((response) => {
+        console.log(response)
+        setPatients(response.data.patients);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
 
 
 

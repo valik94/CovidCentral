@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -60,6 +60,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 export default function PatientsList() {
+  // const params = useParams();
+
   const [patients, setPatients] = useState([]);
   const [toggleForm, setToggleForm] = useState(false);
   const [search, setSearch] = useState("");
@@ -86,6 +88,8 @@ export default function PatientsList() {
         console.log(err.message);
       });
   }, []);
+
+  // console.log("PARAMS", params);
 
   return (
     <section>
@@ -124,6 +128,7 @@ export default function PatientsList() {
               filteredPatient.map((patient) => (
                 <TableRow
                   key={patient.id}
+                
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">

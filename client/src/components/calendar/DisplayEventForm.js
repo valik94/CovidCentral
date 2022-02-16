@@ -10,7 +10,8 @@ import DateAdapter from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
 import Button from '@mui/material/Button';
-import { useState } from 'react'
+import { useState } from 'react';
+import axios from 'axios';
 
 const colors = [
   {
@@ -55,7 +56,7 @@ export default function DisplayEventForm ({patientInfo}) {
 
   const newAppointment = {
     startAt: startAt, 
-    endAt: `${startAt} NEED to calculate`, 
+    endAt: endAt, 
     summary: summary, 
     color: color, 
     notification_sent: false, //to be changed once we add the functional 
@@ -63,10 +64,18 @@ export default function DisplayEventForm ({patientInfo}) {
     practitioner_id: 1
   }
 
-  // const addNewEvent = () => {
-  //   return axios 
-  //     .post(api/)
-  // }
+
+  //sending new appointment to db
+  const addNewEvent = () => {
+    return axios 
+      .post('api/appointments', newAppointment)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }
 
   return (
     <Box
@@ -148,7 +157,7 @@ export default function DisplayEventForm ({patientInfo}) {
         </TextField>
       </FormControl>
       
-      {/* <Button variant="contained" onClick = {(e) => addNewEvent()} > Add Patient </Button> */}
+      <Button variant="contained" onClick = {(e) => addNewEvent()} > Add Patient </Button> 
     </Paper>
   </Box>
   )

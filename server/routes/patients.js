@@ -29,11 +29,11 @@ module.exports = (db) => {
 
   //PATIENTS GET - VIEW PATIENT RECORDS BASED ON SELECTED PATIENT ID 
   // A patient is selected from list of patients and rendered based on their id sent from frontend to backend
-  router.get("/:id", (req, res) => {
-    const patientId = req.params.id
-    console.log("!!!!!")
-    const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
+  router.get("/", (req, res) => {
+
+    // const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
     const promises = [];
+    const patientId = 3 // --> req.body.id this id comes from the selection of patient from list and send to backend from frontend
     const patients = db.query(`SELECT * FROM patients WHERE patients.id = $1;`, [patientId]);
     const patientsHistory = db.query(`SELECT * FROM patient_histories
     JOIN patients ON patients.id = patient_id
@@ -56,7 +56,17 @@ module.exports = (db) => {
       .catch((err) => {
         res.status(500).json({ err: err.message })
       })
+
   })
 
   return router;
 }
+
+//Create a routes
+// const patients = `SELECT * FROM patients WHERE patients.id = 1;`, [sessionId]
+// const patientsHistory = `SELECT * FROM patient_histories
+// JOIN patients ON patients.id = patient_id
+// WHERE patients.id = 1;`
+// const patientNotes = `SELECT * FROM patient_notes JOIN patients ON patients.id = patient_id
+// WHERE patients.id = 1;`
+

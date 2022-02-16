@@ -24,12 +24,12 @@ const genders = [
   },
 ];
 
-export default function NewPatientForm() {
+export default function NewPatientForm({patients, setPatients}) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [healthcareCard, setHealthcareCard] = useState("");
+  const [healthcareCard, setHealthcareCard] = useState ("");
   const [emergencyContact, setEmergencyContact] = useState("");
   const [gender, setGender] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState(
@@ -64,8 +64,9 @@ export default function NewPatientForm() {
     return axios
       .post("api/patients", newPatient)
       .then((response) => {
-        console.log("this is DATTTTTTA", response.data);
+        //console.log("this is DATTTTTTA", response.data);
         //setState('null')
+        setPatients([...patients, response.data]);
       })
       .catch((err) => {
         console.log(err.message);

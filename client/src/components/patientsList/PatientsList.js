@@ -145,7 +145,7 @@ export default function PatientsList() {
         {" "}
         New Patient
       </Button>
-      {toggleForm ? <NewPatientForm /> : " "}
+      {toggleForm ? <NewPatientForm patients={patients} setPatients={setPatients}/> : " "}
     </section>
   );
 }

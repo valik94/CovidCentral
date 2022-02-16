@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -59,6 +60,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 export default function PatientsList() {
+  // const params = useParams();
+
   const [patients, setPatients] = useState([]);
   const [toggleForm, setToggleForm] = useState(false);
   const [search, setSearch] = useState("");
@@ -85,6 +88,8 @@ export default function PatientsList() {
         console.log(err.message);
       });
   }, []);
+
+  // console.log("PARAMS", params);
 
   return (
     <section>
@@ -123,10 +128,14 @@ export default function PatientsList() {
               filteredPatient.map((patient) => (
                 <TableRow
                   key={patient.id}
+                
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {patient.first_name} {patient.last_name}
+                    <Link to={{ pathname: `/patients/${patient.id}` }}>
+                      {" "}
+                      {patient.first_name} {patient.last_name}
+                    </Link>
                   </TableCell>
                   <TableCell align="left">{patient.date_of_birth}</TableCell>
                   <TableCell align="left">{patient.gender}</TableCell>
@@ -145,7 +154,11 @@ export default function PatientsList() {
         {" "}
         New Patient
       </Button>
-      {toggleForm ? <NewPatientForm patients={patients} setPatients={setPatients}/> : " "}
+      {toggleForm ? (
+        <NewPatientForm patients={patients} setPatients={setPatients} />
+      ) : (
+        " "
+      )}
     </section>
   );
 }

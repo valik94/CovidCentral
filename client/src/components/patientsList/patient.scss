@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+
+
+.patientLayout {
+  display: flex;
+}
+.infoBar{
+  background-color: $dark-background;
+  box-shadow: 0px 4px 8px rgba($dark-background, 0.5);
+  min-width: 38rem;
+  padding: 1rem 4rem;
+  text-align: center;
+}
+
+.patientInfo {
+  display:flex;
+  flex-direction:column;
+  align-self:center;
+}
+
+.patient-history{
+  display:flex;
+  flex-direction:column;
+}
+
+
+.container-patient{
+  display:flex;
+  flex-direction:column;
+  margin-top: 1em;
+
+}
+.patient-notes{
+  display:flex;
+  align-items:center;
+  flex-direction: column;
+  margin-left:50%;
+}
+
+label {
+  font-size: 20px;
+}
+p {
+  font-size: 19px;
+  font-weight:bolder;
+}

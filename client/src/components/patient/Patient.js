@@ -20,6 +20,7 @@ export default function Patient() {
         setPatients(response.data.patients[0]);
         setPatientNotes(response.data.patientNotes);
         setPatientsHistory(response.data.patientsHistory[0]);
+        console.log(response.data)
       })
       .catch((err) => {
         console.log(err.message);

@@ -18,7 +18,8 @@ module.exports = (db) => {
 
     const patients = db.query(`SELECT *
     FROM patients
-    WHERE practitioner_id = $1;`, [sessionId] );
+    WHERE practitioner_id = $1
+    ORDER BY created_at DESC;`, [sessionId] );
 
     const appointments = db.query(`SELECT *
     FROM appointments

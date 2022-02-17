@@ -11,5 +11,6 @@ CREATE TABLE patients (
   healthcare_card VARCHAR(255) NOT NULL,
   gender VARCHAR(255),
   date_of_birth VARCHAR(255),
+  created_at TIMESTAMP DEFAULT NOW(),
   practitioner_id integer REFERENCES practitioners(id) ON DELETE CASCADE NOT NULL
 );

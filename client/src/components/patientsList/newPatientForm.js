@@ -66,7 +66,7 @@ export default function NewPatientForm({patients, setPatients}) {
       .then((response) => {
         //console.log("this is DATTTTTTA", response.data);
         //setState('null')
-        setPatients([...patients, response.data]);
+        setPatients([response.data, ...patients]);
       })
       .catch((err) => {
         console.log(err.message);

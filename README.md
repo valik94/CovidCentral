@@ -1,35 +1,31 @@
-# Covid-Central
-Covid-Central
+# dRecords
 
 **Project Description**
+An online charting application allowing healthcare providers to access patient information and schedule follow-up appointments efficiently. The user can keep track of old entries and register new ones upon a change in the patient's condition. An integrated calendar allows the user to plan tasks and keep track of upcoming events.
 
-**Project title:**  Covid CENTRAL
+**Problem solved** 
 
-**Problem solved**: Decentralized nature of COVID-19 services. Currently, services (tests/vaccination/PPE) are offered on different website making it difficult to navigate, inconvenient and time consuming. Our value proposition aggregate different websites/services on one Covid central platform allowing the user find easier and faster the service desired.  
-
-**Target audience:** Canadian adults that are looking for Covid-19 services near by their home/location.
-
-NavBar: Carrousel  (Bootstrap)
-
-FONT: Questrial / 
+**Target audience:** Healthcare providers looking for an effective way of documenting their diagnosis and notes as well as keeping track of patients.
 
 
 ## User Stories
-1. User should be able to visit webpage and see latest covid19 data
-2. User is prompted to choose 1 of 2 categories (vaccinations or testings)
-3. User is prompted to accept google location settings (yes/no) 
-4. User is presented with nearby locations of the services category selected
-5. User should be able to register/login
-6. User should be able to see the history of queries/searches done on the website (stored in our database based on user_id) IF logged-in
-7. User should be able to search in a search bar for nearby services by city/postal code (visual map)
-8. User should get back results from search with nearby covid19 services (vaccinations, testing and ppe)
-9. User should be able to get a link to redirect onto website that provides the service requested
+As a user (healthcare projessional) I want to
+1. login
+2. register
+3. add patients
+4. see all my patients on my main page
+5. be able to search patients by name
+6. see my calendar
+7. be able to book an appointment with a patient
+8. send a notification to the patient via phone or email
+8. open a patient profile and see all relevant information
+10. be able to chart on patient’s change in condition or consultation
+11. be able to see previous notes left on this patient
 
 **STRETCH USER Stories**
-1. User should be able to register/login (with phone number)
-2. QR code to text to your number with appointment data
-3. 3rd category is e-commerce (amazon for PPE, covid tests, etc)
-4. Chatbox to help navigate the site
+1. Filter list of patients by latest/earlier viewed
+2. be able to fill a patient medial history form
+3. Chat system for practitioners to communicate
 
 ### Project Git Workflow
 NEVER code on Main!
@@ -64,7 +60,7 @@ git checkout -b feature/my-feature
 16. git commit (commit the merge) 
 17. git push (So it's not only local)
 
-## NEW Workflow - Vasily 
+## NEW Workflow 
 1. Step 1 - git pull origin main
 Make sure to pull all recent changes to main to start the branch-off process.
 

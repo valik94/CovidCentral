@@ -22,9 +22,10 @@ export default function PatientNotes(props) {
     practitioner_id: patientNotes[0].practitioner_id
   }
   
-  const addNewPatient = function() {  
+  const addNewNote = function() {  
     return axios
-      .post("api/notes", newNote)
+      // .post(`${patientId}/notes`, newNote)
+      .post('/api/notes', newNote)
       .then((response) => {
         //console.log("this is DATTTTTTA", response.data);
         //setState('null')
@@ -74,7 +75,7 @@ export default function PatientNotes(props) {
                 ></textarea>
               </div>
             </div>
-            <Button variant="contained" onClick={(e) => addNewPatient()}>
+            <Button variant="contained" onClick={(e) => addNewNote()}>
               Add Note
             </Button>
           </form>

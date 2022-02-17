@@ -44,10 +44,19 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 function NotesItem(props) {
   const {title, message, created_at } = props
-  const [expanded, setExpanded] = React.useState("panel1");
+  const [expanded, setExpanded] = React.useState("");
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
+  };
+
+  const changeDateFormat = function (date) {
+    let changedDate = date.slice(0, 10);
+    return changedDate;
+  };
+  const changeHourFormat = function (date) {
+    let changedHour = date.slice(11, 16);
+    return changedHour;
   };
 
   return (
@@ -59,7 +68,7 @@ function NotesItem(props) {
         aria-controls="panel1d-content"
         id="panel1d-header"
       >
-        <Typography>{title} | {created_at}</Typography>
+        <Typography>{title} | {changeDateFormat(created_at)} {changeHourFormat(created_at)}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>

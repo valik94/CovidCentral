@@ -3,15 +3,14 @@ import React from "react";
 function PatientInfo(props) {
   const { patients, setPatients, patientsHistory, setPatientsHistory } = props;
 
-  
-  
-  
   return (
     <section className="infoBar">
       <div className="patientInfo">
         <h3>Patient Contact Info:</h3>
         <label>Full Name:</label>
-        <p>{patients.first_name} {patients.last_name}</p>
+        <p>
+          {patients.first_name} {patients.last_name}
+        </p>
         <label>Date Of Birthday:</label>
         <p>{patients.date_of_birth}</p>
         <label>Gender:</label>

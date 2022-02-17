@@ -26,6 +26,10 @@ export default function Patient() {
       });
   }, [params.id]);
 
+  if (patientNotes.length === 0) {
+    return null;
+  }
+
   return (
     <main className="patientLayout">
       <PatientInfo

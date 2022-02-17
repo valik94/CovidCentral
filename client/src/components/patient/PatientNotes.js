@@ -23,18 +23,18 @@ export default function PatientNotes(props) {
   }
   
   const addNewPatient = function() {  
-    // return axios
-    //   .post("api/note", newNote)
-    //   .then((response) => {
-    //     //console.log("this is DATTTTTTA", response.data);
-    //     //setState('null')
-    //     setPatientNotes([...patientNotes, response.data])
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //   });
-    console.log("PATIENT", patientNotes)
-    console.log("HERE", newNote)
+    return axios
+      .post("api/notes", newNote)
+      .then((response) => {
+        //console.log("this is DATTTTTTA", response.data);
+        //setState('null')
+        setPatientNotes([...patientNotes, response.data])
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+    // console.log("PATIENT", patientNotes)
+    // console.log("HERE", newNote)
   }
 
   const displayNotes = patientNotes.map((note)=> {

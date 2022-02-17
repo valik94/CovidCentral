@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 
 const Registration = () => {
   let navigate = useNavigate();
@@ -22,23 +25,43 @@ const Registration = () => {
 
   const register = () => {
     if (firstNameReq === "") {
-      alert("FIRST NAME CANT BE EMPTY");
+      MySwal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "First Name is missing!",
+      });
       return;
     }
     if (lastNameReq === "") {
-      alert("LAST NAME CANT BE EMPTY");
+      MySwal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Last Name is missing!",
+      });
       return;
     }
     if (emailReq === "") {
-      alert("EMAIL CANT BE EMPTY");
+      MySwal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Email is missing!",
+      });
       return;
     }
     if (passwordReq === "") {
-      alert("PASSWORD CANT BE EMPTY");
+      MySwal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password is missing!",
+      });
       return;
     }
     if (specialtyReq === "") {
-      alert("SPECIALTY CANT BE EMPTY");
+      MySwal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Specialty is missing!",
+      });
       return;
     }
 

@@ -28,6 +28,8 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "sass": "^1.49.7",
+    "sweetalert2": "^11.4.0",
+    "sweetalert2-react-content": "^4.2.0",
     "use-history": "^1.4.1",
     "web-vitals": "^2.1.4"
   },

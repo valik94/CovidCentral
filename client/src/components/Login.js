@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -35,18 +35,17 @@ export default function Login() {
       axios
         .post("/api/login", { email: email, password: password })
         .then((response) => {
-          console.log("HIIIIIIIIII", response);
           if (response.error) {
             setAlert(true);
-            console.log("ERROOOOR", response.error);
+            console.log(response.error);
             return
             
           } else {
             const user = response.data;
             localStorage.setItem("user", JSON.stringify(user));
             navigate("/");
-            console.log(user);
-            console.log("USER", user);
+            // console.log(user);
+            // console.log("USER", user);
           }
         });
     }

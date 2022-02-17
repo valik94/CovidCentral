@@ -58,10 +58,7 @@ module.exports = (db) => {
       .catch((err) => {
         res.status(500).json({ err: err.message })
       })
-
-  })
-
-  
+  });
 
 //PATIENTS POST - UPDATE PATIENT RECORDS
 router.post("/:id", (req, res) => {

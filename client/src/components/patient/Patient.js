@@ -8,34 +8,34 @@ import axios from "axios";
 
 export default function Patient() {
   const params = useParams();
-  const [patients, setPatients] = useState([])
-  const [patientNotes, setPatientNotes] = useState([])
-  const [patientsHistory, setPatientsHistory] = useState([])
+  const [patients, setPatients] = useState({});
+  const [patientNotes, setPatientNotes] = useState([]);
+  const [patientsHistory, setPatientsHistory] = useState({});
 
   // const params = useParams()
   useEffect(() => {
     axios
       .get(`/api/patients/${params.id}`)
       .then((response) => {
-        setPatients(response.data.patients)
-        setPatientNotes(response.data.patientNotes)
-        setPatientsHistory(response.data.patientsHistory)
+        setPatients(response.data.patients[0]);
+        setPatientNotes(response.data.patientNotes);
+        setPatientsHistory(response.data.patientsHistory[0]);
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, []);
-  
+  }, [params.id]);
+
   return (
     <main className="patientLayout">
-      <PatientInfo 
-        patients={patients} 
+      <PatientInfo
+        patients={patients}
         setPatients={setPatients}
-        patientsHistory={patientsHistory} 
+        patientsHistory={patientsHistory}
         setPatientsHistory={setPatientsHistory}
       />
-      <PatientNotes 
-        patientNotes={patientNotes} 
+      <PatientNotes
+        patientNotes={patientNotes}
         setPatientNotes={setPatientNotes}
       />
     </main>

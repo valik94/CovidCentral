@@ -1,34 +1,37 @@
-import React  from "react";
+import React from "react";
 
-function PatientInfo (props) {
-  const { patients, setPatients, patientsHistory, setPatientsHistory} = props
+function PatientInfo(props) {
+  const { patients, setPatients, patientsHistory, setPatientsHistory } = props;
 
+  
+  
+  
   return (
     <section className="infoBar">
       <div className="patientInfo">
         <h3>Patient Contact Info:</h3>
         <label>Full Name:</label>
-        <p>ALEX TEST</p>
+        <p>{patients.first_name} {patients.last_name}</p>
         <label>Date Of Birthday:</label>
-        <p>2003-01-17</p>
+        <p>{patients.date_of_birth}</p>
         <label>Gender:</label>
-        <p>Male</p>
+        <p>{patients.gender}</p>
         <label>Email Address:</label>
-        <p>phasellus.at@hotmail.ca</p>
+        <p>{patients.email}</p>
         <label>Health Card</label>
-        <p>DB354</p>
+        <p>{patients.healthcare_card}</p>
         <label>Phone Number:</label>
-        <p>(714) 365-6546</p>
+        <p>{patients.phone}</p>
         <label>Emergency Contact Number:</label>
-        <p>547-438-0720</p>
+        <p>{patients.emergency_contact}</p>
         <h3>Medical History:</h3>
-        <p>DM2, HTN, CHF</p>
+        <p>{patientsHistory.medical_history_details}</p>
         <label>Diagnosis</label>
-        <p>Asthma</p>
+        <p>{patientsHistory.diagnosis_details}</p>
         <label>Medication</label>
-        <p>Atrovastatin, Lasix, Metropolol</p>
+        <p>{patientsHistory.medication_details}</p>
         <label>Surgery</label>
-        <p>N.A.</p>
+        <p>{patientsHistory.surgery_details}</p>
       </div>
     </section>
   );

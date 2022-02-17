@@ -43,7 +43,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function PatientNotes(props) {
-  const { patientNotes, setPatientNotes } = props 
+  const { patientNotes, setPatientNotes } = props;
 
   const [expanded, setExpanded] = React.useState("panel1");
   const handleChange = (panel) => (event, newExpanded) => {

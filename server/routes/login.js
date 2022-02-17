@@ -9,9 +9,6 @@ const { set } = require('../server');
 //GET login page
 module.exports = (db) => {
 
-
-  
-
   router.post("/", (req, res) => {
     const { first_name, last_name, email, password, specialty } = req.body; 
     

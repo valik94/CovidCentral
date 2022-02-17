@@ -89,7 +89,10 @@ export default function PatientsList() {
       });
   }, []);
 
-  // console.log("PARAMS", params);
+  const changeDateFormat = function (date) {
+    let changedDate = date.slice(0, 10);
+    return changedDate;
+  };
 
   return (
     <section>
@@ -136,7 +139,7 @@ export default function PatientsList() {
                       {patient.first_name} {patient.last_name}
                     </Link>
                   </TableCell>
-                  <TableCell align="left">{patient.date_of_birth}</TableCell>
+                  <TableCell align="left">{changeDateFormat(patient.date_of_birth)}</TableCell>
                   <TableCell align="left">{patient.gender}</TableCell>
                   <TableCell align="left">{patient.phone}</TableCell>
                   <TableCell align="left">{patient.email}</TableCell>

@@ -11,6 +11,7 @@ db.connect();
 const indexRouter = require("./routes/index");
 
 const appointmentsRouter = require("./routes/appointments")
+const notesRouter = require("./routes/notes")
 
 const patientsRouter= require("./routes/patients")
 const practitionersRouter = require("./routes/practitioners");
@@ -36,6 +37,7 @@ app.use(cookieSession({
 app.use("/", indexRouter);
 
 app.use("/api/appointments", appointmentsRouter(db));
+app.use("/api/notes", notesRouter(db));
 app.use("/api/patients", patientsRouter(db));
 app.use("/api/practitioners", practitionersRouter(db));
 

@@ -8,7 +8,6 @@ const router = require("express").Router();
 module.exports = (db) => {
   router.post("/",(req,res) => {
     const { startAt, endAt, summary, color, notification_sent, patient_id, practitioner_id } = req.body;
-    console.log(`THIS IS NOTIFICAITON SENT~~~~~~~~~~~~~~~~~~~~~~~~~`, req.body)
     const bookAppointments = function( startAt, endAt, summary, color, notification_sent, patient_id, practitioner_id ) {
 
       return db.query(`INSERT INTO appointments ("startAt", "endAt", summary, color, notification_sent, patient_id, practitioner_id)

@@ -38,7 +38,7 @@ module.exports = (db) => {
     const patientsHistory = db.query(`SELECT * FROM patient_histories
     JOIN patients ON patients.id = patient_id
     WHERE patients.id = $1;`, [patientId]);
-    const patientNotes = db.query(`SELECT * FROM patient_notes JOIN patients ON patients.id = patient_id
+    const patientNotes = db.query(`SELECT patient_notes.* FROM patient_notes JOIN patients ON patients.id = patient_id
     WHERE patients.id = $1;`, [patientId]);
 
     promises.push(patients);

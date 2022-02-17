@@ -6,8 +6,7 @@ const router = express.Router();
 
 
 module.exports = (db) => {
-  
-  //POST to change/update patients information
+  //PATIENTS POST - UPDATE PATIENT RECORDS
   router.post("/", (req, res) => {
     const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id } = req.body;
 
@@ -35,8 +34,7 @@ module.exports = (db) => {
     const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
     const promises = [];
     // const patientId = 3 // --> req.body.id this id comes from the selection of patient from list and send to backend from frontend
-    const patients = db.query(`INSERT INTO patients (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id]);
+    const patients = db.query(`SELECT * FROM patients WHERE patients.id = $1;`, [patientId]);
     const patientsHistory = db.query(`SELECT * FROM patient_histories
     JOIN patients ON patients.id = patient_id
     WHERE patients.id = $1;`, [patientId]);
@@ -61,23 +59,14 @@ module.exports = (db) => {
 
   })
 
-  
-
-//PATIENTS POST - UPDATE PATIENT RECORDS
-router.post("/:id", (req, res) => {
-  const patientId = req.params.id
-  const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
-  const promises = [];
-  // const patientId = 3 // --> req.body.id this id comes from the selection of patient from list and send to backend from frontend
-  const patients = db.query(`SELECT * FROM patients WHERE patients.id = $1;`, [patientId]);
-  const patientsHistory = db.query(`SELECT * FROM patient_histories JOIN patients ON patients.id = patient_id
-  WHERE patients.id = $1;`, [patientId]);
-
-  promises.push(patients);
-  promises.push(patientsHistory);
-
-})
-
-return router;
+  return router;
 }
+
+//Create a routes
+// const patients = `SELECT * FROM patients WHERE patients.id = 1;`, [sessionId]
+// const patientsHistory = `SELECT * FROM patient_histories
+// JOIN patients ON patients.id = patient_id
+// WHERE patients.id = 1;`
+// const patientNotes = `SELECT * FROM patient_notes JOIN patients ON patients.id = patient_id
+// WHERE patients.id = 1;`
 

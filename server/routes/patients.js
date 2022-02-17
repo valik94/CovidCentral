@@ -28,6 +28,8 @@ module.exports = (db) => {
 
   })
 
+  
+
   //PATIENTS GET - VIEW PATIENT RECORDS BASED ON SELECTED PATIENT ID 
   // A patient is selected from list of patients and rendered based on their id sent from frontend to backend
   router.get("/:id", (req, res) => {
@@ -58,10 +60,7 @@ module.exports = (db) => {
       .catch((err) => {
         res.status(500).json({ err: err.message })
       })
-
-  })
-
-  
+  });
 
 //PATIENTS POST - UPDATE PATIENT RECORDS
 router.post("/:id", (req, res) => {

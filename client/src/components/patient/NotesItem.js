@@ -50,8 +50,6 @@ function NotesItem(props) {
     setExpanded(newExpanded ? panel : false);
   };
 
-  
-
   return (
     <Accordion
        expanded={expanded === "panel1"}

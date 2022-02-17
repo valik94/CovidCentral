@@ -41,6 +41,7 @@ export default function Patient() {
       <PatientNotes
         patientNotes={patientNotes}
         setPatientNotes={setPatientNotes}
+        patientId={params.id}
       />
     </main>
   );

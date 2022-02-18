@@ -3,6 +3,8 @@
 // const express = require('express');
 // const cookieSession = require('cookie-session');
 const router = require("express").Router();
+const {sendEmail} = require('../emailnotification')
+
 
 //POST book Appointments page
 module.exports = (db) => {
@@ -15,10 +17,12 @@ module.exports = (db) => {
 
       .then((result) =>{
         console.log(result)
+        const appointment = result.rows[0]
+        console.log(`appointment is ===`, appointment)
+        sendEmail(appointment)
         res.json(result.rows[0])
       })
       .catch((err) => {
-          console.log("XXXXXXXXXXXX", err)
         res.status(500).json({ err: err.message });
       })
     }

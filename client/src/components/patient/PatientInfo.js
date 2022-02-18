@@ -72,7 +72,7 @@ function PatientInfo() {
   }, [params.id]);
 
 
-  
+
   //updating patient information or medical history 
   const updatePatient = function () {
     setEdit(true)
@@ -82,8 +82,8 @@ function PatientInfo() {
     return axios 
       .put(`/api/patients/${params.id}`, [patient, patientHistory])
       .then((response) => {
-        setPatient(response.data.patients) //have to make sure which object is returned by the db
-        setPatientHistory(response.data.patientsHistory)
+        setPatient(response.data.updatedPatient) //have to make sure which object is returned by the db
+        setPatientHistory(response.data.updatedPatientHistories)
       })
       .catch((error) => {
         console.log(error.message)

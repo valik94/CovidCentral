@@ -10,13 +10,18 @@ module.exports = (db) => {
   router.put("/:id", (req, res) => {
     const promises = [];
     const patientId = req.params.id
-    const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, diagnosis_details, medical_history_details, medication_details, surgery_details } = req.body;
+    const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id } = req.body[0];
+    const { diagnosis_details, medical_history_details, medication_details, surgery_details } = req.body[1]
     const updatePatients = db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone = $4, emergency_contact = $5, healthcare_card = $6, gender= $7, date_of_birth= $8, practitioner_id= $9  
     WHERE patients.id = $10 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, patientId ])
     // const updatePatient = function (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, patientId) {
 
-    const updatePatientHistories = db.query(`UPDATE patient_histories SET diagnosis_details = $1, medical_history_details= $2, medication_details = $3, surgery_details = $4
-    WHERE patient_id = $5 RETURNING *;`, [diagnosis_details, medical_history_details, medication_details, surgery_details, patientId ])
+    const updatePatientHistories = db.query(`INSERT INTO patient_histories (diagnosis_details, medical_history_details, medication_details, surgery_details, patient_id) 
+    VALUES ($1, $2, $3, $4, $5) 
+    ON CONFLICT (patient_id) 
+    DO UPDATE SET 
+    diagnosis_details = $1, medical_history_details= $2, medication_details = $3, surgery_details = $4  
+    RETURNING *;`, [diagnosis_details, medical_history_details, medication_details, surgery_details, patientId])
       
     promises.push(updatePatients);
     promises.push(updatePatientHistories);
@@ -26,7 +31,7 @@ module.exports = (db) => {
       console.log(`UPDATED RESULTS [0]ARE FOUND HERE:---------`,updatedResult[0])
       console.log(`UPDATED RESULTS [1]ARE FOUND HERE:---------`,updatedResult[1])
       res.json({
-        updatedPatients: updatedResult[0].rows,
+        updatedPatient: updatedResult[0].rows,
         updatedPatientHistories : updatedResult[1].rows
       })
     })

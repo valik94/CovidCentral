@@ -7,5 +7,5 @@ CREATE TABLE patient_histories (
   medical_history_details TEXT,
   medication_details TEXT,
   surgery_details TEXT,
-  patient_id integer REFERENCES patients(id) ON DELETE CASCADE NOT NULL
+  patient_id integer REFERENCES patients(id) ON DELETE CASCADE UNIQUE NOT NULL 
 );

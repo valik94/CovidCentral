@@ -18,9 +18,9 @@ export default function Patient() {
       .get(`/api/patients/${params.id}`)
       .then((response) => {
         setPatients(response.data.patients[0]);
-        setPatientNotes(response.data.patientNotes);
         setPatientsHistory(response.data.patientsHistory[0]);
-        console.log(response.data)
+        setPatientNotes(response.data.patientNotes);
+        //console.log(response.data)
       })
       .catch((err) => {
         console.log(err.message);
@@ -30,6 +30,9 @@ export default function Patient() {
   if (patientNotes.length === 0) {
     return null;
   }
+
+  console.log("!!!!", patientsHistory)
+  console.log("AAAA", patients)
 
   return (
     <main className="patientLayout">

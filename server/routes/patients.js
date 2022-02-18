@@ -8,30 +8,46 @@ const router = express.Router();
 module.exports = (db) => {
   //PATIENTS POST - UPDATE PATIENT RECORDS
   router.put("/:id", (req, res) => {
+    const promises = [];
     const patientId = req.params.id
-    const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id } = req.body;
+    const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, diagnosis_details, medical_history_details, medication_details, surgery_details } = req.body;
+    const updatePatients = db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone = $4, emergency_contact = $5, healthcare_card = $6, gender= $7, date_of_birth= $8, practitioner_id= $9  
+    WHERE patients.id = $10 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, patientId ])
+    // const updatePatient = function (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, patientId) {
 
-    const updatePatient = function (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id) {
+    const updatePatientHistories = db.query(`UPDATE patient_histories SET diagnosis_details = $1, medical_history_details= $2, medication_details = $3, surgery_details = $4
+    WHERE patient_id = $5 RETURNING *;`, [diagnosis_details, medical_history_details, medication_details, surgery_details, patientId ])
+      
+    promises.push(updatePatients);
+    promises.push(updatePatientHistories);
 
-      // return db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone= $4, emergency_contact =$5, healthcare_card =$6, gender =$7, date_of_birth =$8, practitioner_id =$9)
+    Promise.all(promises)
+    .then((updatedResult) =>{
+      console.log(`UPDATED RESULTS [0]ARE FOUND HERE:---------`,updatedResult[0])
+      console.log(`UPDATED RESULTS [1]ARE FOUND HERE:---------`,updatedResult[1])
+      res.json({
+        updatedPatients: updatedResult[0].rows,
+        updatedPatientHistories : updatedResult[1].rows
+      })
+    })
+    .catch((err) =>{
+      res.status(500).json({ err: err.message });
+    })
+    
+    // return db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone= $4, emergency_contact =$5, healthcare_card =$6, gender =$7, date_of_birth =$8, practitioner_id =$9)
       // WHERE patients.id = 1 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id])
       
-      return db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone = $4, emergency_contact = $5, healthcare_card = $6, gender= $7, date_of_birth= $8, practitioner_id= $9  
-      WHERE patients.id = 1 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id ]) 
-                    //patients.id = $10, [patientId]
+      // return db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone = $4, emergency_contact = $5, healthcare_card = $6, gender= $7, date_of_birth= $8, practitioner_id= $9  
+      // WHERE patients.id = $10 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, patientId ]) 
+                   
+      // return db.query(`UPDATE patient_histories SET diagnosis_details = $1, medical_history_details= $2, medical_history_details = $3, medication_details = $4, surgery_details = $5
+      // WHERE patient_id = $6 RETURNING *;`, [diagnosis_details, medical_history_details, medication_details, surgery_details, patientId ])
 
       // return db.query(`INSERT INTO patients (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
       // VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id])
 
-        .then((result) => {
-          console.log(result)
-          res.json(result.rows[0])
-        })
-        .catch((err) => {
-          res.status(500).json({ err: err.message });
-        })
-    }
-    updatePatient(first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
+    // }
+    // updatePatient(first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
 
   })
 

@@ -27,15 +27,16 @@
 .container-patient{
   display:flex;
   flex-direction:column;
-  margin-top: 3em;
-
+  width:100%;
 }
+
 .patient-notes{
   display:flex;
   align-items:center;
   flex-direction: column;
   margin-left:5%;
-  width:900px;
+  width:90%;
+  padding-top: 2%;
 }
 
 label {
@@ -50,4 +51,21 @@ p {
   display:flex;
   flex-direction:row;
   justify-content: space-between;
+}
+
+.navbar-small-patient {
+  background-color: $dark-blue;
+  width: 100%; 
+  height: 5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding-left: 2%;
+  padding-right: 50%;
+}
+
+.shadow-lg {
+  width: 100%;
 }

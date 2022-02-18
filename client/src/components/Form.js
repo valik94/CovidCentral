@@ -12,7 +12,7 @@ const Form = () => {
   const getDummyData = async () => {
     try {
       const { data } = await axios.get("/practitioners");
-      console.log("CLOSE==================:", data)
+      console.log("CLOSE==================:", data);
       return data;
     } catch (error) {
       console.log(error);
@@ -21,11 +21,12 @@ const Form = () => {
 
   useEffect(() => {
     // const data = getDummyData()
-    axios.get("/api/practitioners")
-    // fetch("/practitioners")
-    .then(response => {
-      console.log(`response data is HERE:`,response.data)
-    })
+    axios
+      .get("/api/practitioners")
+      // fetch("/practitioners")
+      .then((response) => {
+        console.log(`response data is HERE:`, response.data);
+      });
 
     // console.log('DATA:', data)
   }, []);

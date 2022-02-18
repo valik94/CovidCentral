@@ -7,13 +7,21 @@ const router = express.Router();
 
 module.exports = (db) => {
   //PATIENTS POST - UPDATE PATIENT RECORDS
-  router.post("/", (req, res) => {
+  router.put("/:id", (req, res) => {
+    const patientId = req.params.id
     const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id } = req.body;
 
     const updatePatient = function (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id) {
 
-      return db.query(`INSERT INTO patients (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id])
+      // return db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone= $4, emergency_contact =$5, healthcare_card =$6, gender =$7, date_of_birth =$8, practitioner_id =$9)
+      // WHERE patients.id = 1 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id])
+      
+      return db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone = $4, emergency_contact = $5, healthcare_card = $6, gender= $7, date_of_birth= $8, practitioner_id= $9  
+WHERE patients.id = 1 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id ]) 
+                    //patients.id = $10, [patientId]
+
+      // return db.query(`INSERT INTO patients (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
+      // VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id])
 
         .then((result) => {
           console.log(result)
@@ -26,8 +34,6 @@ module.exports = (db) => {
     updatePatient(first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
 
   })
-
-  
 
   //PATIENTS GET - VIEW PATIENT RECORDS BASED ON SELECTED PATIENT ID 
   // A patient is selected from list of patients and rendered based on their id sent from frontend to backend

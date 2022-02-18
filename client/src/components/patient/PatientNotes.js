@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import NotesItem from './NotesItem.js';
+import React, { useState } from "react";
+import NotesItem from "./NotesItem.js";
 import Button from "@mui/material/Button";
 import axios from 'axios';
 import { Link } from "react-router-dom";
@@ -11,13 +11,12 @@ import TextField from "@mui/material/TextField";
 export default function PatientNotes(props) {
   const { patientNotes, setPatientNotes, patientId } = props;
 
-  const [title, setTitle] = useState("")
-  const [message, setMessage] = useState("")
+  const [title, setTitle] = useState("");
+  const [message, setMessage] = useState("");
   //const [patientId, setPatientId] = useState("")
   //const [practitionerId, setPractitionerId] = useState("")
 
   //let practitionerId = patientNotes.practitioner_id
-
 
   const newNote = {
     title: title,
@@ -40,17 +39,18 @@ export default function PatientNotes(props) {
       });
     // console.log("PATIENT", patientNotes)
     // console.log("HERE", newNote)
-  }
+  };
 
-  const displayNotes = patientNotes.map((note)=> {
+  const displayNotes = patientNotes.map((note) => {
     return (
-    <NotesItem 
-      key={note.id}
-      title={note.title}
-      message={note.message}
-      created_at={note.created_at}
-    />)
-  })
+      <NotesItem
+        key={note.id}
+        title={note.title}
+        message={note.message}
+        created_at={note.created_at}
+      />
+    );
+  });
 
   return (
     <div className="container-patient">

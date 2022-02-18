@@ -17,7 +17,7 @@ import axios from "axios";
 
 const theme = createTheme();
 
-export default function Login() {
+export default function Login({setUser}) {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,9 +41,14 @@ export default function Login() {
             return
             
           } else {
-            const user = response.data;
-            localStorage.setItem("user", JSON.stringify(user));
-            navigate("/");
+            const user = response.data; //this should be session ID 
+            localStorage.setItem("userID", user.id);
+            localStorage.setItem("userLastName", user.last_name)
+            localStorage.setItem("userSpecialty", user.specialty)
+
+            //instead of setting the use > set the user session 
+            //setUser(user)
+            navigate("/practitioners");
             // console.log(user);
             // console.log("USER", user);
           }

@@ -3,9 +3,11 @@ import classNames from "classnames";
 import { useState } from "react";
 import Calendar from "./components/calendar/Calendar";
 import PatientsList from "./components/patientsList/PatientsList";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 
 export default function HomePage(props) {
+  const { userID, lastName, specialty } = props;
+
   const [state, setState] = useState({
     patients: true,
     calendar: false,
@@ -46,7 +48,9 @@ export default function HomePage(props) {
         />
         <nav className="sidebar__menu">
           <div className="sidebar__mainFont__background">
-            <p className="sidebar__mainFont">Hello Dr. Alex</p>
+            <p className="sidebar__mainFont">
+              Hello {specialty} {lastName}
+            </p>
           </div>
           <div className="">
             <button
@@ -55,8 +59,7 @@ export default function HomePage(props) {
                 setPatients(true);
               }}
             >
-              {" "}
-              Patients{" "}
+              Patients
             </button>
           </div>
           <div className="">
@@ -66,14 +69,12 @@ export default function HomePage(props) {
                 setCalendar(true);
               }}
             >
-              {" "}
-              Calendar{" "}
+              Calendar
             </button>
           </div>
           <div className="sidebar__backButton">
             <button className="button-logout-navbar-practitioners">
-              {" "}
-              <LogoutIcon /> Logout {" "}
+              <LogoutIcon /> Logout
             </button>
           </div>
         </nav>
@@ -82,30 +83,3 @@ export default function HomePage(props) {
     </main>
   );
 }
-
-// Example how to fetch information
-// const [formIsSubmitted, setFormIsSubmitted] = useState(false);
-// const submitForm = () => {
-//   setFormIsSubmitted(true);
-// };
-
-// const getDummyData = async () => {
-//   try {
-//     const { data } = await axios.get("/practitioners");
-//     console.log("CLOSE==================:", data)
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// useEffect(() => {
-//   // const data = getDummyData()
-//   //axios.get("http://localhost:8080/practitioners")
-//   fetch("/practitioners")
-//   .then(response => {
-//     console.log(response)
-//   })
-
-//   // console.log('DATA:', data)
-// }, []);

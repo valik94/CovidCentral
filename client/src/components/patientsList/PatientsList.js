@@ -154,7 +154,6 @@ export default function PatientsList() {
         </Table>
       </TableContainer>
       <Button variant="contained" onClick={() => setToggleForm(!toggleForm)}>
-        {" "}
         New Patient
       </Button>
       {toggleForm ? (

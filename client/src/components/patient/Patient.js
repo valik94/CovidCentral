@@ -17,15 +17,15 @@ export default function Patient() {
     axios
       .get(`/api/patients/${params.id}`)
       .then((response) => {
-        setPatients(response.data.patients[0]);
-        setPatientsHistory(response.data.patientsHistory[0]);
+        // setPatients(response.data.patients[0]);
+        // setPatientsHistory(response.data.patientsHistory[0]);
         setPatientNotes(response.data.patientNotes);
         //console.log(response.data)
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, [params.id]);
+  }, []);
 
 
   
@@ -48,22 +48,10 @@ export default function Patient() {
     surgery_details: " "
   }
 
-  
-  if (!patientsHistory) {
-    setPatientsHistory(emptyPatientHistory)
-  }
-
-  console.log("!!!", patients)
-  
 
   return (
     <main className="patientLayout">
-      <PatientInfo
-        patients={patients}
-        setPatients={setPatients}
-        patientsHistory={patientsHistory}
-        setPatientsHistory={setPatientsHistory}
-      />
+      <PatientInfo />
       <PatientNotes
         patientNotes={patientNotes}
         setPatientNotes={setPatientNotes}

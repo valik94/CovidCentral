@@ -2,68 +2,92 @@ import { useParams } from "react-router-dom";
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import './patient.scss';
-import classNames from "classnames";
 import FormControl from "@mui/material/FormControl";
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
 import EditIcon from '@mui/icons-material/Edit';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-function PatientInfo(props) {
-  const { patients, setPatients, patientsHistory, setPatientsHistory } = props;
-
+function PatientInfo() {
   const params = useParams();
 
-  const [firstName, setFirstName] = useState(patients.first_name)
-  const [lastName, setLastName] = useState(patients.last_name)
-  const [dateOfBirth, setDateOfBirth] = useState(patients.date_of_birth)
-  const [gender, setGender] = useState(patients.gender)
-  const [email, setEmail] = useState(patients.email)
-  const [healthcareCard, setHealthCareCard] = useState(patients.healthcare_card)
-  const [phone, setPhone] = useState(patients.phone)
-  const [emergencyContact, setEmergencyContact] = useState(patients.emergency_contact)
-  const [medicalHistory, setMedicalHistory] = useState(patientsHistory.medical_history_details)
-  const [diagnosis, setDiagnosis] = useState(patientsHistory.diagnosis_details)
-  const [medication, setMedication] = useState(patientsHistory.medication_details)
-  const [surgery, setSurgery] = useState(patientsHistory.surgery_details)
+  //initializing patient information state
+  const [patient, setPatient] = useState({
+    firstName:" ",
+    lastName: " ",
+    dateOfBirth: " ",
+    gender: " ",
+    email: " ",
+    healthcareCard: " ",
+    phone: " ",
+    emergencyContact: " ",
+    practitionerID: 1
+  });
+  const [patientHistory, setPatientHistory] = useState({
+    medicalHistory: " ",
+    diagnosis: " ",
+    medication: " ",
+    surgery: " ",  
+  });
 
   //control the edit button
   const [edit, setEdit] = useState(true)
 
-  //constructing object to send to DB
-  const updatedPatientInfo = {
-    first_name: firstName, 
-    last_name: lastName,
-    email: email,
-    phone: phone,
-    emergency_contact: emergencyContact,
-    healthcare_card: healthcareCard,
-    gender: gender,
-    practitioner_id: 1,
-    date_of_birth: dateOfBirth,
-    medical_history_details: medicalHistory,
-    diagnosis_details: diagnosis,
-    medication_details: medication, 
-    surgery_details: surgery
+  //changing the state of the patient 
+  const handleChangePatient = function (event) {
+    const {name, value} = event.target
+    setPatient(prev => ({...prev, [name]: value}))
   }
 
+  //changing the state of the patient history component 
+  const handleChangePatientHistory = function (event) {
+    const {name, value} = event.target
+    setPatientHistory(prev => ({...prev, [name]: value}))
+  }
+
+  //empty patient medical history
+  const emptyPatientHistory = {
+    diagnosis_details: "Void",
+    medical_history_details: "Void",
+    medication_details: "Void",
+    surgery_details: "Void"
+  }
+
+  //getting the information about the patient
+  useEffect(() => {
+    axios
+      .get(`/api/patients/${params.id}`)
+      .then((response) => {
+        if ((response.data.patientsHistory).length === 0) {
+          setPatientHistory(emptyPatientHistory)
+          setPatient(response.data.patients[0]);
+        } else {
+          setPatientHistory(response.data.patientsHistory[0])
+          setPatient(response.data.patients[0]);
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [params.id]);
+
+
+  
+  //updating patient information or medical history 
   const updatePatient = function () {
     setEdit(true)
-    console.log(updatedPatientInfo)
+    console.log("PT STATe", patient)
+    console.log("MORE INFOR", patientHistory)
 
     return axios 
-      .put(`/api/patients/${params.id}`, updatedPatientInfo)
+      .put(`/api/patients/${params.id}`, [patient, patientHistory])
       .then((response) => {
-        setPatients(response.data.patients) //have to make sure which object is returned by the db
-        setPatientsHistory(response.data.patients)
+        setPatient(response.data.patients) //have to make sure which object is returned by the db
+        setPatientHistory(response.data.patientsHistory)
       })
       .catch((error) => {
         console.log(error.message)
       })
-
-    
   }
 
   return (
@@ -76,22 +100,15 @@ function PatientInfo(props) {
         <hr/>
         <h3>Patient Information and Medical History</h3>
         <hr/>
-        <Box
-          // component="form"
-          // sx={{
-          //   "& > :not(style)": { m: 3 },
-          //   alignItems: 'right',
-          //   backgroundColor: 'white'
-          // }}
-          // autoComplete="off"
-        
-       >
+        <Box>
         <FormControl fullWidth={true} required={true}>
           <TextField
             id="firstName"
             label="First Name"
-            defaultValue={patients.first_name}
-            onChange={(e) => {setFirstName(e.target.value)}}
+            name={"first_name"}
+            //defaultValue={patients.first_name}
+            value={patient.first_name}
+            onChange={handleChangePatient}
             disabled={edit}
             required
             margin="normal"
@@ -99,17 +116,19 @@ function PatientInfo(props) {
           <TextField
             id="lastName"
             label="Last Name"
-            defaultValue={patients.last_name}
-            onChange={(e) => {setLastName(e.target.value)}}
+            name={"last_name"}
+            value={patient.last_name}
+            onChange={handleChangePatient}
             disabled={edit}
             required
             margin="normal"
           />
-          <TextField
+         <TextField
             id="dateOfBirth"
             label="Date of Birth"
-            defaultValue={patients.date_of_birth}
-            onChange={(e) => {setDateOfBirth(e.target.value)}}
+            name={"date_of_birth"}
+            value={patient.date_of_birth}
+            onChange={handleChangePatient}
             disabled={edit}
             required
             margin="normal"
@@ -117,8 +136,9 @@ function PatientInfo(props) {
           <TextField
             id="gender"
             label="Gender"
-            defaultValue={patients.gender}
-            onChange={(e) => {setGender(e.target.value)}}
+            name={"gender"}
+            value={patient.gender}
+            onChange={handleChangePatient}
             disabled={edit}
             required
             margin="normal"
@@ -126,8 +146,9 @@ function PatientInfo(props) {
           <TextField
             id="healthCareCard"
             label="Healthcare Card"
-            defaultValue={patients.healthcare_card}
-            onChange={(e) => {setHealthCareCard(e.target.value)}}
+            name={"healthcare_card"}
+            value={patient.healthcare_card}
+            onChange={handleChangePatient}
             disabled={edit}
             required
             margin="normal"
@@ -135,8 +156,9 @@ function PatientInfo(props) {
           <TextField
             id="email"
             label="Email"
-            defaultValue={patients.email}
-            onChange={(e) => {setEmail(e.target.value)}}
+            name={"email"}
+            value={patient.email}
+            onChange={handleChangePatient}
             disabled={edit}
             required
             margin="normal"
@@ -144,8 +166,9 @@ function PatientInfo(props) {
           <TextField
             id="phone"
             label="Phone Number"
-            defaultValue={patients.phone}
-            onChange={(e) => {setPhone(e.target.value)}}
+            name={"phone"}
+            value={patient.phone}
+            onChange={handleChangePatient}
             disabled={edit}
             required
             margin="normal"
@@ -153,8 +176,9 @@ function PatientInfo(props) {
           <TextField
             id="emergencyContact"
             label="Emergency Contact"
-            defaultValue={patients.emergency_contact}
-            onChange={(e) => {setEmergencyContact(e.target.value)}}
+            name={"emergency_contact"}
+            value={patient.emergency_contact}
+            onChange={handleChangePatient}
             disabled={edit}
             required
             margin="normal"
@@ -162,18 +186,19 @@ function PatientInfo(props) {
           <TextField
             id="diagnosis"
             label="Diagnosis"
-            defaultValue={patientsHistory.diagnosis_details}
-            onChange={(e) => {setDiagnosis(e.target.value)}}
+            name={"diagnosis_details"}
+            value={patientHistory.diagnosis_details}
+            onChange={handleChangePatientHistory}
             disabled={edit}
             required
             margin="normal"
-            
           />
           <TextField
             id="medicalHistory"
             label="Medical History"
-            defaultValue={patientsHistory.medical_history_details}
-            onChange={(e) => {setMedicalHistory(e.target.value)}}
+            name={"medical_history_details"}
+            value={patientHistory.medical_history_details}
+            onChange={handleChangePatientHistory}
             disabled={edit}
             required
             margin="normal"
@@ -181,8 +206,9 @@ function PatientInfo(props) {
           <TextField
             id="surgeries"
             label="Surgeries"
-            defaultValue={patientsHistory.surgery_details}
-            onChange={(e) => {setSurgery(e.target.value)}}
+            name={"surgery_details"}
+            value={patientHistory.surgery_details}
+            onChange={handleChangePatientHistory}
             disabled={edit}
             required
             margin="normal"
@@ -190,8 +216,9 @@ function PatientInfo(props) {
           <TextField
             id="medication"
             label="Medication List"
-            defaultValue={patientsHistory.medication_details}
-            onChange={(e) => {setMedication(e.target.value)}}
+            name={"medication_details"}
+            value={patientHistory.medication_details}
+            onChange={handleChangePatientHistory}
             disabled={edit}
             required
             margin="normal"
@@ -202,5 +229,4 @@ function PatientInfo(props) {
     </section>
   );
 }
-  
-  export default PatientInfo;
+export default PatientInfo;

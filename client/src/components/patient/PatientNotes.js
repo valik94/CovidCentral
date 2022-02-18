@@ -73,7 +73,7 @@ export default function PatientNotes(props) {
                   className="text_field bg-gray-200 p-1 h-20 w-full mt-0 good"
                   cols="120"
                   required
-                  fullWidth="true"
+                  fullWidth={true}
                   margin="normal"
                 ></TextField>
                 <TextField
@@ -83,10 +83,10 @@ export default function PatientNotes(props) {
                   className="text_field bg-gray-200 p-1 h-20 w-full mt-0 good"
                   cols="120"
                   required
-                  fullWidth="true"
+                  fullWidth={true}
                   onChange={(e) => setMessage(e.target.value)}
                   value={message}
-                  multiline="true"
+                  multiline={true}
                   margin="normal"
                 ></TextField>
               </div>

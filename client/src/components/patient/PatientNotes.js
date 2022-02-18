@@ -74,6 +74,7 @@ export default function PatientNotes(props) {
                   cols="120"
                   required
                   fullWidth="true"
+                  margin="normal"
                 ></TextField>
                 <TextField
                   placeholder="Entry..."
@@ -86,12 +87,15 @@ export default function PatientNotes(props) {
                   onChange={(e) => setMessage(e.target.value)}
                   value={message}
                   multiline="true"
+                  margin="normal"
                 ></TextField>
               </div>
             </div>
-            <Button variant="contained" onClick={(e) => addNewNote()}>
-              Add Note
-            </Button>
+            <div className="add-note">
+              <Button variant="contained" onClick={(e) => addNewNote()}>
+                Add Note
+              </Button>
+            </div>
           </form>
         </div>
       </div>

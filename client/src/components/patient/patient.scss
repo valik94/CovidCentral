@@ -69,3 +69,10 @@ p {
 .shadow-lg {
   width: 100%;
 }
+
+.add-note {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 4%;
+  padding-top: 1%;
+}

@@ -32,7 +32,7 @@ export default function Patient() {
 
   const emptyNote = {
     id: 0,
-    title: "No Note have been entered for this patient",
+    title: "0 Notes have been entered for this patient",
     message: " ",
     created_at: " "
   }

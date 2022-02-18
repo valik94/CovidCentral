@@ -7,12 +7,12 @@ const router = express.Router();
 
 module.exports = (db) => {
   //PATIENTS POST - UPDATE PATIENT RECORDS
-  router.post("/", (req, res) => {
+  router.put("/:id", (req, res) => {
     const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id } = req.body;
 
     const updatePatient = function (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id) {
 
-      return db.query(`INSERT INTO patients (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
+      return db.query(`UPDATE SET patients (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id])
 
         .then((result) => {

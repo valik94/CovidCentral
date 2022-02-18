@@ -17,6 +17,7 @@ import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
+import './patientsList.scss'
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -95,7 +96,7 @@ export default function PatientsList() {
   };
 
   return (
-    <section>
+    <section className="patients-list-main-section">
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>

@@ -5,7 +5,8 @@ const router = require("express").Router();
 //POST Create New Notes page
 module.exports = (db) => {
   router.post("/", (req, res) => {
-    const { title, message, patient_id, practitioner_id } = req.body;
+    const sessionId = req.session.user_id; //getting session using id being sent to client
+    const { title, message, patient_id } = req.body;
 
     const createNote = function (title, message, patient_id, practitioner_id) {
       return db
@@ -24,7 +25,7 @@ module.exports = (db) => {
           res.status(500).json({ err: err.message });
         });
     };
-    createNote(title, message, patient_id, practitioner_id);
+    createNote(title, message, patient_id, sessionId);
   });
   return router;
 };

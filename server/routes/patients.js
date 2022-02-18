@@ -8,12 +8,13 @@ const router = express.Router();
 module.exports = (db) => {
   //PATIENTS POST - UPDATE PATIENT RECORDS
   router.put("/:id", (req, res) => {
+    const sessionId = req.session.user_id; //getting session using id being sent to client
     const promises = [];
     const patientId = req.params.id
-    const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id } = req.body[0];
+    const { first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth } = req.body[0];
     const { diagnosis_details, medical_history_details, medication_details, surgery_details } = req.body[1]
     const updatePatients = db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone = $4, emergency_contact = $5, healthcare_card = $6, gender= $7, date_of_birth= $8, practitioner_id= $9  
-    WHERE patients.id = $10 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, patientId ])
+    WHERE patients.id = $10 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, sessionId, patientId ])
     // const updatePatient = function (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, patientId) {
 
     const updatePatientHistories = db.query(`INSERT INTO patient_histories (diagnosis_details, medical_history_details, medication_details, surgery_details, patient_id) 
@@ -64,7 +65,7 @@ module.exports = (db) => {
     const promises = [];
     // const patientId = 3 // --> req.body.id this id comes from the selection of patient from list and send to backend from frontend
     const patients = db.query(`SELECT * FROM patients WHERE patients.id = $1;`, [patientId]);
-    const patientsHistory = db.query(`SELECT * FROM patient_histories
+    const patientsHistory = db.query(`SELECT patient_histories.* FROM patient_histories
     JOIN patients ON patients.id = patient_id
     WHERE patients.id = $1;`, [patientId]);
     const patientNotes = db.query(`SELECT patient_notes.* FROM patient_notes JOIN patients ON patients.id = patient_id

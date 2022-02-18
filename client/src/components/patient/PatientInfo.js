@@ -36,12 +36,13 @@ function PatientInfo(props) {
   const updatedPatientInfo = {
     first_name: firstName, 
     last_name: lastName,
-    date_of_birth: dateOfBirth,
-    gender: gender,
     email: email,
-    healthcare_card: healthcareCard,
     phone: phone,
     emergency_contact: emergencyContact,
+    healthcare_card: healthcareCard,
+    gender: gender,
+    practitioner_id: 1,
+    date_of_birth: dateOfBirth,
     medical_history_details: medicalHistory,
     diagnosis_details: diagnosis,
     medication_details: medication, 
@@ -49,17 +50,20 @@ function PatientInfo(props) {
   }
 
   const updatePatient = function () {
-    // return axios 
-    //   .put(`/api/patients/${params.id}`, updatedPatientInfo)
-    //   .then((response) => {
-    //     setPatients(response.data.patients) //have to make sure which object is returned by the db
-    //     setPatientsHistory(response.data.patients)
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.message)
-    //   })
     setEdit(true)
     console.log(updatedPatientInfo)
+
+    return axios 
+      .put(`/api/patients/${params.id}`, updatedPatientInfo)
+      .then((response) => {
+        setPatients(response.data.patients) //have to make sure which object is returned by the db
+        setPatientsHistory(response.data.patients)
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+
+    
   }
 
   return (

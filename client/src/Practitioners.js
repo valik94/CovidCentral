@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useState } from "react";
 import Calendar from "./components/calendar/Calendar";
 import PatientsList from "./components/patientsList/PatientsList";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function HomePage(props) {
   const [state, setState] = useState({
@@ -71,13 +71,10 @@ export default function HomePage(props) {
             </button>
           </div>
           <div className="sidebar__backButton">
-            <button>
+            <button className="button-logout-navbar-practitioners">
               {" "}
-              <ArrowBackIosNewIcon /> Home Page{" "}
+              <LogoutIcon /> Logout {" "}
             </button>
-          </div>
-          <div className="sidebar__lowerPart">
-            <p>© dRecords 2022</p>
           </div>
         </nav>
       </section>

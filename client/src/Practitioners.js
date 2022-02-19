@@ -4,9 +4,14 @@ import { useState } from "react";
 import Calendar from "./components/calendar/Calendar";
 import PatientsList from "./components/patientsList/PatientsList";
 import LogoutIcon from "@mui/icons-material/Logout";
+import useLogout from "./components/useLogout.js"
+
 
 export default function HomePage(props) {
   const { userID, lastName, specialty } = props;
+  
+  //custom hook logout
+  const { logout } = useLogout();
 
   const [state, setState] = useState({
     patients: true,
@@ -73,7 +78,7 @@ export default function HomePage(props) {
             </button>
           </div>
           <div className="sidebar__backButton">
-            <button className="button-logout-navbar-practitioners">
+            <button className="button-logout-navbar-practitioners" onClick ={logout}>
               <LogoutIcon /> Logout
             </button>
           </div>

@@ -3,21 +3,12 @@ import './navbar.scss'
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
-import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import useLogout from "./useLogout.js"
+
 export default function NavigationBar (props) {
 
-  let navigateBar = useNavigate();
-
-  const logout = function() {
-    axios.post("/api/logout").then( () => {
-      localStorage.removeItem("userLastName")
-      localStorage.removeItem("userID")
-      localStorage.removeItem("userSpecialty")  
-      navigateBar("/");
-     })
-
-  } //update to POST instead of GET
+  //custom hook logout
+  const { logout } = useLogout();
   
   return (
     <>
@@ -29,7 +20,7 @@ export default function NavigationBar (props) {
               src="./images/logo.png"
               
               className="d-inline-block align-center"
-            />{' '}
+            />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">

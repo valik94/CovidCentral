@@ -24,7 +24,7 @@ As a user (healthcare projessional) I want to
 
 **STRETCH USER Stories**
 1. Filter list of patients by latest/earlier viewed
-2. be able to fill a patient medical history form
+2. Be able to fill a patient medical history form
 3. Chat system for practitioners to communicate
 
 ### Project Git Workflow

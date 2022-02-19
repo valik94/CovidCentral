@@ -12,6 +12,7 @@ import DesktopDateTimePicker from "@mui/lab/DesktopDateTimePicker";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import axios from "axios";
+import Moment from 'moment';
 
 const colors = [
   {
@@ -32,8 +33,9 @@ export default function DisplayEventForm(props) {
   const { patientInfo, events, setEvents } = props;
 
   //const [patient, setPatient] = useState("")
-  const [startAt, setStartAt] = useState(new Date('2022-02-01T09:00:00'));
-  const [endAt, setEndAt] = useState(new Date('2022-02-01T09:00:00'));
+  const [startAt, setStartAt] = useState(new Date("2022-02-01T09:00:00"));
+  
+  const [endAt, setEndAt] = useState(new Date("2022-02-01T09:00:00"));
   const [summary, setSummary] = useState("");
   const [color, setColor] = useState("");
   //const [notification_sent, setNotification_sent] = useState(false)
@@ -43,17 +45,24 @@ export default function DisplayEventForm(props) {
     setPatient_id(e.target.value);
   };
 
+  // console.log("STARTAT", startAt, "endAt", endAt)
   const handleChangeStart = (time) => {
-    let converted = new Date(time);
-    setStartAt(converted.toISOString());
+    // let converted = new Date(time);
+    let converted = Moment.utc(time).local().format('YYYY-MM-DDTHH:mm:SS.sss')
+    setStartAt(converted);
+
+
   };
   const handleChangeEnd = (time) => {
-    setEndAt(time);
+    // let converted = new Date(time);
+    let converted = Moment.utc(time).local().format('YYYY-MM-DDTHH:mm:SS.sss')
+    setEndAt(converted);
   };
 
   const handleChangeColor = (e) => {
     setColor(e.target.value);
   };
+  console.log("STARTAT", startAt, "endAt", endAt)
 
   const newAppointment = {
     startAt: startAt,
@@ -65,12 +74,14 @@ export default function DisplayEventForm(props) {
     practitioner_id: 1,
   };
 
+  console.log("NEWAPP:", newAppointment)
+
   //sending new appointment to db
   const addNewEvent = () => {
     return axios
       .post("api/appointments", newAppointment)
       .then((response) => {
-        console.log(response.data);
+        console.log("THIS IS A RESPONSE DATA", response.data);
         setEvents([...events, response.data]);
       })
       .catch((err) => {
@@ -134,19 +145,19 @@ export default function DisplayEventForm(props) {
         </FormControl>
 
         <FormControl fullWidth={true} required={true}>
-          <LocalizationProvider dateAdapter={DateAdapter} >
+          <LocalizationProvider dateAdapter={DateAdapter}>
             <DesktopDateTimePicker
               label="End"
               value={endAt}
               onChange={handleChangeEnd}
               format="yyyy-MM-dd HH:mm"
-              renderInput={(params) => <TextField {...params}/>}
+              renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
         </FormControl>
 
         <FormControl fullWidth={true} required={true}>
-          <TextField 
+          <TextField
             id="select_color"
             select
             value={color}
@@ -163,9 +174,9 @@ export default function DisplayEventForm(props) {
           </TextField>
         </FormControl>
 
-        <Button variant="contained" onClick={(e) => addNewEvent()} >
+        <Button variant="contained" onClick={(e) => addNewEvent()}>
           {" "}
-          Add Patient{" "} 
+          Add Patient{" "}
         </Button>
       </Paper>
     </Box>

@@ -6,6 +6,7 @@ import 'kalend/dist/styles/index.css'; // import styles
 import DisplayEventForm from './DisplayEventForm.js'; 
 import DisplayEventItem from './DisplayEventItem.js';
 
+
 export default function Calendar () {
   const [events, setEvents] = useState([])
   //const [displayEvent, setDisplayEvent] = useState(false)
@@ -19,6 +20,8 @@ export default function Calendar () {
   useEffect(() => {
     axios.get("/api/practitioners")
     .then(response => {
+      // console.log("RESPONSE", response)
+      console.log("RESPONSEDATA===========", response.data)
       setEvents(response.data.appointments) 
       setPatientInfo(response.data.patients)
     })
@@ -45,6 +48,7 @@ export default function Calendar () {
     //setDataForm(data)
     //console.log(data)
   };
+  
   return (
     <>
       <Kalend

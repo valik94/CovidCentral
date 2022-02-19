@@ -3,21 +3,36 @@ import './navbar.scss'
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
-import axios from "axios";
-import {useNavigate} from "react-router-dom";
-export default function NavigationBar (props) {
+import useLogout from "./useLogout.js"
 
-  let navigateBar = useNavigate();
+export default function NavigationBar ({userID}) {
+  console.log(userID)
 
-  const logout = function() {
-    axios.post("/api/logout").then( () => {
-      localStorage.removeItem("userLastName")
-      localStorage.removeItem("userID")
-      localStorage.removeItem("userSpecialty")  
-      navigateBar("/");
-     })
+  //custom hook logout
+  const { logout } = useLogout();
 
-  } //update to POST instead of GET
+  //display login/logout/registration dynamically
+  const displayButtons = function (userStatus) {
+    if (!userStatus) {
+      return (
+      <>
+        <Nav.Item>
+          <Button><Link to="/login">Login</Link></Button>
+        </Nav.Item>
+        <Nav.Item>
+          <Button><Link to="/register">Register</Link></Button>
+        </Nav.Item>
+      </>
+      )
+    }
+    if (userStatus) {
+      return (
+        <Nav.Item>
+          <Button onClick ={logout}>Logout</Button>
+        </Nav.Item>
+      )
+    }
+  }
   
   return (
     <>
@@ -29,21 +44,25 @@ export default function NavigationBar (props) {
               src="./images/logo.png"
               
               className="d-inline-block align-center"
-            />{' '}
+            />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
             <Nav variant="pills">
-              <Nav.Item>
-                <Button>
-                <Link to="/login">Login</Link></Button>
+
+              {/* <Nav.Item>
+                <Button><Link to="/login">Login</Link></Button>
               </Nav.Item>
+
               <Nav.Item>
                 <Button><Link to="/register">Register</Link></Button>
               </Nav.Item>
+
               <Nav.Item>
                 <Button onClick ={logout}>Logout</Button>
-              </Nav.Item>
+              </Nav.Item> */}
+              {displayButtons(userID)}
+
             </Nav>
           </Navbar.Collapse>
         </Container>

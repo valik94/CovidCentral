@@ -10,21 +10,21 @@ An online charting application allowing healthcare providers to access patient i
 
 ## User Stories
 As a user (healthcare projessional) I want to
-1. login
-2. register
-3. add patients
-4. see all my patients on my main page
-5. be able to search patients by name
-6. see my calendar
-7. be able to book an appointment with a patient
-8. send a notification to the patient via phone or email
-8. open a patient profile and see all relevant information
-10. be able to chart on patient’s change in condition or consultation
-11. be able to see previous notes left on this patient
+1. Login
+2. Register
+3. Add patients
+4. See all my patients on my main page
+5. Be able to search patients by name
+6. See my calendar
+7. Be able to book an appointment with a patient
+8. Send a notification to the patient via phone or email
+8. Open a patient profile and see all relevant information
+10. Able to chart on patient’s change in condition or consultation
+11. Able to see previous notes left on this patient
 
 **STRETCH USER Stories**
 1. Filter list of patients by latest/earlier viewed
-2. be able to fill a patient medial history form
+2. Be able to fill a patient medical history form
 3. Chat system for practitioners to communicate
 
 ### Project Git Workflow

@@ -42,8 +42,8 @@ export default function Login({setUser}) {
           } else {
             const user = response.data; //this should be session ID 
             localStorage.setItem("userID", user.id);
-            localStorage.setItem("userLastName", user.last_name)
-            localStorage.setItem("userSpecialty", user.specialty)
+            // localStorage.setItem("userLastName", user.last_name)
+            // localStorage.setItem("userSpecialty", user.specialty)
 
             //instead of setting the use > set the user session 
             //setUser(user)
@@ -57,7 +57,7 @@ export default function Login({setUser}) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main" sx={{ height: "150vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -96,7 +96,7 @@ export default function Login({setUser}) {
               onSubmit={handleSubmit}
               component="form"
               noValidate
-              sx={{ mt: 1 }}
+              sx={{ mr: 8, p: 5 }}
             >
               <TextField
                 margin="normal"

@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes as Switch,
   Route,
-  
+  Navigate
 } from "react-router-dom";
 import {useState} from 'react';
 // import NavigationBar from './components/NavigationBar';
@@ -22,14 +22,12 @@ import { useEffect } from "react";
 
 function App() {
   // const location = useLocation();
-  // const history = useHistory();
+  // const nagivate = useNavigate();
   // const restrictedRoutes = ["/practitioners", "/patients/:id"];
 
-
-  // eslint-disable-next-line no-undef
   // useEffect(() => {
-  //   if (!user && restrictedRoutes.includes(location.pathname)) {
-  //     history.replace("/login");
+  //   if (!localStorage.userID && restrictedRoutes.includes(location.pathname)) {
+  //     nagivate.replace("/login");
   //   }
   // }, [location.pathname]);
 
@@ -42,15 +40,16 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/practitioners" element={<Practitioners userID={localStorage.userID} lastName={localStorage.userLastName} specialty={localStorage.userSpecialty}/>} />
+          <Route path="/" element={<HomePage userID={localStorage.userID}/>} />
+          <Route path="/practitioners" element={<Practitioners userID={localStorage.userID}/>} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/patients/:id" element={<Patient userID={localStorage.userID}/>} />
+          <Route path="*" element={ <Navigate to="/" />} />
         </Switch>
       </div>
     </Router>
   );
 }
-
+ 
 export default App;

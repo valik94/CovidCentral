@@ -34,7 +34,7 @@ module.exports = (db) => {
       const patientHistory = updatedResult[1].rows[0]
       console.log(`UPDATED RESULTS [0]ARE FOUND HERE:---------`,updatedResult[0].rows[0])
       console.log(`UPDATED RESULTS [1]ARE FOUND HERE:---------`,updatedResult[1].rows[0])
-      sendEmail(patient)
+      //sendEmail(patient)
       res.json({
         updatedPatient: updatedResult[0].rows,
         updatedPatientHistories : updatedResult[1].rows

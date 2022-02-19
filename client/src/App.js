@@ -20,9 +20,9 @@ import Patient from "./components/patient/Patient";
 //> if there is a user id > make request to back end and to fetch user data and set in state
 
 function App() {
-  const [userID, setUserID] = useState(localStorage.userID)
-  const [userLastName, setUserLastName] = useState(localStorage.userLastName)
-  const [userSpecialty, setUserSpecialty] = useState(localStorage.userSpecialty)
+  // const [userID, setUserID] = useState(localStorage.userID)
+  // const [userLastName, setUserLastName] = useState(localStorage.userLastName)
+  // const [userSpecialty, setUserSpecialty] = useState(localStorage.userSpecialty)
 
 
   return (

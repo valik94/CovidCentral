@@ -12,9 +12,9 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     const promises = [];
     const sessionId = req.session.user_id; //getting session using id being sent to client
-    const practitioners = db.query(`SELECT *
-    FROM practitioners
-    WHERE practitioners.id = $1;`, [sessionId]);
+    // const practitioners = db.query(`SELECT *
+    // FROM practitioners
+    // WHERE practitioners.id = $1;`, [sessionId]);
 
     const patients = db.query(`SELECT *
     FROM patients
@@ -24,22 +24,38 @@ module.exports = (db) => {
     const appointments = db.query(`SELECT *
     FROM appointments
     WHERE practitioner_id = $1;`, [sessionId]);
-    promises.push(practitioners);
+    // promises.push(practitioners);
     promises.push(patients);
     promises.push(appointments);
 
     Promise.all(promises)
       .then((result) => {
         res.json({
-          practitioners: result[0].rows,
-          patients: result[1].rows,
-          appointments: result[2].rows,
+          //practitioners: result[0].rows,
+          patients: result[0].rows,
+          appointments: result[1].rows,
         });
       })
 
       .catch((err) => {
         res.status(500).json({ err: err.message });
       });
+  });
+
+  router.get("/:id", (req, res) => {
+    const sessionId = req.session.user_id;
+    const practitioners = db.query(`SELECT *
+    FROM practitioners
+    WHERE practitioners.id = $1;`, [sessionId]);
+
+    return practitioners 
+      .then ((result) => {
+        res.json({
+          id: result.rows[0].id,
+          last_name: result.rows[0].last_name,
+          specialty: result.rows[0].specialty,
+        })
+      })
   });
 //Inserting a new practitioner
   // router.post("/", function (req, res) {

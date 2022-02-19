@@ -5,10 +5,34 @@ import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import useLogout from "./useLogout.js"
 
-export default function NavigationBar (props) {
+export default function NavigationBar ({userID}) {
+  console.log(userID)
 
   //custom hook logout
   const { logout } = useLogout();
+
+  //display login/logout/registration dynamically
+  const displayButtons = function (userStatus) {
+    if (!userStatus) {
+      return (
+      <>
+        <Nav.Item>
+          <Button><Link to="/login">Login</Link></Button>
+        </Nav.Item>
+        <Nav.Item>
+          <Button><Link to="/register">Register</Link></Button>
+        </Nav.Item>
+      </>
+      )
+    }
+    if (userStatus) {
+      return (
+        <Nav.Item>
+          <Button onClick ={logout}>Logout</Button>
+        </Nav.Item>
+      )
+    }
+  }
   
   return (
     <>
@@ -25,16 +49,20 @@ export default function NavigationBar (props) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
             <Nav variant="pills">
-              <Nav.Item>
-                <Button>
-                <Link to="/login">Login</Link></Button>
+
+              {/* <Nav.Item>
+                <Button><Link to="/login">Login</Link></Button>
               </Nav.Item>
+
               <Nav.Item>
                 <Button><Link to="/register">Register</Link></Button>
               </Nav.Item>
+
               <Nav.Item>
                 <Button onClick ={logout}>Logout</Button>
-              </Nav.Item>
+              </Nav.Item> */}
+              {displayButtons(userID)}
+
             </Nav>
           </Navbar.Collapse>
         </Container>

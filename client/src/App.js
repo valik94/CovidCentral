@@ -40,8 +40,8 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/practitioners" element={<Practitioners userID={localStorage.userID} lastName={localStorage.userLastName} specialty={localStorage.userSpecialty}/>} />
+          <Route path="/" element={<HomePage userID={localStorage.userID}/>} />
+          <Route path="/practitioners" element={<Practitioners userID={localStorage.userID}/>} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/patients/:id" element={<Patient userID={localStorage.userID}/>} />

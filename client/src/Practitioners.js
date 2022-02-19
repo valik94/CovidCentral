@@ -1,14 +1,14 @@
 import "./components/practitionersComp/practitioners.scss";
 import classNames from "classnames";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Calendar from "./components/calendar/Calendar";
 import PatientsList from "./components/patientsList/PatientsList";
 import LogoutIcon from "@mui/icons-material/Logout";
 import useLogout from "./components/useLogout.js"
 
 
-export default function HomePage(props) {
-  const { userID, lastName, specialty } = props;
+export default function HomePage({userID}) {
   
   //custom hook logout
   const { logout } = useLogout();
@@ -17,6 +17,9 @@ export default function HomePage(props) {
     patients: true,
     calendar: false,
   });
+
+  const [practitionerLastName, setPractitionerLastName] = useState("")
+  const [practitionerSpeciatly, setPractitionerSpeciatly]= useState("")
 
   //changing the state is button selected
   const setPatients = (patients) =>
@@ -43,6 +46,20 @@ export default function HomePage(props) {
 
   const getState = getOption(state);
 
+  //Axios request to fetch the practitioner information
+  useEffect(() => {
+    axios
+      .get(`/api/practitioners/${userID}`)
+      .then((response) => {
+        setPractitionerLastName(response.data.last_name)
+        setPractitionerSpeciatly(response.data.specialty)
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [userID]);
+
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -54,7 +71,7 @@ export default function HomePage(props) {
         <nav className="sidebar__menu">
           <div className="sidebar__mainFont__background">
             <p className="sidebar__mainFont">
-              Hello {specialty} {lastName}
+              Hello {practitionerSpeciatly} {practitionerLastName}
             </p>
           </div>
           <div className="">

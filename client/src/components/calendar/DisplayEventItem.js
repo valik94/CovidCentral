@@ -29,13 +29,13 @@ export default function DisplayEventItem(props) {
     let changedDate = date.slice(0, 10);
     return changedDate;
   };
-  
+
   const changeHourFormat = function (date) {
     let changedHour = date.slice(11, 16);
     return changedHour;
   };
 
-  console.log("DAtaITEM", new Date(dataItem.startAt))
+  console.log("DAtaITEM", new Date(dataItem.startAt));
 
   const verifyNotificationStatus = function (date) {
     let notificationStatus = "";
@@ -88,9 +88,8 @@ export default function DisplayEventItem(props) {
               <AccessTimeIcon />
             </ListItemIcon>
             <ListItemText>
-              {(dataItem.startAt.toString())} -{" "}
-              {(dataItem.endAt.toString())}
-          
+              {changeHourFormat(dataItem.startAt)} -{" "}
+              {changeHourFormat(dataItem.endAt)}
             </ListItemText>
           </ListItem>
           <ListItem>

@@ -102,7 +102,7 @@ export default function PatientsList() {
           New Patient
         </Button>
       </div>
-        {toggleForm ? (<NewPatientForm patients={patients} setPatients={setPatients} />) : ( " ")}
+        {toggleForm ? (<NewPatientForm patients={patients} setPatients={setPatients} setToggleForm={setToggleForm}/>) : ( " ")}
       <div className="patients-list"> 
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">

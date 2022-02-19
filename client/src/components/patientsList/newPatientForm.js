@@ -11,9 +11,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import Button from "@mui/material/Button";
 import './patientsList.scss'
-
-// import LocalizationProvider from '@mui/lab/LocalizationProvider';
-// import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import AlertMessage from "./AlertMessage.js"
 
 const genders = [
   {
@@ -26,19 +24,19 @@ const genders = [
   },
 ];
 
-export default function NewPatientForm({patients, setPatients}) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [healthcareCard, setHealthcareCard] = useState ("");
-  const [emergencyContact, setEmergencyContact] = useState("");
-  const [gender, setGender] = useState("");
+export default function NewPatientForm({patients, setPatients, setToggleForm}) {
+  const [firstName, setFirstName] = useState(" ");
+  const [lastName, setLastName] = useState(" ");
+  const [email, setEmail] = useState(" ");
+  const [phone, setPhone] = useState(" ");
+  const [healthcareCard, setHealthcareCard] = useState (" ");
+  const [emergencyContact, setEmergencyContact] = useState(" ");
+  const [gender, setGender] = useState(" ");
   const [dateOfBirth, setDateOfBirth] = useState(
     new Date("2022-02-13T21:11:54")
   );
 
-  //const [status, setStatus] = useState('null')
+  const [alertMessage, setAlertMessage] = useState(false)
 
   const handleChange = (e) => {
     setGender(e.target.value);
@@ -61,24 +59,31 @@ export default function NewPatientForm({patients, setPatients}) {
   };
 
   const addNewPatientBackEnd = async () => {
-    //setState('updating')
-    //console.log("HERE")
-    //return axios
-    //if (!user || !....other fields) return
     await axios
       .post("api/patients", newPatient)
       .then((response) => {
-        //console.log("this is DATTTTTTA", response.data);
-        //setState('null')
         setPatients([response.data, ...patients]);
+        setToggleForm(false)
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
 
+  const verifyLength = function () {
+    if (!firstName.trim() || !lastName.trim() || !email.trim() || !phone.trim() || !emergencyContact.trim() || !healthcareCard.trim() || !gender.trim() || !dateOfBirth) {
+      return (
+        setAlertMessage(true)
+      )
+    } else {
+      setAlertMessage(false)
+      addNewPatientBackEnd()
+    }
+  }
+
   return (
     <div className="patients-form">
+      {alertMessage ? (<AlertMessage />) : (" ")}
       <Box
         component="form"
         sx={{
@@ -87,6 +92,7 @@ export default function NewPatientForm({patients, setPatients}) {
         }}
         noValidate
         autoComplete="off"
+        
       >
         <FormControl fullWidth={true} required={true}>
           <InputLabel htmlFor="my-input">First Name</InputLabel>
@@ -96,6 +102,7 @@ export default function NewPatientForm({patients, setPatients}) {
             onChange={(e) => setFirstName(e.target.value)}
             aria-describedby="my-helper-text"
             autoFocus={true}
+            required
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -105,6 +112,7 @@ export default function NewPatientForm({patients, setPatients}) {
             aria-describedby="my-helper-text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            required
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -114,6 +122,7 @@ export default function NewPatientForm({patients, setPatients}) {
             aria-describedby="my-helper-text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -123,6 +132,7 @@ export default function NewPatientForm({patients, setPatients}) {
             aria-describedby="my-helper-text"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            required
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -132,6 +142,7 @@ export default function NewPatientForm({patients, setPatients}) {
             aria-describedby="my-helper-text"
             value={emergencyContact}
             onChange={(e) => setEmergencyContact(e.target.value)}
+            required
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -141,6 +152,7 @@ export default function NewPatientForm({patients, setPatients}) {
             aria-describedby="my-helper-text"
             value={healthcareCard}
             onChange={(e) => setHealthcareCard(e.target.value)}
+            required
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -152,6 +164,7 @@ export default function NewPatientForm({patients, setPatients}) {
             onChange={handleChange}
             // helperText="Select gender"
             variant="standard"
+            required
           >
             {genders.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -168,14 +181,13 @@ export default function NewPatientForm({patients, setPatients}) {
               value={dateOfBirth}
               onChange={handleChangeBirthDate}
               renderInput={(params) => <TextField {...params} />}
+              required
             />
           </LocalizationProvider>
         </FormControl>
-        <Button variant="contained" onClick={(e) => addNewPatientBackEnd()}>
-          {" "}
-          Add Patient{" "}
-        </Button>
+        <Button variant="contained" onClick={verifyLength}> Add Patient </Button>
       </Box>
     </div>
   );
 }
+

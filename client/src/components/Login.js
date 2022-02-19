@@ -38,8 +38,7 @@ export default function Login() {
           if (response.error) {
             setAlert(true);
             console.log(response.error);
-            return
-            
+            return;
           } else {
             const user = response.data;
             localStorage.setItem("user", JSON.stringify(user));

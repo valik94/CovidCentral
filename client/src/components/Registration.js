@@ -95,6 +95,7 @@ const Registration = () => {
                 placeholder="First Name"
                 name="first_name"
                 value={firstNameReq}
+                required
                 onChange={(e) => {
                   setFirstNameReq(e.target.value);
                 }}
@@ -111,6 +112,7 @@ const Registration = () => {
                 placeholder="Last Name"
                 name="last_name"
                 value={lastNameReq}
+                required
                 // onChange={handleChange}
                 onChange={(e) => {
                   setLastNameReq(e.target.value);
@@ -126,6 +128,7 @@ const Registration = () => {
                 placeholder="Email"
                 name="email"
                 value={emailReq}
+                required
                 // onChange={handleChange}
                 onChange={(e) => {
                   setEmailReq(e.target.value);
@@ -141,6 +144,7 @@ const Registration = () => {
                 placeholder="Password"
                 name="password"
                 value={passwordReq}
+                required
                 // onChange={handleChange}
                 onChange={(e) => {
                   setPasswordReq(e.target.value);
@@ -155,6 +159,7 @@ const Registration = () => {
                 placeholder="Specialty"
                 name="specialty"
                 value={specialtyReq}
+                required
                 // onChange={handleChange}
                 onChange={(e) => {
                   setSpecialtyReq(e.target.value);

@@ -3,6 +3,8 @@ import {
   BrowserRouter as Router,
   Routes as Switch,
   Route,
+  useLocation,
+  useHistory,
 } from "react-router-dom";
 import axios from "axios";
 // import NavigationBar from './components/NavigationBar';
@@ -14,8 +16,21 @@ import Practitioners from "./Practitioners";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import Patient from "./components/patient/Patient";
+import { useEffect } from "react";
 
 function App() {
+  // const location = useLocation();
+  // const history = useHistory();
+  // const restrictedRoutes = ["/practitioners", "/patients/:id"];
+
+
+  // eslint-disable-next-line no-undef
+  // useEffect(() => {
+  //   if (!user && restrictedRoutes.includes(location.pathname)) {
+  //     history.replace("/login");
+  //   }
+  // }, [location.pathname]);
+
   return (
     <Router>
       <div>

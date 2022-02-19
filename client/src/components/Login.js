@@ -57,7 +57,7 @@ export default function Login({setUser}) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main" sx={{ height: "150vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -96,7 +96,7 @@ export default function Login({setUser}) {
               onSubmit={handleSubmit}
               component="form"
               noValidate
-              sx={{ mt: 1 }}
+              sx={{ mr: 8, p: 5 }}
             >
               <TextField
                 margin="normal"

@@ -58,10 +58,12 @@ export default function NewPatientForm({patients, setPatients}) {
     practitioner_id: 1,
   };
 
-  const addNewPatientBackEnd = () => {
+  const addNewPatientBackEnd = async () => {
     //setState('updating')
     //console.log("HERE")
-    return axios
+    //return axios
+    //if (!user || !....other fields) return
+    await axios
       .post("api/patients", newPatient)
       .then((response) => {
         //console.log("this is DATTTTTTA", response.data);

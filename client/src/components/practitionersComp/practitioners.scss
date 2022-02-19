@@ -75,15 +75,10 @@
     margin-left: 0.5em;
   }
 
-  &__lowerPart {
-    margin-top: 20rem;
-    margin-bottom: 0rem;
-    text-align: center;
-  }
-
   &__backButton {
     align-self: center;
     text-align: center;
+    margin-top: 10%;
   }
 }
 
@@ -126,4 +121,14 @@ button {
 .padding {
   padding-top: 0.5em;
   padding-bottom: 0.2em;
+}
+
+.button-logout-navbar-practitioners {
+  background-color: $dark-blue;
+  color: white;
+  margin-top: 80%;
+}
+
+.MuiBox-root{
+  width: 100%;
 }

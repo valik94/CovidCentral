@@ -11,7 +11,9 @@ export default function NavigationBar (props) {
 
   const logout = function() {
     axios.post("/api/logout").then( () => {
-      localStorage.removeItem("user") 
+      localStorage.removeItem("userLastName")
+      localStorage.removeItem("userID")
+      localStorage.removeItem("userSpecialty")  
       navigateBar("/");
      })
 

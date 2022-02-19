@@ -5,6 +5,7 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -68,7 +69,7 @@ function NotesItem(props) {
         aria-controls="panel1d-content"
         id="panel1d-header"
       >
-        <Typography>{title} | {changeDateFormat(created_at)} {changeHourFormat(created_at)}</Typography>
+        <Typography>{title} <MoreHorizIcon/> {changeDateFormat(created_at)} {changeHourFormat(created_at)}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>

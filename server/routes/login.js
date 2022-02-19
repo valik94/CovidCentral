@@ -34,12 +34,12 @@ module.exports = (db) => {
             const passwordCheck = bcrypt.compareSync(password, user.password);
             if (passwordCheck) {
               req.session.user_id = user.id; //setting session using id being sent to client
-              res.send({ id: user.id, 
+              res.json({ id: user.id, 
                 email: user.email,
                 first_name : user.first_name,
                 last_name : user.last_name,
                 specialty : user.specialty
-                })
+              })
                 
             } else {
               res.status(403).send(`Your credential doesn't match`)

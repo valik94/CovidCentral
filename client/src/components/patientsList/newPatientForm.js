@@ -10,6 +10,8 @@ import DateAdapter from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import Button from "@mui/material/Button";
+import './patientsList.scss'
+
 // import LocalizationProvider from '@mui/lab/LocalizationProvider';
 // import AdapterDateFns from '@mui/lab/AdapterDateFns';
 
@@ -76,102 +78,104 @@ export default function NewPatientForm({patients, setPatients}) {
   };
 
   return (
-    <Box
-      component="form"
-      sx={{
-        "& > :not(style)": { m: 1 },
-        alignItems: "center",
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <FormControl fullWidth={true} required={true}>
-        <InputLabel htmlFor="my-input">First Name</InputLabel>
-        <Input
-          id="first_name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          aria-describedby="my-helper-text"
-          autoFocus={true}
-        />
-      </FormControl>
-      <FormControl fullWidth={true} required={true}>
-        <InputLabel htmlFor="my-input">Last Name</InputLabel>
-        <Input
-          id="last_name"
-          aria-describedby="my-helper-text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-      </FormControl>
-      <FormControl fullWidth={true} required={true}>
-        <InputLabel htmlFor="my-input">Email address</InputLabel>
-        <Input
-          id="email"
-          aria-describedby="my-helper-text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </FormControl>
-      <FormControl fullWidth={true} required={true}>
-        <InputLabel htmlFor="my-input">Phone</InputLabel>
-        <Input
-          id="phone"
-          aria-describedby="my-helper-text"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
-      </FormControl>
-      <FormControl fullWidth={true} required={true}>
-        <InputLabel htmlFor="my-input">Emergency contact</InputLabel>
-        <Input
-          id="emergency_contact"
-          aria-describedby="my-helper-text"
-          value={emergencyContact}
-          onChange={(e) => setEmergencyContact(e.target.value)}
-        />
-      </FormControl>
-      <FormControl fullWidth={true} required={true}>
-        <InputLabel htmlFor="my-input">Healthcare Card</InputLabel>
-        <Input
-          id="healthcare_card"
-          aria-describedby="my-helper-text"
-          value={healthcareCard}
-          onChange={(e) => setHealthcareCard(e.target.value)}
-        />
-      </FormControl>
-      <FormControl fullWidth={true} required={true}>
-        <TextField
-          id="select_gender"
-          select
-          value={gender}
-          label="Select gender"
-          onChange={handleChange}
-          // helperText="Select gender"
-          variant="standard"
-        >
-          {genders.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-      </FormControl>
-      <FormControl fullWidth={true} required={true}>
-        <LocalizationProvider dateAdapter={DateAdapter}>
-          <DesktopDatePicker
-            label="Date of Birth"
-            inputFormat="MM/dd/yyyy"
-            value={dateOfBirth}
-            onChange={handleChangeBirthDate}
-            renderInput={(params) => <TextField {...params} />}
+    <div className="patients-form">
+      <Box
+        component="form"
+        sx={{
+          "& > :not(style)": { m: 1 },
+          alignItems: "center",
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <FormControl fullWidth={true} required={true}>
+          <InputLabel htmlFor="my-input">First Name</InputLabel>
+          <Input
+            id="first_name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            aria-describedby="my-helper-text"
+            autoFocus={true}
           />
-        </LocalizationProvider>
-      </FormControl>
-      <Button variant="contained" onClick={(e) => addNewPatientBackEnd()}>
-        {" "}
-        Add Patient{" "}
-      </Button>
-    </Box>
+        </FormControl>
+        <FormControl fullWidth={true} required={true}>
+          <InputLabel htmlFor="my-input">Last Name</InputLabel>
+          <Input
+            id="last_name"
+            aria-describedby="my-helper-text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </FormControl>
+        <FormControl fullWidth={true} required={true}>
+          <InputLabel htmlFor="my-input">Email address</InputLabel>
+          <Input
+            id="email"
+            aria-describedby="my-helper-text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </FormControl>
+        <FormControl fullWidth={true} required={true}>
+          <InputLabel htmlFor="my-input">Phone</InputLabel>
+          <Input
+            id="phone"
+            aria-describedby="my-helper-text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+        </FormControl>
+        <FormControl fullWidth={true} required={true}>
+          <InputLabel htmlFor="my-input">Emergency contact</InputLabel>
+          <Input
+            id="emergency_contact"
+            aria-describedby="my-helper-text"
+            value={emergencyContact}
+            onChange={(e) => setEmergencyContact(e.target.value)}
+          />
+        </FormControl>
+        <FormControl fullWidth={true} required={true}>
+          <InputLabel htmlFor="my-input">Healthcare Card</InputLabel>
+          <Input
+            id="healthcare_card"
+            aria-describedby="my-helper-text"
+            value={healthcareCard}
+            onChange={(e) => setHealthcareCard(e.target.value)}
+          />
+        </FormControl>
+        <FormControl fullWidth={true} required={true}>
+          <TextField
+            id="select_gender"
+            select
+            value={gender}
+            label="Select gender"
+            onChange={handleChange}
+            // helperText="Select gender"
+            variant="standard"
+          >
+            {genders.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </FormControl>
+        <FormControl fullWidth={true} required={true}>
+          <LocalizationProvider dateAdapter={DateAdapter}>
+            <DesktopDatePicker
+              label="Date of Birth"
+              inputFormat="MM/dd/yyyy"
+              value={dateOfBirth}
+              onChange={handleChangeBirthDate}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+        </FormControl>
+        <Button variant="contained" onClick={(e) => addNewPatientBackEnd()}>
+          {" "}
+          Add Patient{" "}
+        </Button>
+      </Box>
+    </div>
   );
 }

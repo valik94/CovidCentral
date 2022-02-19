@@ -97,70 +97,70 @@ export default function PatientsList() {
 
   return (
     <section className="patients-list-main-section">
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                onChange={(e) => setSearch(e.target.value)}
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Patients List</TableCell>
-              <TableCell align="left">Data of Birth</TableCell>
-              <TableCell align="left">Gender</TableCell>
-              <TableCell align="left">Phone</TableCell>
-              <TableCell align="left">Email</TableCell>
-              <TableCell align="left">Emergency Contact</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredPatient.length === 0 ? (
-              <div>No Result Found</div>
-            ) : (
-              filteredPatient.map((patient) => (
-                <TableRow
-                  key={patient.id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    <Link to={{ pathname: `/patients/${patient.id}` }}>
-                      {" "}
-                      {patient.first_name} {patient.last_name}
-                    </Link>
-                  </TableCell>
-                  <TableCell align="left">{changeDateFormat(patient.date_of_birth)}</TableCell>
-                  <TableCell align="left">{patient.gender}</TableCell>
-                  <TableCell align="left">{patient.phone}</TableCell>
-                  <TableCell align="left">{patient.email}</TableCell>
-                  <TableCell align="left">
-                    {patient.emergency_contact}
-                  </TableCell>
-                </TableRow>
-              ))
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Button variant="contained" onClick={() => setToggleForm(!toggleForm)}>
-        New Patient
-      </Button>
-      {toggleForm ? (
-        <NewPatientForm patients={patients} setPatients={setPatients} />
-      ) : (
-        " "
-      )}
+      <div className="patients-add-new">
+        <Button variant="contained" onClick={() => setToggleForm(!toggleForm)}>
+          New Patient
+        </Button>
+      </div>
+        {toggleForm ? (<NewPatientForm patients={patients} setPatients={setPatients} />) : ( " ")}
+      <div className="patients-list"> 
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
+            <Toolbar>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  onChange={(e) => setSearch(e.target.value)}
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
+            </Toolbar>
+          </AppBar>
+        </Box>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Patients List</TableCell>
+                <TableCell align="left">Data of Birth</TableCell>
+                <TableCell align="left">Gender</TableCell>
+                <TableCell align="left">Phone</TableCell>
+                <TableCell align="left">Email</TableCell>
+                <TableCell align="left">Emergency Contact</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {filteredPatient.length === 0 ? (
+                <div>No Result Found</div>
+              ) : (
+                filteredPatient.map((patient) => (
+                  <TableRow
+                    key={patient.id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      <Link to={{ pathname: `/patients/${patient.id}` }}>
+                        {" "}
+                        {patient.first_name} {patient.last_name}
+                      </Link>
+                    </TableCell>
+                    <TableCell align="left">{changeDateFormat(patient.date_of_birth)}</TableCell>
+                    <TableCell align="left">{patient.gender}</TableCell>
+                    <TableCell align="left">{patient.phone}</TableCell>
+                    <TableCell align="left">{patient.email}</TableCell>
+                    <TableCell align="left">
+                      {patient.emergency_contact}
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     </section>
   );
 }

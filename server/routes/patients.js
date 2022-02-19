@@ -3,6 +3,7 @@
 const express = require('express');
 const cookieSession = require('cookie-session');
 const router = express.Router();
+const {sendEmail} = require('../emailnotification')
 
 
 module.exports = (db) => {
@@ -29,31 +30,20 @@ module.exports = (db) => {
 
     Promise.all(promises)
     .then((updatedResult) =>{
-      console.log(`UPDATED RESULTS [0]ARE FOUND HERE:---------`,updatedResult[0])
-      console.log(`UPDATED RESULTS [1]ARE FOUND HERE:---------`,updatedResult[1])
+      const patient = updatedResult[0].rows[0]
+      const patientHistory = updatedResult[1].rows[0]
+      console.log(`UPDATED RESULTS [0]ARE FOUND HERE:---------`,updatedResult[0].rows[0])
+      console.log(`UPDATED RESULTS [1]ARE FOUND HERE:---------`,updatedResult[1].rows[0])
+      sendEmail(patient)
       res.json({
         updatedPatient: updatedResult[0].rows,
         updatedPatientHistories : updatedResult[1].rows
       })
+
     })
     .catch((err) =>{
       res.status(500).json({ err: err.message });
     })
-    
-    // return db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone= $4, emergency_contact =$5, healthcare_card =$6, gender =$7, date_of_birth =$8, practitioner_id =$9)
-      // WHERE patients.id = 1 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id])
-      
-      // return db.query(`UPDATE patients SET first_name = $1, last_name = $2, email = $3, phone = $4, emergency_contact = $5, healthcare_card = $6, gender= $7, date_of_birth= $8, practitioner_id= $9  
-      // WHERE patients.id = $10 RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id, patientId ]) 
-                   
-      // return db.query(`UPDATE patient_histories SET diagnosis_details = $1, medical_history_details= $2, medical_history_details = $3, medication_details = $4, surgery_details = $5
-      // WHERE patient_id = $6 RETURNING *;`, [diagnosis_details, medical_history_details, medication_details, surgery_details, patientId ])
-
-      // return db.query(`INSERT INTO patients (first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
-      // VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`, [first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id])
-
-    // }
-    // updatePatient(first_name, last_name, email, phone, emergency_contact, healthcare_card, gender, date_of_birth, practitioner_id)
 
   })
 

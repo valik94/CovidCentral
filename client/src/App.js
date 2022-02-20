@@ -17,8 +17,9 @@ import Login from "./components/Login";
 import Patient from "./components/patient/Patient";
 
 function App() {
+  
   //State keeping track if user logged in
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(localStorage.userID)
 
   return ( 
     <Router>

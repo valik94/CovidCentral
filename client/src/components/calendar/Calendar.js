@@ -21,7 +21,6 @@ export default function Calendar () {
     axios.get("/api/practitioners")
     .then(response => {
       // console.log("RESPONSE", response)
-      console.log("RESPONSEDATA===========", response.data)
       setEvents(response.data.appointments) 
       setPatientInfo(response.data.patients)
     })
@@ -48,9 +47,11 @@ export default function Calendar () {
     //setDataForm(data)
     //console.log(data)
   };
+
+
   
   return (
-    <>
+    <section className="calendar-main">
       <Kalend
         onEventClick={onEventClick}
         onNewEventClick={onNewEventClick}
@@ -67,9 +68,9 @@ export default function Calendar () {
         calendarIDsHidden={['work']}
         language={'en'}
       />
-      {displayItem ? <DisplayEventItem dataItem={dataItem} patientInfo={patientInfo}/> : " "}
+      {displayItem ? <DisplayEventItem dataItem={dataItem} patientInfo={patientInfo} setDisplayItem={setDisplayItem}/> : " "}
       {displayForm ? <DisplayEventForm patientInfo={patientInfo} events={events} setEvents={setEvents}/> : " "}
-    </>
+    </section>
   )
 }
 

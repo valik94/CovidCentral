@@ -35,8 +35,6 @@ export default function DisplayEventItem(props) {
     return changedHour;
   };
 
-  console.log("DAtaITEM", new Date(dataItem.startAt));
-
   const verifyNotificationStatus = function (date) {
     let notificationStatus = "";
     if (date) {
@@ -46,26 +44,19 @@ export default function DisplayEventItem(props) {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        "& > :not(style)": {
-          m: 2,
-          width: 250,
-          height: 800,
-          backgroundColor: "primary.dark",
-          color: "white",
-        },
-      }}
-    >
-      <Paper elevation={24}>
+    <div className="display">
+      <Paper elevation={24}
+         sx={{
+          bgcolor: '#0f003d',
+          color:'white',
+         }}>
         <CloseIcon />
         <Typography
           sx={{ mt: 4, mb: 2, color: "white", textAlign: "center" }}
           variant="h6"
           component="div"
         >
-          <CalendarTodayIcon />
+          <CalendarTodayIcon /> {"  "}
           {dataItem.summary}
         </Typography>
         <List>
@@ -102,6 +93,6 @@ export default function DisplayEventItem(props) {
           </ListItem>
         </List>
       </Paper>{" "}
-    </Box>
+    </div>
   );
 }

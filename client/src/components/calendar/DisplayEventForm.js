@@ -106,7 +106,6 @@ export default function DisplayEventForm(props) {
         <FormControl fullWidth={true} required={true}>
           <InputLabel htmlFor="my-input">Title</InputLabel>
           <Input
-            id="first_name"
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
             aria-describedby="my-helper-text"

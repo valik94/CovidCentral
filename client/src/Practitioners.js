@@ -101,7 +101,7 @@ export default function HomePage({userID}) {
           </div>
         </nav>
       </section>
-      <section className="schedule">{getState}</section>
+      {getState}
     </main>
   );
 }

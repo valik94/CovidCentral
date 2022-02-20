@@ -9,7 +9,7 @@ export default function useLogout() {
       localStorage.removeItem("userID");
       navigateBar("/");
     });
-  }; 
+  };
   return {
     logout
   };

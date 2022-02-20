@@ -27,6 +27,10 @@ const colors = [
     value: "pink",
     label: "pink",
   },
+  {
+    value: "green",
+    label: "green",
+  },
 ];
 
 export default function DisplayEventForm(props) {
@@ -176,7 +180,7 @@ export default function DisplayEventForm(props) {
 
         <Button variant="contained" onClick={(e) => addNewEvent()}>
           {" "}
-          Add Patient{" "}
+          Add Event{" "}
         </Button>
       </Paper>
     </Box>

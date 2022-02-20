@@ -7,22 +7,22 @@ const express = require('express');
 
 module.exports = (db) => {
 
-  
-//Improve route to use practitioner.id, dynamically based on cookies session id
+
+  //Improve route to use practitioner.id, dynamically based on cookies session id
   router.get("/", (req, res) => {
     const promises = [];
-    const sessionId = req.session.user_id; 
+    const sessionId = req.session.user_id;
     console.log("SESSION", req.session);//getting session using id being sent to client
     // const practitioners = db.query(`SELECT *
     // FROM practitioners
     // WHERE practitioners.id = $1;`, [sessionId]);
-if (!sessionId){
-  return "ERROR"
-}
+    if (!sessionId) {
+      return "ERROR"
+    }
     const patients = db.query(`SELECT *
     FROM patients
     WHERE practitioner_id = $1
-    ORDER BY created_at DESC;`, [sessionId] );
+    ORDER BY created_at DESC;`, [sessionId]);
 
     const appointments = db.query(`SELECT *
     FROM appointments
@@ -39,7 +39,6 @@ if (!sessionId){
           appointments: result[1].rows,
         });
       })
-
       .catch((err) => {
         res.status(500).json({ err: err.message });
       });
@@ -50,12 +49,11 @@ if (!sessionId){
     const practitioners = db.query(`SELECT *
     FROM practitioners
     WHERE practitioners.id = $1;`, [sessionId]);
-    if (!sessionId){
-
+    if (!sessionId) {
       return "ERROR"
     }
-    return practitioners 
-      .then ((result) => {
+    return practitioners
+      .then((result) => {
         res.json({
           id: result.rows[0].id,
           last_name: result.rows[0].last_name,
@@ -63,7 +61,7 @@ if (!sessionId){
         })
       })
   });
-//Inserting a new practitioner
+  //Inserting a new practitioner
   // router.post("/", function (req, res) {
   //   console.log("POST: we got here");
   //   const { first_name, last_name, email, password, specialty } = req.body;

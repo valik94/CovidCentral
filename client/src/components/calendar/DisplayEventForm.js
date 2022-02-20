@@ -179,8 +179,7 @@ export default function DisplayEventForm(props) {
         </FormControl>
 
         <Button variant="contained" onClick={(e) => addNewEvent()}>
-          {" "}
-          Add Event{" "}
+          Add Event
         </Button>
       </Paper>
     </Box>

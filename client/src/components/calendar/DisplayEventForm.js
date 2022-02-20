@@ -13,6 +13,7 @@ import { useState } from "react";
 import axios from "axios";
 import Moment from 'moment';
 
+//different color used for appointments by the user
 const colors = [
   {
     value: "blue",
@@ -35,29 +36,23 @@ const colors = [
 export default function DisplayEventForm(props) {
   const { patientInfo, events, setEvents } = props;
 
-  //const [patient, setPatient] = useState("")
+  //////STATES
   const [startAt, setStartAt] = useState(new Date());
-  
   const [endAt, setEndAt] = useState(new Date());
   const [summary, setSummary] = useState("");
   const [color, setColor] = useState("");
-  //const [notification_sent, setNotification_sent] = useState(false)
   const [patient_id, setPatient_id] = useState(0);
 
+  //////CHANGING STATE FUNCTIONS
   const handleChangePatient = (e) => {
     setPatient_id(e.target.value);
   };
 
-  // console.log("STARTAT", startAt, "endAt", endAt)
   const handleChangeStart = (time) => {
-    // let converted = new Date(time);
     let converted = Moment.utc(time).local().format('YYYY-MM-DDTHH:mm:SS.sss')
     setStartAt(converted);
-
-
   };
   const handleChangeEnd = (time) => {
-    // let converted = new Date(time);
     let converted = Moment.utc(time).local().format('YYYY-MM-DDTHH:mm:SS.sss')
     setEndAt(converted);
   };
@@ -66,18 +61,18 @@ export default function DisplayEventForm(props) {
     setColor(e.target.value);
   };
 
+  /////Constructing a new object to send to back-end
   const newAppointment = {
     startAt: startAt,
     endAt: endAt,
     summary: summary,
     color: color,
-    notification_sent: false, //to be changed once we add the functional
+    notification_sent: true, //we always send a notification 
     patient_id: patient_id,
     practitioner_id: 1,
   };
 
-
-  //sending new appointment to db
+  /////Sending new appointment to db
   const addNewEvent = () => {
     return axios
       .post("api/appointments", newAppointment)

@@ -20,7 +20,7 @@ function App() {
   //State keeping track if user logged in
   const [loggedIn, setLoggedIn] = useState(false)
 
-  return (
+  return ( 
     <Router>
       <div>
         <Switch>

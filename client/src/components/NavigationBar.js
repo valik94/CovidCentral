@@ -24,12 +24,12 @@ export default function NavigationBar(props) {
         <>
           <Nav.Item>
             <Button>
-              <Link to="/login">Login</Link>
+              <Link style={{textDecoration:'none', color:'#0f003d'}} to="/login">Login</Link>
             </Button>
           </Nav.Item>
           <Nav.Item>
             <Button>
-              <Link to="/register">Register</Link>
+              <Link style={{textDecoration:'none', color:'#0f003d'}} to="/register">Register</Link>
             </Button>
           </Nav.Item>
         </>
@@ -40,11 +40,11 @@ export default function NavigationBar(props) {
         <>
           <Nav.Item>
             <Button>
-              <Link to="/practitioners">Work Board</Link>
+              <Link style={{textDecoration:'none', color:'#0f003d'}} to="/practitioners">Work Board</Link>
             </Button>
           </Nav.Item>
           <Nav.Item>
-            <Button onClick={completeLogout}>Logout</Button>
+            <Button sx={{color:'#0f003d'}} onClick={completeLogout}>Logout</Button>
           </Nav.Item>
         </>
       );

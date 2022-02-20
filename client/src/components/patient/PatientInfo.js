@@ -88,7 +88,7 @@ function PatientInfo() {
       });
   };
 
-  const validationPatient = function (values) {
+  const validationPatient = function () {
     if (
       !patient?.first_name.trim() ||
       !patient?.last_name.trim() ||
@@ -108,7 +108,6 @@ function PatientInfo() {
       setAlertMessage(false);
       updatePatient();
     }
-
   };
 
   return (

@@ -14,9 +14,8 @@ const NavCarousel = () => {
         <Carousel.Caption>
           <div className="carousel-caption-a text-start">
             <h1>Innovation</h1>
-            <p>
-              Some representative placeholder content for the first slide of the
-              carousel.
+            <p>A new system to get the best Healthcare
+            
             </p>
           </div>
         </Carousel.Caption>
@@ -29,10 +28,9 @@ const NavCarousel = () => {
         />
         <Carousel.Caption>
         <div className="carousel-caption-b text-start">
-          <h1>Example headline.</h1>
+          <h1>Solution</h1>
           <p>
-            Some representative placeholder content for the first slide of the
-            carousel.
+          Life’s got problems, we’ve got solutions.
           </p>
           </div>
         </Carousel.Caption>
@@ -44,10 +42,9 @@ const NavCarousel = () => {
           alt="Third slide"
         />
         <Carousel.Caption>
-          <h1>Example headline.</h1>
+          <h1>Improvements</h1>
           <p>
-            Some representative placeholder content for the first slide of the
-            carousel.
+          Making health care better together.
           </p>
       
         </Carousel.Caption>

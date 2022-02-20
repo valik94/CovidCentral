@@ -27,15 +27,19 @@ const colors = [
     value: "pink",
     label: "pink",
   },
+  {
+    value: "green",
+    label: "green",
+  },
 ];
 
 export default function DisplayEventForm(props) {
   const { patientInfo, events, setEvents } = props;
 
   //const [patient, setPatient] = useState("")
-  const [startAt, setStartAt] = useState(new Date("2022-02-01T09:00:00"));
+  const [startAt, setStartAt] = useState(new Date());
   
-  const [endAt, setEndAt] = useState(new Date("2022-02-01T09:00:00"));
+  const [endAt, setEndAt] = useState(new Date());
   const [summary, setSummary] = useState("");
   const [color, setColor] = useState("");
   //const [notification_sent, setNotification_sent] = useState(false)
@@ -174,8 +178,7 @@ export default function DisplayEventForm(props) {
         </FormControl>
 
         <Button variant="contained" onClick={(e) => addNewEvent()}>
-          {" "}
-          Add Patient{" "}
+          Add Event
         </Button>
       </Paper>
     </Box>

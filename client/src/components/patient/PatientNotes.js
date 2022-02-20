@@ -8,6 +8,7 @@ import "./patient.scss"
 import TextField from "@mui/material/TextField";
 
 
+
 export default function PatientNotes(props) {
   const { patientNotes, setPatientNotes, patientId } = props;
 

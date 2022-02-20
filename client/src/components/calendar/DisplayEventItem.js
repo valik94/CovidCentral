@@ -51,7 +51,7 @@ export default function DisplayEventItem(props) {
           color:'white',
          }}>
         <CloseIcon />
-        <Typography
+        <Typography 
           sx={{ mt: 4, mb: 2, color: "white", textAlign: "center" }}
           variant="h6"
           component="div"

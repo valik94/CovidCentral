@@ -5,11 +5,10 @@ import axios from "axios";
 import Calendar from "./components/calendar/Calendar";
 import PatientsList from "./components/patientsList/PatientsList";
 import LogoutIcon from "@mui/icons-material/Logout";
-import useLogout from "./components/useLogout.js"
+import useLogout from "./components/useLogout.js";
+import { Link } from "react-router-dom";
 
-
-export default function HomePage({userID}) {
-  
+export default function HomePage({ userID }) {
   //custom hook logout
   const { logout } = useLogout();
 
@@ -18,8 +17,8 @@ export default function HomePage({userID}) {
     calendar: false,
   });
 
-  const [practitionerLastName, setPractitionerLastName] = useState("")
-  const [practitionerSpeciatly, setPractitionerSpeciatly]= useState("")
+  const [practitionerLastName, setPractitionerLastName] = useState("");
+  const [practitionerSpeciatly, setPractitionerSpeciatly] = useState("");
 
   //changing the state is button selected
   const setPatients = (patients) =>
@@ -51,23 +50,24 @@ export default function HomePage({userID}) {
     axios
       .get(`/api/practitioners/${userID}`)
       .then((response) => {
-        setPractitionerLastName(response.data.last_name)
-        setPractitionerSpeciatly(response.data.specialty)
+        setPractitionerLastName(response.data.last_name);
+        setPractitionerSpeciatly(response.data.specialty);
       })
       .catch((err) => {
         console.log(err.message);
       });
   }, [userID]);
 
-
   return (
     <main className="layout">
       <section className="sidebar">
-        <img
-          className="sidebar--centered"
-          src="images/logo1.png"
-          alt="Interview Scheduler"
-        />
+        <Link to="/">
+          <img
+            className="sidebar--centered"
+            src="images/logo1.png"
+            alt="Interview Scheduler"
+          />
+        </Link>
         <nav className="sidebar__menu">
           <div className="sidebar__mainFont__background">
             <p className="sidebar__mainFont">
@@ -95,7 +95,10 @@ export default function HomePage({userID}) {
             </button>
           </div>
           <div className="sidebar__backButton">
-            <button className="button-logout-navbar-practitioners" onClick ={logout}>
+            <button
+              className="button-logout-navbar-practitioners"
+              onClick={logout}
+            >
               <LogoutIcon /> Logout
             </button>
           </div>

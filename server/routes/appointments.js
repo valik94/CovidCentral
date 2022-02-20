@@ -23,7 +23,7 @@ module.exports = (db) => {
       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`, [startAt, endAt, summary, color, notification_sent, patient_id, practitioner_id])
 
       const patientBasedOnId = db.query(`SELECT * FROM patients WHERE patients.id = $1`, [patient_id])
-
+      console.log(` patientBasedOnId ISSSSS`, patientBasedOnId)
       promises.push(appointments)
       promises.push(patientBasedOnId)
       Promise.all(promises)

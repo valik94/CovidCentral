@@ -45,7 +45,7 @@ export default function PatientNotes(props) {
   return (
     <div className="container-patient">
       <div className="navbar-small-patient">
-        <Link to="/practitioners" underline="none"><ArrowBackIosIcon sx={{ color: 'white' }} />Patients List</Link>
+        <Link to="/practitioners" style={{textDecoration:'none', color:'#ffffff'}}><ArrowBackIosIcon sx={{ color: 'white' }} />Patients List</Link>
         <h3> Notes</h3>
       </div>
       <div className="patient-notes">

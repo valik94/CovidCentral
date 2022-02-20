@@ -8,9 +8,18 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import useLogout from "./components/useLogout.js";
 import { Link } from "react-router-dom";
 
-export default function HomePage({ userID }) {
+export default function HomePage(props) {
+
+  const { userID, setLoggedIn } = props
+
   //custom hook logout
   const { logout } = useLogout();
+
+  //changing the state of user's login 
+  const completeLogout = function () {
+    logout()
+    setLoggedIn(false)
+  }
 
   const [state, setState] = useState({
     patients: true,
@@ -97,7 +106,7 @@ export default function HomePage({ userID }) {
           <div className="sidebar__backButton">
             <button
               className="button-logout-navbar-practitioners"
-              onClick={logout}
+              onClick={completeLogout}
             >
               <LogoutIcon /> Logout
             </button>

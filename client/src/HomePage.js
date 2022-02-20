@@ -1,10 +1,11 @@
 import NavigationBar from "./components/NavigationBar";
 import NavCarousel from "./components/NavCarousel";
 
-export default function HomePage({userID}) {
+export default function HomePage(props) {
+ const { setLoggedIn, loggedIn} = props
   return (
     <div className="App">
-      <NavigationBar userID={userID}/>
+      <NavigationBar setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>
       <NavCarousel />
     </div>
   );

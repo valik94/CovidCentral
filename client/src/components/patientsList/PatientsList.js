@@ -140,7 +140,7 @@ export default function PatientsList() {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
-                      <Link to={{ pathname: `/patients/${patient.id}` }}>
+                      <Link style={{color:"#0f003d"}} to={{ pathname: `/patients/${patient.id}` }}>
                         {" "}
                         {patient.first_name} {patient.last_name}
                       </Link>

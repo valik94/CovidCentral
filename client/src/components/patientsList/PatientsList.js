@@ -48,7 +48,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -61,14 +60,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 export default function PatientsList() {
-  // const params = useParams();
-
   const [patients, setPatients] = useState([]);
   const [toggleForm, setToggleForm] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredPatient, setFilteredPatient] = useState("");
-
-  // const [apiStatus, setApiStatus] = useState('null')
 
   useEffect(() => {
     setFilteredPatient(
@@ -145,7 +140,7 @@ export default function PatientsList() {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
-                      <Link to={{ pathname: `/patients/${patient.id}` }}>
+                      <Link style={{color:"#0f003d"}} to={{ pathname: `/patients/${patient.id}` }}>
                         {" "}
                         {patient.first_name} {patient.last_name}
                       </Link>

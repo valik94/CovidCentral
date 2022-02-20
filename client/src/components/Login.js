@@ -3,7 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -17,8 +16,12 @@ import axios from "axios";
 
 const theme = createTheme();
 
-export default function Login({setUser}) {
+export default function Login(props) {
+  const { setLoggedIn } = props;
+
   let navigate = useNavigate();
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -42,14 +45,8 @@ export default function Login({setUser}) {
           } else {
             const user = response.data; //this should be session ID 
             localStorage.setItem("userID", user.id);
-            // localStorage.setItem("userLastName", user.last_name)
-            // localStorage.setItem("userSpecialty", user.specialty)
-
-            //instead of setting the use > set the user session 
-            //setUser(user)
+            setLoggedIn(true)
             navigate("/practitioners");
-            // console.log(user);
-            // console.log("USER", user);
           }
         });
     }
@@ -130,8 +127,8 @@ export default function Login({setUser}) {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"} }}
-                
+                sx={{ mt: 3, mb: 2, bgcolor: '#0f003d', color: 'white', borderRadius: 7, '&:hover': { bgcolor: '#c5e060', color: "black" } }}
+
               >
                 Login
               </Button>

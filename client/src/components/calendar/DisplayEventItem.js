@@ -1,5 +1,4 @@
 import "./calendar.scss";
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
@@ -11,13 +10,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import PersonIcon from "@mui/icons-material/Person";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import EditNotificationsIcon from "@mui/icons-material/EditNotifications";
-import Button from "@mui/material/Button";
+
 
 
 export default function DisplayEventItem(props) {
   const { dataItem, patientInfo, setDisplayItem } = props;
-
-
 
   const getPatientById = function (patientsList, patientID) {
     let patientName = "";
@@ -50,12 +47,12 @@ export default function DisplayEventItem(props) {
   return (
     <div className="display-event">
       <Paper elevation={24}
-         sx={{
+        sx={{
           bgcolor: '#0f003d',
-          color:'white',
-         }}>
+          color: 'white',
+        }}>
         <CloseIcon />
-        <Typography 
+        <Typography
           sx={{ mt: 4, mb: 2, color: "white", textAlign: "center" }}
           variant="h6"
           component="div"
@@ -66,7 +63,7 @@ export default function DisplayEventItem(props) {
         <List>
           <ListItem>
             <ListItemIcon>
-              <PersonIcon sx={{color: "white"}}/>
+              <PersonIcon sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText>
               {getPatientById(patientInfo, dataItem.patient_id)}
@@ -74,13 +71,13 @@ export default function DisplayEventItem(props) {
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <AccessTimeIcon sx={{color: "white"}}/>
+              <AccessTimeIcon sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText>{changeDateFormat(dataItem.startAt)}</ListItemText>
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <AccessTimeIcon sx={{color: "white"}}/>
+              <AccessTimeIcon sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText>
               {changeHourFormat(dataItem.startAt)} -{" "}
@@ -89,7 +86,7 @@ export default function DisplayEventItem(props) {
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <EditNotificationsIcon sx={{color: "white"}}/>
+              <EditNotificationsIcon sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText>
               {verifyNotificationStatus(dataItem.notification_sent)}

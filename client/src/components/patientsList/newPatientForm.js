@@ -3,7 +3,6 @@ import axios from "axios";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Input from "@mui/material/Input";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import DateAdapter from "@mui/lab/AdapterDateFns";
@@ -24,19 +23,17 @@ const genders = [
   },
 ];
 
-export default function NewPatientForm({patients, setPatients, setToggleForm}) {
+export default function NewPatientForm({ patients, setPatients, setToggleForm }) {
   const [firstName, setFirstName] = useState(" ");
   const [lastName, setLastName] = useState(" ");
   const [email, setEmail] = useState(" ");
   const [phone, setPhone] = useState(" ");
-  const [healthcareCard, setHealthcareCard] = useState (" ");
+  const [healthcareCard, setHealthcareCard] = useState(" ");
   const [emergencyContact, setEmergencyContact] = useState(" ");
   const [gender, setGender] = useState(" ");
-  const [dateOfBirth, setDateOfBirth] = useState(
-    new Date("2022-02-13T21:11:54")
-  );
-
+  const [dateOfBirth, setDateOfBirth] = useState(new Date("2022-02-13T21:11:54"));
   const [alertMessage, setAlertMessage] = useState(false)
+
 
   const handleChange = (e) => {
     setGender(e.target.value);
@@ -84,7 +81,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
   return (
     <div className="patients-form">
       <div className="new-patient-form">
-      {alertMessage ? (<AlertMessageHello />) : (" ")}
+        {alertMessage ? (<AlertMessageHello />) : (" ")}
         <FormControl fullWidth={true} required={true} >
           <InputLabel htmlFor="my-input">First Name</InputLabel>
           <Input
@@ -165,7 +162,6 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
             value={gender}
             label="Select gender"
             onChange={handleChange}
-            // helperText="Select gender"
             variant="standard"
             required
             margin="dense"
@@ -194,7 +190,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
         </FormControl>
       </div>
       <div className="new-patient-button">
-        <Button sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"}}} variant="contained" onClick={verifyLength}> Add Patient </Button>
+        <Button sx={{ bgcolor: '#0f003d', color: 'white', borderRadius: 7, '&:hover': { bgcolor: '#c5e060', color: "black" } }} variant="contained" onClick={verifyLength}> Add Patient </Button>
       </div>
     </div>
   );

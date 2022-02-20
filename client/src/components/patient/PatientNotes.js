@@ -8,38 +8,27 @@ import "./patient.scss"
 import TextField from "@mui/material/TextField";
 
 
-
 export default function PatientNotes(props) {
   const { patientNotes, setPatientNotes, patientId } = props;
-
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
-  //const [patientId, setPatientId] = useState("")
-  //const [practitionerId, setPractitionerId] = useState("")
 
-  //let practitionerId = patientNotes.practitioner_id
 
   const newNote = {
     title: title,
     message: message,
     patient_id: patientId,
-    practitioner_id: 1    //patientNotes[0].practitioner_id > this doesn't work if patient did not have a note previously
   }
-  
-  const addNewNote = function() {  
+
+  const addNewNote = function () {
     return axios
-      // .post(`${patientId}/notes`, newNote)
       .post('/api/notes', newNote)
       .then((response) => {
-        //console.log("this is DATTTTTTA", response.data);
-        //setState('null')
         setPatientNotes([...patientNotes, response.data])
       })
       .catch((err) => {
         console.log(err.message);
       });
-    // console.log("PATIENT", patientNotes)
-    // console.log("HERE", newNote)
   };
 
   const displayNotes = patientNotes.map((note) => {
@@ -56,7 +45,7 @@ export default function PatientNotes(props) {
   return (
     <div className="container-patient">
       <div className="navbar-small-patient">
-        <Link to="/practitioners" underline="none"><ArrowBackIosIcon sx={{color:'white'}}/>Patients List</Link>
+        <Link to="/practitioners" style={{textDecoration:'none', color:'#ffffff'}}><ArrowBackIosIcon sx={{ color: 'white' }} />Patients List</Link>
         <h3> Notes</h3>
       </div>
       <div className="patient-notes">
@@ -93,11 +82,11 @@ export default function PatientNotes(props) {
               </div>
             </div>
             <div className="add-note">
-              <Button 
-                sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"}}}
-                variant="contained" 
+              <Button
+                sx={{ bgcolor: '#0f003d', color: 'white', borderRadius: 7, '&:hover': { bgcolor: '#c5e060', color: "black" } }}
+                variant="contained"
                 onClick={(e) => addNewNote()}>
-              Add Note
+                Add Note
               </Button>
             </div>
           </form>

@@ -29,3 +29,15 @@
 .alert-message{
   padding: 1%;
 }
+
+.new-patient{
+
+  &-form {
+  width: 100%;
+  padding: 2%;
+  }
+
+  &-button {
+    padding-left: 80%;
+  }
+}

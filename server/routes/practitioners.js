@@ -11,11 +11,14 @@ module.exports = (db) => {
 //Improve route to use practitioner.id, dynamically based on cookies session id
   router.get("/", (req, res) => {
     const promises = [];
-    const sessionId = req.session.user_id; //getting session using id being sent to client
+    const sessionId = req.session.user_id; 
+    console.log("SESSION", req.session);//getting session using id being sent to client
     // const practitioners = db.query(`SELECT *
     // FROM practitioners
     // WHERE practitioners.id = $1;`, [sessionId]);
-
+if (!sessionId){
+  return "ERROR"
+}
     const patients = db.query(`SELECT *
     FROM patients
     WHERE practitioner_id = $1
@@ -47,7 +50,10 @@ module.exports = (db) => {
     const practitioners = db.query(`SELECT *
     FROM practitioners
     WHERE practitioners.id = $1;`, [sessionId]);
+    if (!sessionId){
 
+      return "ERROR"
+    }
     return practitioners 
       .then ((result) => {
         res.json({

@@ -70,45 +70,45 @@ function PatientInfo() {
       .catch((err) => {
         console.log(err.message);
       });
-  }, [params.id]);
+  }, []);
+
 
   //updating patient information or medical history
   const updatePatient = function () {
     setEdit(true);
-    console.log("PT STATe", patient);
-    console.log("MORE INFOR", patientHistory);
 
     return axios
       .put(`/api/patients/${params.id}`, [patient, patientHistory])
       .then((response) => {
-        setPatient(response.data.updatedPatient); //have to make sure which object is returned by the db
-        setPatientHistory(response.data.updatedPatientHistories);
+        setPatient(response.data.updatedPatient[0]); //have to make sure which object is returned by the db
+        setPatientHistory(response.data.updatedPatientHistories[0]);
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
 
-  const validationPatient = function () {
+  const validationPatient = function (values) {
     if (
-      !patient.first_name.trim() ||
-      !patient.last_name ||
-      !patient.email ||
-      !patient.date_of_birth ||
-      !patient.gender ||
-      !patient.healthcare_card ||
-      !patient.phone ||
-      !patient.emergency_contact ||
-      !patientHistory.diagnosis_details ||
-      !patientHistory.medical_history_details ||
-      !patientHistory.surgery_details ||
-      !patientHistory.medication_details
+      !patient?.first_name.trim() ||
+      !patient?.last_name.trim() ||
+      !patient?.email.trim() ||
+      !patient?.date_of_birth.trim() ||
+      !patient?.gender.trim() ||
+      !patient?.healthcare_card.trim() ||
+      !patient?.phone.trim() ||
+      !patient?.emergency_contact.trim() ||
+      !patientHistory?.diagnosis_details.trim() ||
+      !patientHistory?.medical_history_details.trim() ||
+      !patientHistory?.surgery_details.trim() ||
+      !patientHistory?.medication_details.trim()
     ) {
       setAlertMessage(true);
     } else {
       setAlertMessage(false);
       updatePatient();
     }
+
   };
 
   return (
@@ -119,7 +119,7 @@ function PatientInfo() {
             variant="contained"
             startIcon={<EditIcon />}
             onClick={(e) => setEdit(!edit)}
-            sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: 'white', color:"black"}}}
+            sx={{ bgcolor: '#0f003d', color: 'white', borderRadius: 7, '&:hover': { bgcolor: 'white', color: "black" } }}
           >
             Edit
           </Button>
@@ -127,9 +127,9 @@ function PatientInfo() {
             variant="contained"
             disabled={edit}
             onClick={(e) => {
-              validationPatient();
+              validationPatient(e.target.value);
             }}
-            sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: 'white', color:"black"}}}
+            sx={{ bgcolor: '#0f003d', color: 'white', borderRadius: 7, '&:hover': { bgcolor: 'white', color: "black" } }}
           >
             Save Changes
           </Button>
@@ -143,7 +143,6 @@ function PatientInfo() {
             <TextField
               variant="outlined"
               id="firstName"
-              // label="First Name"
               name={"first_name"}
               value={patient.first_name}
               onChange={handleChangePatient}
@@ -155,7 +154,6 @@ function PatientInfo() {
             <TextField
               id="lastName"
               variant="outlined"
-              // label="Last Name"
               name={"last_name"}
               value={patient.last_name}
               onChange={handleChangePatient}
@@ -167,7 +165,6 @@ function PatientInfo() {
             <TextField
               id="dateOfBirth"
               variant="outlined"
-              // label="Date of Birth"
               name={"date_of_birth"}
               value={patient.date_of_birth}
               onChange={handleChangePatient}
@@ -179,7 +176,6 @@ function PatientInfo() {
             <TextField
               id="gender"
               variant="outlined"
-              // label="Gender"
               name={"gender"}
               value={patient.gender}
               onChange={handleChangePatient}
@@ -191,7 +187,6 @@ function PatientInfo() {
             <TextField
               id="healthCareCard"
               variant="outlined"
-              // label="Healthcare Card"
               name={"healthcare_card"}
               value={patient.healthcare_card}
               onChange={handleChangePatient}
@@ -202,7 +197,6 @@ function PatientInfo() {
             />
             <TextField
               id="email"
-              // label="Email"
               name={"email"}
               variant="outlined"
               value={patient.email}
@@ -214,7 +208,6 @@ function PatientInfo() {
             />
             <TextField
               id="phone"
-              // label="Phone Number"
               name={"phone"}
               variant="outlined"
               value={patient.phone}
@@ -226,7 +219,6 @@ function PatientInfo() {
             />
             <TextField
               id="emergencyContact"
-              // label="Emergency Contact"
               variant="outlined"
               name={"emergency_contact"}
               value={patient.emergency_contact}
@@ -238,7 +230,6 @@ function PatientInfo() {
             />
             <TextField
               id="diagnosis"
-              // label="Diagnosis"
               variant="outlined"
               name={"diagnosis_details"}
               value={patientHistory.diagnosis_details}
@@ -250,7 +241,6 @@ function PatientInfo() {
             />
             <TextField
               id="medicalHistory"
-              // label="Medical History"
               name={"medical_history_details"}
               value={patientHistory.medical_history_details}
               onChange={handleChangePatientHistory}
@@ -262,7 +252,6 @@ function PatientInfo() {
             />
             <TextField
               id="surgeries"
-              // label="Surgeries"
               name={"surgery_details"}
               variant="outlined"
               value={patientHistory.surgery_details}
@@ -274,7 +263,6 @@ function PatientInfo() {
             />
             <TextField
               id="medication"
-              // label="Medication List"
               variant="outlined"
               name={"medication_details"}
               value={patientHistory.medication_details}

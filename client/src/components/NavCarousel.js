@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import './navcarousel.scss';
+import "./navcarousel.scss";
 
 const NavCarousel = () => {
   return (
@@ -14,9 +14,7 @@ const NavCarousel = () => {
         <Carousel.Caption>
           <div className="carousel-caption-a text-start">
             <h1>Innovation</h1>
-            <p>A new system to get the best Healthcare
-            
-            </p>
+            <p>A new system to get the best Healthcare</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -27,11 +25,9 @@ const NavCarousel = () => {
           alt="Second slide"
         />
         <Carousel.Caption>
-        <div className="carousel-caption-b text-start">
-          <h1>Solution</h1>
-          <p>
-          Life’s got problems, we’ve got solutions.
-          </p>
+          <div className="carousel-caption-b text-start">
+            <h1>Solution</h1>
+            <p>Life’s got problems, we’ve got solutions.</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -42,11 +38,10 @@ const NavCarousel = () => {
           alt="Third slide"
         />
         <Carousel.Caption>
-          <h1>Improvements</h1>
-          <p>
-          Making health care better together.
-          </p>
-      
+          <div className="carousel-caption-c text-start">
+            <h1>Improvements</h1>
+            <p>Making health care better together.</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

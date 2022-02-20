@@ -17,7 +17,8 @@ import axios from "axios";
 
 const theme = createTheme();
 
-export default function Login({setUser}) {
+export default function Login() {
+  // const { setLoggedIn } = props;
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,6 +43,7 @@ export default function Login({setUser}) {
           } else {
             const user = response.data; //this should be session ID 
             localStorage.setItem("userID", user.id);
+            // setLoggedIn(true)
             // localStorage.setItem("userLastName", user.last_name)
             // localStorage.setItem("userSpecialty", user.specialty)
 
@@ -130,8 +132,8 @@ export default function Login({setUser}) {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"} }}
-                
+                sx={{ mt: 3, mb: 2, bgcolor: '#0f003d', color: 'white', borderRadius: 7, '&:hover': { bgcolor: '#c5e060', color: "black" } }}
+
               >
                 Login
               </Button>

@@ -1,15 +1,11 @@
 @import "../../styles/variables.scss";
-.calendar-main{
+.calendar-main {
   width: 85%;
   padding: 1%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
-
-// .Kalend__Calendar__root {
-//   width: auto;
-// }
 
 .display-event {
   width: 25%;
@@ -21,88 +17,11 @@
   padding: 1%;
   display: flex;
   flex-direction: column;
-  
 }
 
-.add-event-button{
+.add-event-button {
   padding-top: 3%;
 }
-// .sidebar {
-//   &--centered {
-//     align-self: center;
-//   }
-
-//   &__separator {
-//     width: 90%;
-//     // margin: 2rem 0;
-//     border: solid 1px;
-//     color: black;
-//   }
-
-//   &__menu {
-//     flex: 1;
-//   }
-
-//   &__lhl {
-//     margin-top: 2rem;
-//   }
-
-//   &__mainFont {
-//     font-family: $font-family-PT;
-//     font-weight: bold;
-//     color: $white;
-//     font-size: 2em;
-//     text-align: center;
-//   }
-
-//   &__mainFont__background {
-//     background-color: $dark-blue;
-//     margin-top: 1em;
-//   }
-
-//   &__secondFont {
-//     font-family: $font-family-PT;
-//     color: $dark-blue;
-//     font-size: 1.5em;
-//     padding-top: 0.5em;
-//   }
-//   &__greeting {
-//     // background: linear-gradient(to right, #c5e060 0%, #ffffff 100%);
-//     width: 17em;
-//     height: 3em;
-//     box-sizing: border-box;
-//     text-align: center;
-//     background-color: white;
-//     border-radius: 35px;
-//     margin-top: 2em;
-//     margin-right: 0.5em;
-//     margin-left: 0.5em;
-//   }
-
-//   &__clicked {
-//     // background: linear-gradient(to right, #c5e060 0%, #ffffff 100%);
-//     width: 17em;
-//     height: 3em;
-//     box-sizing: border-box;
-//     text-align: center;
-//     background-color: white;
-//     border-radius: 35px;
-//     margin-top: 2em;
-//     margin-right: 0.5em;
-//     margin-left: 0.5em;
-//   }
-
-//   &__lowerPart {
-//     margin-top: 20rem;
-//     margin-bottom: 0rem;
-//     text-align: center;
-//   }
-
-//   &__backButton {
-//     align-self: center;
-//     text-align: center;
-//   }
-// }
 
 button {
   width: 11em;
@@ -131,75 +50,32 @@ button {
   border: none;
 }
 
-// .schedule {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: flex-start;
-//   margin: 2rem 0;
-//   padding: 0 2rem;
-//   width: 100%;
-// }
-
 .padding {
   padding-top: 0.5em;
   padding-bottom: 0.2em;
 }
 
-// .css-1ozefeb {
-//   width: 45%;
-// }
-
-// .css-epd502 {
-//   margin-right: -500px;
-// }
-
-
-
-// .css-l0iinn {
-//   width:100%;
-//   padding: 107px;
-//   margin-right: 145px;
-//   background-color:none;
-// }
-
-// .css-k008qs {
-//   margin-left: -280px;
-// }
-
-// .MuiClockPicker-arrowSwitcher{
-//   margin-right:185px;
-// }
-
-// .css-164r41r{
-//   margin-right:70px;
-//   padding:10px;
-//   text-align: center;
-// }
-
 .MuiBox-root {
   text-align: center;
 }
 
-.MuiIconButton-root{
- padding: 0px;
- width:30%;
- margin: 0;
- color: $dark-blue;
+.MuiIconButton-root {
+  padding: 0px;
+  width: 30%;
+  margin: 0;
+  color: $dark-blue;
 }
 
-.MuiInputAdornment-root{
-  width:50%;
+.MuiInputAdornment-root {
+  width: 50%;
   padding: 0%;
 }
 
-
-.MuiIconButton-sizeMedium{
+.MuiIconButton-sizeMedium {
   width: 20%;
   padding: 0;
 }
 
-.MuiPaper-root{
-  //padding: 5%;
-}
-
-
+// .MuiPaper-root {
+//   //padding: 5%;
+// }

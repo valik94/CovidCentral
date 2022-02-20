@@ -40,16 +40,20 @@ function App() {
       <div>
         <Switch>
           <Route path="/" element={<HomePage userID={localStorage.userID} />} />
-          <Route
+          {/* <Route
             path="/practitioners"
             element={<Practitioners userID={localStorage.userID} />}
-          />
+          /> */}
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/patients/:id"
             element={<Patient userID={localStorage.userID} />}
           />
+          {localStorage.userID && (<Route
+            path="/practitioners"
+            element={<Practitioners userID={localStorage.userID} />}
+          />)}
           <Route path="*" element={<Navigate to="/" />} />
         </Switch>
       </div>

@@ -5,40 +5,46 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import useLogout from "./useLogout.js";
 
-export default function NavigationBar({ userID }) {
-  console.log(userID);
+export default function NavigationBar(props) {
+  const { setLoggedIn, loggedIn } = props;
 
   //custom hook logout
   const { logout } = useLogout();
 
+
+  const completeLogout = function () {
+    logout()
+    setLoggedIn(false)
+  }
+
   //display login/logout/registration dynamically
-  const displayButtons = function (userStatus) {
-    if (!userStatus) {
+  const displayButtons = function () {
+    if (!loggedIn) {
       return (
         <>
           <Nav.Item>
             <Button>
-              <Link to="/login">Login</Link>
+              <Link style={{ textDecoration: 'none', color: '#0f003d' }} to="/login">Login</Link>
             </Button>
           </Nav.Item>
           <Nav.Item>
             <Button>
-              <Link to="/register">Register</Link>
+              <Link style={{ textDecoration: 'none', color: '#0f003d' }} to="/register">Register</Link>
             </Button>
           </Nav.Item>
         </>
       );
     }
-    if (userStatus) {
+    if (loggedIn) {
       return (
         <>
           <Nav.Item>
             <Button>
-              <Link to="/practitioners">Work Board</Link>
+              <Link style={{ textDecoration: 'none', color: '#0f003d' }} to="/practitioners">Work Board</Link>
             </Button>
           </Nav.Item>
           <Nav.Item>
-            <Button onClick={logout}>Logout</Button>
+            <Button sx={{ color: '#0f003d' }} onClick={completeLogout}>Logout</Button>
           </Nav.Item>
         </>
       );
@@ -62,18 +68,7 @@ export default function NavigationBar({ userID }) {
             id="basic-navbar-nav"
           >
             <Nav variant="pills">
-              {/* <Nav.Item>
-                <Button><Link to="/login">Login</Link></Button>
-              </Nav.Item>
-
-              <Nav.Item>
-                <Button><Link to="/register">Register</Link></Button>
-              </Nav.Item>
-
-              <Nav.Item>
-                <Button onClick ={logout}>Logout</Button>
-              </Nav.Item> */}
-              {displayButtons(userID)}
+              {displayButtons()}
             </Nav>
           </Navbar.Collapse>
         </Container>

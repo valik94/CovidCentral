@@ -27,7 +27,7 @@ const NavCarousel = () => {
         <Carousel.Caption>
           <div className="carousel-caption-b text-start">
             <h1>Solution</h1>
-            <p>Life’s got problems, we’ve got solutions.</p>
+            <p>Life’s got problems, we’ve got solutions</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -40,7 +40,7 @@ const NavCarousel = () => {
         <Carousel.Caption>
           <div className="carousel-caption-c text-start">
             <h1>Improvements</h1>
-            <p>Making health care better together.</p>
+            <p>Making health care better together</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>

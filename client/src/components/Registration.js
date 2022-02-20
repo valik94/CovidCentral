@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Button from "@mui/material/Button";
-
 const MySwal = withReactContent(Swal);
 
-const Registration = () => {
+const Registration = (props) => {
+  const { setLoggedIn } = props;
+
   let navigate = useNavigate();
+
   const [firstNameReq, setFirstNameReq] = useState("");
   const [lastNameReq, setLastNameReq] = useState("");
   const [emailReq, setEmailReq] = useState("");
@@ -77,9 +79,9 @@ const Registration = () => {
       })
       .then((response) => {
         const user = response.data;
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("userID", user.id);
+        setLoggedIn(true)
         navigate("/practitioners");
-        console.log(response);
       });
   };
 
@@ -88,7 +90,6 @@ const Registration = () => {
       <div className="container">
         <div className="col-lg-7 px-5 pt-5">
           <h1 className="font-weight-bold py-3">Sign Up</h1>
-
           <form onSubmit={handleSubmit}>
             <div className="form-row col-lg-7">
               <input
@@ -101,11 +102,8 @@ const Registration = () => {
                 onChange={(e) => {
                   setFirstNameReq(e.target.value);
                 }}
-                // onChange={handleChange}
               />
-              {/* {errors.first_name && (
-                <p className="error">*{errors.first_name}</p>
-              )} */}
+
             </div>
             <div className="form-row col-lg-7">
               <input
@@ -115,12 +113,10 @@ const Registration = () => {
                 name="last_name"
                 value={lastNameReq}
                 required
-                // onChange={handleChange}
                 onChange={(e) => {
                   setLastNameReq(e.target.value);
                 }}
               />
-              {/* {errors.last_name && <p className="error">*{errors.last_name}</p>} */}
             </div>
 
             <div className="form-row col-lg-7">
@@ -131,12 +127,10 @@ const Registration = () => {
                 name="email"
                 value={emailReq}
                 required
-                // onChange={handleChange}
                 onChange={(e) => {
                   setEmailReq(e.target.value);
                 }}
               />
-              {/* {errors.email && <p className="error">*{errors.email}</p>} */}
             </div>
 
             <div className="form-row col-lg-7">
@@ -147,12 +141,10 @@ const Registration = () => {
                 name="password"
                 value={passwordReq}
                 required
-                // onChange={handleChange}
                 onChange={(e) => {
                   setPasswordReq(e.target.value);
                 }}
               />
-              {/* {errors.password && <p className="error">*{errors.password}</p>} */}
             </div>
             <div className="form-row col-lg-7">
               <input
@@ -162,18 +154,16 @@ const Registration = () => {
                 name="specialty"
                 value={specialtyReq}
                 required
-                // onChange={handleChange}
                 onChange={(e) => {
                   setSpecialtyReq(e.target.value);
                 }}
               />
-              {/* {errors.password && <p className="error">*{errors.password}</p>} */}
             </div>
 
             <div className="form-row col-lg-3">
               <Button
                 type="submit"
-                sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"}}}
+                sx={{ bgcolor: '#0f003d', color: 'white', borderRadius: 7, '&:hover': { bgcolor: '#c5e060', color: "black" } }}
                 onClick={register}
               >
                 Register

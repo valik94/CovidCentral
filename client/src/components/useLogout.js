@@ -6,13 +6,11 @@ export default function useLogout() {
 
   const logout = function () {
     axios.post("/api/logout").then(() => {
-      localStorage.removeItem("userLastName");
       localStorage.removeItem("userID");
-      localStorage.removeItem("userSpecialty");
       navigateBar("/");
     });
-  }; //update to POST instead of GET
+  };
   return {
-    logout,
+    logout
   };
 }

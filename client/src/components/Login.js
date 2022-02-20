@@ -3,7 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -17,9 +16,12 @@ import axios from "axios";
 
 const theme = createTheme();
 
-export default function Login() {
-  // const { setLoggedIn } = props;
+export default function Login(props) {
+  const { setLoggedIn } = props;
+
   let navigate = useNavigate();
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -43,15 +45,8 @@ export default function Login() {
           } else {
             const user = response.data; //this should be session ID 
             localStorage.setItem("userID", user.id);
-            // setLoggedIn(true)
-            // localStorage.setItem("userLastName", user.last_name)
-            // localStorage.setItem("userSpecialty", user.specialty)
-
-            //instead of setting the use > set the user session 
-            //setUser(user)
+            setLoggedIn(true)
             navigate("/practitioners");
-            // console.log(user);
-            // console.log("USER", user);
           }
         });
     }

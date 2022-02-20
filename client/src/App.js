@@ -29,7 +29,7 @@ function App() {
           <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
           {loggedIn && (<Route path="/patients/:id" element={<Patient userID={localStorage.userID} />} />)}
           {/* <Route path="/patients/:id" element={<Patient userID={localStorage.userID} />} /> */}
-          {loggedIn && (<Route path="/practitioners" element={<Practitioners userID={localStorage.userID} /> } /> )}
+          {loggedIn && (<Route path="/practitioners" element={<Practitioners userID={localStorage.userID} setLoggedIn={setLoggedIn}/> } /> )}
           <Route path="*" element={<Navigate to="/" />} />
         </Switch>
       </div>

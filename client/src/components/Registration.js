@@ -8,7 +8,9 @@ import Button from "@mui/material/Button";
 
 const MySwal = withReactContent(Swal);
 
-const Registration = () => {
+const Registration = (props) => {
+  const { setLoggedIn } = props;
+
   let navigate = useNavigate();
   const [firstNameReq, setFirstNameReq] = useState("");
   const [lastNameReq, setLastNameReq] = useState("");
@@ -77,9 +79,9 @@ const Registration = () => {
       })
       .then((response) => {
         const user = response.data;
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("userID", user.id);
+        setLoggedIn(true)
         navigate("/practitioners");
-        console.log(response);
       });
   };
 

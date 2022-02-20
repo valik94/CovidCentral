@@ -44,7 +44,7 @@ export default function DisplayEventItem(props) {
   };
 
   return (
-    <div className="display">
+    <div className="display-event">
       <Paper elevation={24}
          sx={{
           bgcolor: '#0f003d',

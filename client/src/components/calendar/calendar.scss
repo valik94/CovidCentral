@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 .calendar-main{
-  width: 100%;
+  width: 85%;
   padding: 1%;
   display: flex;
   flex-direction: row;
@@ -26,7 +26,6 @@
 
 .add-event-button{
   padding-top: 3%;
-  padding-left: 55%;
 }
 // .sidebar {
 //   &--centered {
@@ -146,38 +145,61 @@ button {
   padding-bottom: 0.2em;
 }
 
-.css-1ozefeb {
-  width: 45%;
-}
+// .css-1ozefeb {
+//   width: 45%;
+// }
 
-.css-epd502 {
-  margin-right: -500px;
-}
+// .css-epd502 {
+//   margin-right: -500px;
+// }
 
 
 
-.css-l0iinn {
-  width:100%;
-  padding: 107px;
-  margin-right: 145px;
-  background-color:none;
-}
+// .css-l0iinn {
+//   width:100%;
+//   padding: 107px;
+//   margin-right: 145px;
+//   background-color:none;
+// }
 
-.css-k008qs {
-  margin-left: -280px;
-}
+// .css-k008qs {
+//   margin-left: -280px;
+// }
 
-.MuiClockPicker-arrowSwitcher{
-  margin-right:185px;
-}
+// .MuiClockPicker-arrowSwitcher{
+//   margin-right:185px;
+// }
 
-.css-164r41r{
-  margin-right:70px;
-  padding:10px;
-  text-align: center;
-}
+// .css-164r41r{
+//   margin-right:70px;
+//   padding:10px;
+//   text-align: center;
+// }
 
 .MuiBox-root {
   text-align: center;
 }
+
+.MuiIconButton-root{
+ padding: 0px;
+ width:30%;
+ margin: 0;
+ color: $dark-blue;
+}
+
+.MuiInputAdornment-root{
+  width:50%;
+  padding: 0%;
+}
+
+
+.MuiIconButton-sizeMedium{
+  width: 20%;
+  padding: 0;
+}
+
+.MuiPaper-root{
+  //padding: 5%;
+}
+
 

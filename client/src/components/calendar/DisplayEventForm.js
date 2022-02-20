@@ -1,5 +1,4 @@
 import "./calendar.scss";
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -95,7 +94,7 @@ export default function DisplayEventForm(props) {
 
   return (
     <div className="display-form">
-      <Paper elevation={24}>
+      <Paper elevation={24} sx={{padding: 2.5, backgroundColor:"#e1e6f662"}}>
         <FormControl fullWidth={true} required={true}>
           <InputLabel htmlFor="my-input">Title</InputLabel>
           <Input
@@ -103,6 +102,7 @@ export default function DisplayEventForm(props) {
             onChange={(e) => setSummary(e.target.value)}
             aria-describedby="my-helper-text"
             autoFocus={true}
+            sx={{ margin: 2 }}
           />
         </FormControl>
 
@@ -115,6 +115,7 @@ export default function DisplayEventForm(props) {
             onChange={handleChangePatient}
             // helperText="Select gender"
             variant="standard"
+            sx={{ margin: 2 }}
           >
             {patientInfo.map((option) => (
               <MenuItem key={option.id} value={option.id}>
@@ -129,21 +130,23 @@ export default function DisplayEventForm(props) {
             <DesktopDateTimePicker
               label="Start"
               value={startAt}
+              sx={{ mb: 20 }}
               onChange={handleChangeStart}
               format="yyyy-MM-dd HH:mm"
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
         </FormControl>
-
+          
         <FormControl fullWidth={true} required={true}>
           <LocalizationProvider dateAdapter={DateAdapter}>
             <DesktopDateTimePicker
               label="End"
               value={endAt}
+              sx={{ margin: 2 }}
               onChange={handleChangeEnd}
               format="yyyy-MM-dd HH:mm"
-              renderInput={(params) => <TextField {...params} />}
+              renderInput={(params) => <TextField {...params} sx={{padding : 0}}/>}
             />
           </LocalizationProvider>
         </FormControl>
@@ -153,6 +156,7 @@ export default function DisplayEventForm(props) {
             id="select_color"
             select
             value={color}
+            sx={{ margin: 2 }}
             label="Select color"
             onChange={handleChangeColor}
             // helperText="Select gender"
@@ -166,10 +170,10 @@ export default function DisplayEventForm(props) {
           </TextField>
         </FormControl>
 
-      </Paper>
       <div className="add-event-button">
-        <Button variant="contained" onClick={(e) => addNewEvent()}>Add Event</Button>
+        <Button sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060'}}} variant="contained" onClick={(e) => addNewEvent()}>Add Event</Button>
       </div>
+      </Paper>
     </div>
   );
 }

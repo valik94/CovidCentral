@@ -3,9 +3,9 @@ import {
   BrowserRouter as Router,
   Routes as Switch,
   Route,
-  Navigate
+  Navigate,
 } from "react-router-dom";
-import {useState} from 'react';
+import { useState } from "react";
 // import NavigationBar from './components/NavigationBar';
 // import Navbar from './components/NavigationBar';
 // import NavCarousel from './components/NavCarousel';
@@ -17,7 +17,7 @@ import Login from "./components/Login";
 import Patient from "./components/patient/Patient";
 import { useEffect } from "react";
 
-//app 1st load > check localstorage for a user id > user session should have the user ID 
+//app 1st load > check localstorage for a user id > user session should have the user ID
 //> if there is a user id > make request to back end and to fetch user data and set in state
 
 function App() {
@@ -35,21 +35,26 @@ function App() {
   // const [userLastName, setUserLastName] = useState(localStorage.userLastName)
   // const [userSpecialty, setUserSpecialty] = useState(localStorage.userSpecialty)
 
-
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/" element={<HomePage userID={localStorage.userID}/>} />
-          <Route path="/practitioners" element={<Practitioners userID={localStorage.userID}/>} />
+          <Route path="/" element={<HomePage userID={localStorage.userID} />} />
+          <Route
+            path="/practitioners"
+            element={<Practitioners userID={localStorage.userID} />}
+          />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/patients/:id" element={<Patient userID={localStorage.userID}/>} />
-          <Route path="*" element={ <Navigate to="/" />} />
+          <Route
+            path="/patients/:id"
+            element={<Patient userID={localStorage.userID} />}
+          />
+          <Route path="*" element={<Navigate to="/" />} />
         </Switch>
       </div>
     </Router>
   );
 }
- 
+
 export default App;

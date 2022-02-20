@@ -60,7 +60,7 @@ export default function DisplayEventItem(props) {
     >
       <Paper elevation={24}>
         <CloseIcon />
-        <Typography
+        <Typography 
           sx={{ mt: 4, mb: 2, color: "white", textAlign: "center" }}
           variant="h6"
           component="div"

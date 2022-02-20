@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -44,7 +44,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 function NotesItem(props) {
-  const {title, message, created_at } = props
+  const { title, message, created_at } = props;
   const [expanded, setExpanded] = React.useState("");
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -62,22 +62,20 @@ function NotesItem(props) {
 
   return (
     <Accordion
-       expanded={expanded === "panel1"}
-       onChange={handleChange("panel1")}
+      expanded={expanded === "panel1"}
+      onChange={handleChange("panel1")}
     >
-      <AccordionSummary
-        aria-controls="panel1d-content"
-        id="panel1d-header"
-      >
-        <Typography>{title} <MoreHorizIcon/> {changeDateFormat(created_at)} {changeHourFormat(created_at)}</Typography>
+      <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+        <Typography>
+          {title} <MoreHorizIcon /> {changeDateFormat(created_at)}{" "}
+          {changeHourFormat(created_at)}
+        </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
-          {message}
-        </Typography>
+        <Typography>{message}</Typography>
       </AccordionDetails>
     </Accordion>
-  )
+  );
 }
 
-export default NotesItem
+export default NotesItem;

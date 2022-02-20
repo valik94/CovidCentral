@@ -11,7 +11,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import Button from "@mui/material/Button";
 import './patientsList.scss'
-import AlertMessage from "./AlertMessage.js"
+import AlertMessageHello from "./AlertMessageHello.js"
 
 const genders = [
   {
@@ -83,7 +83,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
 
   return (
     <div className="patients-form">
-      {alertMessage ? (<AlertMessage />) : (" ")}
+      {alertMessage ? (<AlertMessageHello />) : (" ")}
       <Box
         component="form"
         sx={{

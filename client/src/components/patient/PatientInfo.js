@@ -7,10 +7,11 @@ import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import AlertMessageHello from "../patientsList/AlertMessageHello";
 
 function PatientInfo() {
   const params = useParams();
-
+  const [alertMessage, setAlertMessage] = useState(false);
   //initializing patient information state
   const [patient, setPatient] = useState({
     firstName: " ",
@@ -103,10 +104,9 @@ function PatientInfo() {
       !patientHistory.surgery_details ||
       !patientHistory.medication_details
     ) {
-      console.log("all fields are required");
-
-  
+      setAlertMessage(true);
     } else {
+      setAlertMessage(false);
       updatePatient();
     }
   };
@@ -135,6 +135,7 @@ function PatientInfo() {
         <hr />
         <h3>Patient Information and Medical History</h3>
         <hr />
+        {alertMessage ? <AlertMessageHello /> : " "}
         <Box>
           <FormControl fullWidth={true} required={true}>
             <TextField
@@ -142,7 +143,6 @@ function PatientInfo() {
               id="firstName"
               // label="First Name"
               name={"first_name"}
-              //defaultValue={patients.first_name}
               value={patient.first_name}
               onChange={handleChangePatient}
               disabled={edit}

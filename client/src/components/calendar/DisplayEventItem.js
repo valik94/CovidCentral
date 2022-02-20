@@ -62,7 +62,7 @@ export default function DisplayEventItem(props) {
         <List>
           <ListItem>
             <ListItemIcon>
-              <PersonIcon />
+              <PersonIcon sx={{color: "white"}}/>
             </ListItemIcon>
             <ListItemText>
               {getPatientById(patientInfo, dataItem.patient_id)}
@@ -70,13 +70,13 @@ export default function DisplayEventItem(props) {
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <AccessTimeIcon />
+              <AccessTimeIcon sx={{color: "white"}}/>
             </ListItemIcon>
             <ListItemText>{changeDateFormat(dataItem.startAt)}</ListItemText>
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <AccessTimeIcon />
+              <AccessTimeIcon sx={{color: "white"}}/>
             </ListItemIcon>
             <ListItemText>
               {changeHourFormat(dataItem.startAt)} -{" "}
@@ -85,14 +85,14 @@ export default function DisplayEventItem(props) {
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <EditNotificationsIcon />
+              <EditNotificationsIcon sx={{color: "white"}}/>
             </ListItemIcon>
             <ListItemText>
               {verifyNotificationStatus(dataItem.notification_sent)}
             </ListItemText>
           </ListItem>
         </List>
-      </Paper>{" "}
+      </Paper>
     </div>
   );
 }

@@ -85,7 +85,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
     <div className="patients-form">
       <div className="new-patient-form">
       {alertMessage ? (<AlertMessageHello />) : (" ")}
-        <FormControl fullWidth={true} required={true}>
+        <FormControl fullWidth={true} required={true} >
           <InputLabel htmlFor="my-input">First Name</InputLabel>
           <Input
             id="first_name"
@@ -95,6 +95,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
             autoFocus={true}
             required
             margin="dense"
+            sx={{ margin: 2 }}
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -106,6 +107,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
             onChange={(e) => setLastName(e.target.value)}
             required
             margin="dense"
+            sx={{ margin: 2 }}
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -117,6 +119,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
             onChange={(e) => setEmail(e.target.value)}
             required
             margin="dense"
+            sx={{ margin: 2 }}
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -128,6 +131,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
             onChange={(e) => setPhone(e.target.value)}
             required
             margin="dense"
+            sx={{ margin: 2 }}
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -139,6 +143,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
             onChange={(e) => setEmergencyContact(e.target.value)}
             required
             margin="dense"
+            sx={{ margin: 2 }}
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -150,6 +155,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
             onChange={(e) => setHealthcareCard(e.target.value)}
             required
             margin="dense"
+            sx={{ margin: 2 }}
           />
         </FormControl>
         <FormControl fullWidth={true} required={true}>
@@ -163,6 +169,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
             variant="standard"
             required
             margin="dense"
+            sx={{ margin: 2 }}
           >
             {genders.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -181,12 +188,13 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
               renderInput={(params) => <TextField {...params} />}
               required
               margin="dense"
+              sx={{ margin: 2 }}
             />
           </LocalizationProvider>
         </FormControl>
       </div>
       <div className="new-patient-button">
-        <Button variant="contained" onClick={verifyLength}> Add Patient </Button>
+        <Button sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060'}}} variant="contained" onClick={verifyLength}> Add Patient </Button>
       </div>
     </div>
   );

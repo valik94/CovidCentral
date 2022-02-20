@@ -94,18 +94,7 @@ export default function DisplayEventForm(props) {
   };
 
   return (
-    <Box
-      mr={35}
-      sx={{
-        display: "flex",
-        "& > :not(style)": {
-          p: 1,
-          width: 500,
-          height: 800,
-          backgroundColor: "primary",
-        },
-      }}
-    >
+    <div className="display-form">
       <Paper elevation={24}>
         <FormControl fullWidth={true} required={true}>
           <InputLabel htmlFor="my-input">Title</InputLabel>
@@ -177,10 +166,10 @@ export default function DisplayEventForm(props) {
           </TextField>
         </FormControl>
 
-        <Button variant="contained" onClick={(e) => addNewEvent()}>
-          Add Event
-        </Button>
       </Paper>
-    </Box>
+      <div className="add-event-button">
+        <Button variant="contained" onClick={(e) => addNewEvent()}>Add Event</Button>
+      </div>
+    </div>
   );
 }

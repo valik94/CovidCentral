@@ -98,7 +98,7 @@ export default function PatientsList() {
   return (
     <section className="patients-list-main-section">
       <div className="patients-add-new">
-        <Button variant="contained" onClick={() => setToggleForm(!toggleForm)}>
+        <Button sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060'}}} variant="contained" onClick={() => setToggleForm(!toggleForm)}>
           New Patient
         </Button>
       </div>
@@ -106,7 +106,10 @@ export default function PatientsList() {
       <div className="patients-list"> 
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
-            <Toolbar>
+            <Toolbar sx={{
+              bgcolor: '#0f003d',
+              color:'white',
+              }}>
               <Search>
                 <SearchIconWrapper>
                   <SearchIcon />
@@ -124,12 +127,12 @@ export default function PatientsList() {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Patients List</TableCell>
-                <TableCell align="left">Data of Birth</TableCell>
-                <TableCell align="left">Gender</TableCell>
-                <TableCell align="left">Phone</TableCell>
-                <TableCell align="left">Email</TableCell>
-                <TableCell align="left">Emergency Contact</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', fontSize: 20 }}>Patients List</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', fontSize: 20 }} align="left">Data of Birth</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', fontSize: 20 }} align="left">Gender</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', fontSize: 20 }} align="left">Phone</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', fontSize: 20 }} align="left">Email</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', fontSize: 20 }} align="left">Emergency Contact</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

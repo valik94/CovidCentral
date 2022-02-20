@@ -98,7 +98,7 @@ export default function PatientsList() {
   return (
     <section className="patients-list-main-section">
       <div className="patients-add-new">
-        <Button sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060'}}} variant="contained" onClick={() => setToggleForm(!toggleForm)}>
+        <Button sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"}}} variant="contained" onClick={() => setToggleForm(!toggleForm)}>
           New Patient
         </Button>
       </div>

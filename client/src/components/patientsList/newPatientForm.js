@@ -194,7 +194,7 @@ export default function NewPatientForm({patients, setPatients, setToggleForm}) {
         </FormControl>
       </div>
       <div className="new-patient-button">
-        <Button sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060'}}} variant="contained" onClick={verifyLength}> Add Patient </Button>
+        <Button sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"}}} variant="contained" onClick={verifyLength}> Add Patient </Button>
       </div>
     </div>
   );

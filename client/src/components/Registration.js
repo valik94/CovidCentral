@@ -4,6 +4,8 @@ import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import Button from "@mui/material/Button";
+
 const MySwal = withReactContent(Swal);
 
 const Registration = () => {
@@ -76,7 +78,7 @@ const Registration = () => {
       .then((response) => {
         const user = response.data;
         localStorage.setItem("user", JSON.stringify(user));
-        navigate("/");
+        navigate("/practitioners");
         console.log(response);
       });
   };
@@ -169,13 +171,13 @@ const Registration = () => {
             </div>
 
             <div className="form-row col-lg-3">
-              <button
+              <Button
                 type="submit"
-                className="btn btn-md btn-primary"
+                sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"}}}
                 onClick={register}
               >
                 Register
-              </button>
+              </Button>
             </div>
 
             <Link href="/login" variant="body2">

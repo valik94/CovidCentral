@@ -56,7 +56,7 @@ export default function PatientNotes(props) {
   return (
     <div className="container-patient">
       <div className="navbar-small-patient">
-        <Link to="/practitioners" color="white"><ArrowBackIosIcon/>Patients List</Link>
+        <Link to="/practitioners" underline="none"><ArrowBackIosIcon sx={{color:'white'}}/>Patients List</Link>
         <h3> Notes</h3>
       </div>
       <div className="patient-notes">
@@ -93,8 +93,11 @@ export default function PatientNotes(props) {
               </div>
             </div>
             <div className="add-note">
-              <Button variant="contained" onClick={(e) => addNewNote()}>
-                Add Note
+              <Button 
+                sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"}}}
+                variant="contained" 
+                onClick={(e) => addNewNote()}>
+              Add Note
               </Button>
             </div>
           </form>

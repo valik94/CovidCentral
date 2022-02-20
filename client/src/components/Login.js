@@ -86,7 +86,7 @@ export default function Login({setUser}) {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "#c5e060" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -130,7 +130,8 @@ export default function Login({setUser}) {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: '#c5e060', color:"black"} }}
+                
               >
                 Login
               </Button>

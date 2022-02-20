@@ -119,6 +119,7 @@ function PatientInfo() {
             variant="contained"
             startIcon={<EditIcon />}
             onClick={(e) => setEdit(!edit)}
+            sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: 'white', color:"black"}}}
           >
             Edit
           </Button>
@@ -128,6 +129,7 @@ function PatientInfo() {
             onClick={(e) => {
               validationPatient();
             }}
+            sx={{bgcolor: '#0f003d', color:'white', borderRadius: 7, '&:hover':{bgcolor: 'white', color:"black"}}}
           >
             Save Changes
           </Button>

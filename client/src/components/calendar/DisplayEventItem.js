@@ -11,9 +11,13 @@ import CloseIcon from "@mui/icons-material/Close";
 import PersonIcon from "@mui/icons-material/Person";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import EditNotificationsIcon from "@mui/icons-material/EditNotifications";
+import Button from "@mui/material/Button";
+
 
 export default function DisplayEventItem(props) {
-  const { dataItem, patientInfo } = props;
+  const { dataItem, patientInfo, setDisplayItem } = props;
+
+
 
   const getPatientById = function (patientsList, patientID) {
     let patientName = "";
@@ -59,7 +63,7 @@ export default function DisplayEventItem(props) {
       }}
     >
       <Paper elevation={24}>
-        <CloseIcon />
+        <Button onClick={setDisplayItem(false)} ><CloseIcon /></Button>
         <Typography
           sx={{ mt: 4, mb: 2, color: "white", textAlign: "center" }}
           variant="h6"

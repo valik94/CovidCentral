@@ -38,7 +38,7 @@ export default function DisplayEventForm(props) {
 
   //const [patient, setPatient] = useState("")
   const [startAt, setStartAt] = useState(new Date("2022-02-01T09:00:00"));
-  
+
   const [endAt, setEndAt] = useState(new Date("2022-02-01T09:00:00"));
   const [summary, setSummary] = useState("");
   const [color, setColor] = useState("");
@@ -66,7 +66,6 @@ export default function DisplayEventForm(props) {
   const handleChangeColor = (e) => {
     setColor(e.target.value);
   };
-  console.log("STARTAT", startAt, "endAt", endAt)
 
   const newAppointment = {
     startAt: startAt,
@@ -78,7 +77,6 @@ export default function DisplayEventForm(props) {
     practitioner_id: 1,
   };
 
-  console.log("NEWAPP:", newAppointment)
 
   //sending new appointment to db
   const addNewEvent = () => {
@@ -110,7 +108,7 @@ export default function DisplayEventForm(props) {
         <FormControl fullWidth={true} required={true}>
           <InputLabel htmlFor="my-input">Title</InputLabel>
           <Input
-            id="first_name"
+            id="summary"
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
             aria-describedby="my-helper-text"

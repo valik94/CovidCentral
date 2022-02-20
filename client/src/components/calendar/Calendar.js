@@ -67,7 +67,7 @@ export default function Calendar () {
         calendarIDsHidden={['work']}
         language={'en'}
       />
-      {displayItem ? <DisplayEventItem dataItem={dataItem} patientInfo={patientInfo}/> : " "}
+      {displayItem ? <DisplayEventItem dataItem={dataItem} patientInfo={patientInfo} setDisplayItem = {setDisplayItem}/> : " "} 
       {displayForm ? <DisplayEventForm patientInfo={patientInfo} events={events} setEvents={setEvents}/> : " "}
     </>
   )

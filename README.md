@@ -29,9 +29,9 @@ journey
 	title dRecords is a practitioner web-application to manage patients their medical records and appointments
 	section Practitioner using drecords web-app
 		logs-in and views my patients list: 1: Practitioner
-		chooses a particular patient from the list: 2: Practitioner
-		charts, reads med details & diagnosis on patient: 3: Practitioner, Patient
-		books calendar appointment for patient, email is sent: 5: Practitioner, Patient
+		chooses a particular patient from list: 2: Practitioner
+		charts, reads med info & sets diagnosis: 3: Practitioner, Patient
+		books appointment for patient, email sent: 5: Practitioner, Patient
 	section Patient check their email
 		receives email: 2: Patient
 		informed of appointment or cancels by calling: 1: Practitioner, Patient

@@ -6,6 +6,7 @@ import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import Moment from 'moment';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -46,17 +47,18 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 function NotesItem(props) {
   const { title, message, created_at } = props;
   const [expanded, setExpanded] = React.useState("");
-
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
   const changeDateFormat = function (date) {
-    let changedDate = date.slice(0, 10);
+    let converted = Moment.utc(date).local().format('YYYY-MM-DDTHH:mm:SS.sss')
+    let changedDate = converted.slice(0, 10);
     return changedDate;
   };
   const changeHourFormat = function (date) {
-    let changedHour = date.slice(11, 16);
+    let converted = Moment.utc(date).local().format('YYYY-MM-DDTHH:mm:SS.sss')
+    let changedHour = converted.slice(11, 16);
     return changedHour;
   };
 

@@ -31,7 +31,7 @@ export default function NewPatientForm({ patients, setPatients, setToggleForm })
   const [healthcareCard, setHealthcareCard] = useState(" ");
   const [emergencyContact, setEmergencyContact] = useState(" ");
   const [gender, setGender] = useState(" ");
-  const [dateOfBirth, setDateOfBirth] = useState(new Date("2022-02-13T21:11:54"));
+  const [dateOfBirth, setDateOfBirth] = useState(new Date("2022-02-13"));
   const [alertMessage, setAlertMessage] = useState(false)
 
 
@@ -40,7 +40,13 @@ export default function NewPatientForm({ patients, setPatients, setToggleForm })
   };
 
   const handleChangeBirthDate = (dateOfBirth) => {
-    setDateOfBirth(dateOfBirth);
+    let slicedDate = changeDateFormat(dateOfBirth.toISOString())
+    setDateOfBirth(slicedDate);
+  };
+
+  const changeDateFormat = function (date) {
+    let changedDate = date.slice(0, 10);
+    return changedDate;
   };
 
   const newPatient = {

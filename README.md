@@ -30,13 +30,13 @@ journey
 	section Practitioner using drecords web-app
 		logs-in and views my patients list: 1: Practitioner
 		chooses a particular patient from the list: 2: Practitioner
-		charts, reads medical details and diagnosis on patient: 3: Practitioner, Patient
-		books a calendar appointment with a patient, email is sent: 5: Practitioner, Patient
+		charts, reads med details & diagnosis on patient: 3: Practitioner, Patient
+		books calendar appointment for patient, email is sent: 5: Practitioner, Patient
 	section Patient check their email
 		receives email: 2: Patient
 		informed of appointment or cancels by calling: 1: Practitioner, Patient
 	section Patients visits appointment
-		is able to chart and update notes on patient: 5: Practitioner
+		is able to chart & update notes on patient: 5: Practitioner
 		updates drecords, logs out nulling session id: 2: Patient
 ```
 **STRETCH USER Stories**

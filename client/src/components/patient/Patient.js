@@ -9,7 +9,6 @@ import axios from "axios";
 export default function Patient() {
   const params = useParams();
   const [patientNotes, setPatientNotes] = useState("");
-  console.log(`LINES 12 inside Patient.js`)
 
   useEffect(() => {
     if (patientNotes === ""){

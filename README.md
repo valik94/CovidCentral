@@ -39,7 +39,6 @@ journey
 		is able to chart and update notes on patient: 5: Practitioner
 		updates drecords, logs out nulling session id: 2: Patient
 ```
-
 **STRETCH USER Stories**
 1. Filter list of patients by latest/earlier viewed
 2. Be able to fill a patient medical history form

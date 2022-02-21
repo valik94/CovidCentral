@@ -5,7 +5,7 @@ CREATE TABLE patient_notes (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   message TEXT NOT NULL,
-  created_at TIMESTAMP DEFAULT NOW(),
+  created_at TIMESTAMP DEFAULT (NOW() at TIME ZONE 'EST'),
   patient_id integer REFERENCES patients(id) ON DELETE CASCADE NOT NULL,
   practitioner_id integer REFERENCES practitioners(id) ON DELETE CASCADE NOT NULL
 );

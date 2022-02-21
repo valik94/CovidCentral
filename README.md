@@ -34,10 +34,10 @@ journey
 		book appointment, email notification: 5: Practitioner, Patient
 	section Patient check their email
 		receives email: 5: Patient
-		appointment details or cancels by calling: 2: Practitioner, Patient
+		appointment details or cancels by call: 2: Practitioner, Patient
 	section Patients visits appointment
 		is able to chart & update notes on patient: 2: Practitioner
-		updates drecords, logs out nulling session id: 5: Patient
+		updates database, account logs out: 5: Patient
 ```
 **STRETCH USER Stories**
 1. Filter list of patients by latest/earlier viewed

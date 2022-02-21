@@ -85,11 +85,6 @@ export default function PatientsList() {
       });
   }, []);
 
-  const changeDateFormat = function (date) {
-    let changedDate = date.slice(0, 10);
-    return changedDate;
-  };
-
   return (
     <section className="patients-list-main-section">
       <div className="patients-add-new">

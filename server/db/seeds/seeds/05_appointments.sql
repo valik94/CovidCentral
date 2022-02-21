@@ -12,10 +12,10 @@ VALUES
 ('2022-02-15 12:00:00.000', '2022-02-15 13:00:00.000', 'Annual General Checkup', 'blue', false, 2, 1),
 ('2022-02-15 14:00:00.000', '2022-02-15 15:00:00.000', 'Emergency consultation', 'blue', true, 1, 1),
 ('2022-02-15 17:00:00.000', '2022-02-15 18:00:00.000', 'Consultation: heart palpitations', 'blue', false, 1, 1),
-('2022-02-16 12:00:00.000', '2022-02-16 13:00:00.000', 'Follow-up change in medication', 'blue', false, 3, 1),
-('2022-02-16 09:00:00.000', '2022-02-16 10:00:00.000', 'Annual General Checkup', 'blue', true, 4, 1),
-('2022-02-16 12:00:00.000', '2022-02-16 13:00:00.000', 'Follow-up heart echo', 'blue', false, 1, 1),
-('2022-02-16 15:00:00.000', '2022-02-16 16:00:00.000', 'Medication change: digoxin', 'blue', true, 4, 1),
-('2022-02-17 14:00:00.000', '2022-02-17 14:30:00.000', 'Annual General Checkup', 'blue', false, 2, 1),
-('2022-02-17 16:00:00.000', '2022-02-17 19:00:00.000', 'Follow-up post cardiac surgery', 'blue', false, 2, 1)
+('2022-02-21 12:00:00.000', '2022-02-21 13:00:00.000', 'Follow-up change in medication', 'blue', false, 3, 1),
+('2022-02-21 09:00:00.000', '2022-02-21 10:00:00.000', 'Annual General Checkup', 'blue', true, 4, 1),
+('2022-02-21 12:00:00.000', '2022-02-21 13:00:00.000', 'Follow-up heart echo', 'blue', false, 1, 1),
+('2022-02-22 15:00:00.000', '2022-02-22 16:00:00.000', 'Medication change: digoxin', 'blue', true, 4, 1),
+('2022-02-22 14:00:00.000', '2022-02-22 14:30:00.000', 'Annual General Checkup', 'blue', false, 2, 1),
+('2022-02-22 16:00:00.000', '2022-02-22 19:00:00.000', 'Follow-up post cardiac surgery', 'blue', false, 2, 1)
 

@@ -77,7 +77,6 @@ export default function DisplayEventForm(props) {
     return axios
       .post("api/appointments", newAppointment)
       .then((response) => {
-        console.log("THIS IS A RESPONSE DATA", response.data);
         setEvents([...events, response.data]);
       })
       .catch((err) => {

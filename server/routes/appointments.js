@@ -34,7 +34,7 @@ module.exports = (db) => {
       console.log(`ALL MY appointmentTo ARE: `, appointmentTo)
       console.log(`ALL MY patientBasedOnId ARE:`, patientBasedOnId)
       sendEmail(appointmentTo.rows[0], patientBasedOnId.rows[0])
-      res.json("successfully saved appointment!").end()
+      res.json(appointmentTo.rows[0]).end()
 
       
   })

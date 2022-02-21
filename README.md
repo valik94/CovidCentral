@@ -9,9 +9,9 @@ An online charting application allowing healthcare providers to access patient i
 
 
 ## User Stories
-As a user (healthcare projessional) I want to
-1. Login
-2. Register
+As a user (healthcare practitioner) I want to
+1. Register
+2. Login
 3. Add patients
 4. See all my patients on my main page
 5. Be able to search patients by name
@@ -28,16 +28,16 @@ As a user (healthcare projessional) I want to
 journey
 	title dRecords is a practitioner web-application to manage patients their medical records and appointments
 	section Practitioner using drecords web-app
-		logs-in and views my patients list: 1: Practitioner
-		chooses a particular patient from the list: 2: Practitioner
-		charts, reads med details & diagnosis on patient: 3: Practitioner, Patient
-		books calendar appointment for patient, email is sent: 5: Practitioner, Patient
+		logs-in & views my patients list: 1: Practitioner
+		choose particular patient from list: 3: Practitioner
+		chart, read med info & set diagnosis: 5: Practitioner, Patient
+		book appointment, email notification: 5: Practitioner, Patient
 	section Patient check their email
-		receives email: 2: Patient
-		informed of appointment or cancels by calling: 1: Practitioner, Patient
+		receives email: 5: Patient
+		appointment details or cancels by call: 2: Practitioner, Patient
 	section Patients visits appointment
-		is able to chart & update notes on patient: 5: Practitioner
-		updates drecords, logs out nulling session id: 2: Patient
+		is able to chart & update notes on patient: 2: Practitioner
+		updates database, account logs out: 5: Patient
 ```
 **STRETCH USER Stories**
 1. Filter list of patients by latest/earlier viewed

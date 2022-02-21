@@ -36,7 +36,7 @@ journey
 		receives email: 2: Patient
 		appointment details or cancels by calling: 1: Practitioner, Patient
 	section Patients visits appointment
-		is able to chart & update notes on patient: 5: Practitioner
+		is able to chart & update notes on patient: 1: Practitioner
 		updates drecords, logs out nulling session id: 2: Patient
 ```
 **STRETCH USER Stories**

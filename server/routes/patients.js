@@ -140,8 +140,8 @@ module.exports = (db) => {
         );
         //sendEmail(patient)
         res.json({
-          updatedPatient: updatedResult[0].rows,
-          updatedPatientHistories: updatedResult[1].rows,
+          // updatedPatient: updatedResult[0].rows,
+          // updatedPatientHistories: updatedResult[1].rows,
         });
       })
       .catch((err) => {
@@ -152,10 +152,10 @@ module.exports = (db) => {
   //PATIENTS GET - VIEW PATIENT RECORDS BASED ON SELECTED PATIENT ID
   // A patient is selected from list of patients and rendered based on their id sent from frontend to backend
   router.get("/:id", (req, res) => {
-    const patientId = req.params.id;
+    const patientId = req.params.id; //this is coming from URL /:id
     const practitionerId = req.session.user_id; //this id only works when session exists (upon logging in or registering)
     const promises = [];
-    // const patientId = 3 // --> req.body.id this id comes from the selection of patient from list and send to backend from frontend
+  
     const patients = db.query(
       `SELECT * FROM patients WHERE patients.id = $1;`,
       [patientId]

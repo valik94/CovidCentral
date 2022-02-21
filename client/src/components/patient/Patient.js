@@ -9,16 +9,19 @@ import axios from "axios";
 export default function Patient() {
   const params = useParams();
   const [patientNotes, setPatientNotes] = useState("");
+  console.log(`LINES 12 inside Patient.js`)
 
   useEffect(() => {
-    axios
-      .get(`/api/patients/${params.id}`)
-      .then((response) => {
-        setPatientNotes(response.data.patientNotes);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    if (patientNotes === ""){
+      axios
+        .get(`/api/patients/${params.id}`)
+        .then((response) => {
+          setPatientNotes(response.data.patientNotes);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
   }, []);
 
 

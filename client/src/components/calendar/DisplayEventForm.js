@@ -121,12 +121,12 @@ export default function DisplayEventForm(props) {
           </TextField>
         </FormControl>
 
-        <FormControl fullWidth={true} required={true}>
+        <FormControl fullWidth={true} required={true}  sx={{ p: 1 }}>
           <LocalizationProvider dateAdapter={DateAdapter}>
             <DesktopDateTimePicker
               label="Start"
               value={startAt}
-              sx={{ mb: 20 }}
+              sx={{ mb: 2, p: 1 }}
               onChange={handleChangeStart}
               format="yyyy-MM-dd HH:mm"
               renderInput={(params) => <TextField {...params} />}
@@ -134,7 +134,7 @@ export default function DisplayEventForm(props) {
           </LocalizationProvider>
         </FormControl>
           
-        <FormControl fullWidth={true} required={true}>
+        <FormControl fullWidth={true} required={true} sx={{ p: 1 }}>
           <LocalizationProvider dateAdapter={DateAdapter}>
             <DesktopDateTimePicker
               label="End"

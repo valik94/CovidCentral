@@ -145,7 +145,7 @@ export default function PatientsList() {
                         {patient.first_name} {patient.last_name}
                       </Link>
                     </TableCell>
-                    <TableCell align="left">{changeDateFormat(patient.date_of_birth)}</TableCell>
+                    <TableCell align="left">{patient.date_of_birth}</TableCell>
                     <TableCell align="left">{patient.gender}</TableCell>
                     <TableCell align="left">{patient.phone}</TableCell>
                     <TableCell align="left">{patient.email}</TableCell>

@@ -56,7 +56,7 @@ export default function Calendar() {
         language={'en'}
       />
       {displayItem ? <DisplayEventItem dataItem={dataItem} patientInfo={patientInfo} setDisplayItem={setDisplayItem} /> : " "}
-      {displayForm ? <DisplayEventForm patientInfo={patientInfo} events={events} setEvents={setEvents} /> : " "}
+      {displayForm ? <DisplayEventForm patientInfo={patientInfo} events={events} setEvents={setEvents}  setDisplayForm={setDisplayForm}/> : " "}
     </section>
   )
 }

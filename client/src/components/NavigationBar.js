@@ -23,14 +23,14 @@ export default function NavigationBar(props) {
       return (
         <>
           <Nav.Item>
-            <Button>
-              <Link style={{ textDecoration: 'none', color: '#0f003d' }} to="/login">Login</Link>
-            </Button>
+            <Link style={{ textDecoration: 'none', color: '#0f003d' }} to="/login">
+              <Button sx={{bgcolor: '#c5e060', color:'black', borderRadius: 7, '&:hover':{bgcolor: '#0f003d', color:"white"}}}>Login</Button>
+            </Link>
           </Nav.Item>
           <Nav.Item>
-            <Button>
-              <Link style={{ textDecoration: 'none', color: '#0f003d' }} to="/register">Register</Link>
-            </Button>
+            <Link style={{ textDecoration: 'none', color: '#0f003d' }} to="/register">
+            <Button sx={{bgcolor: '#c5e060', color:'black', borderRadius: 7, '&:hover':{bgcolor: '#0f003d', color:"white"}}}>Register</Button>
+            </Link>
           </Nav.Item>
         </>
       );
@@ -39,12 +39,12 @@ export default function NavigationBar(props) {
       return (
         <>
           <Nav.Item>
-            <Button>
-              <Link style={{ textDecoration: 'none', color: '#0f003d' }} to="/practitioners">Work Board</Link>
-            </Button>
+            <Link style={{ textDecoration: 'none', color: '#0f003d' }} to="/practitioners">
+            <Button sx={{bgcolor: '#c5e060', color:'black', borderRadius: 7, '&:hover':{bgcolor: '#0f003d', color:"white"}}}>Work Board</Button>
+            </Link>
           </Nav.Item>
           <Nav.Item>
-            <Button sx={{ color: '#0f003d' }} onClick={completeLogout}>Logout</Button>
+            <Button sx={{bgcolor: '#c5e060', color:'black', borderRadius: 7, '&:hover':{bgcolor: '#0f003d', color:"white"}}} onClick={completeLogout}>Logout</Button>
           </Nav.Item>
         </>
       );

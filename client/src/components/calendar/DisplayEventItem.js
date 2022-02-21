@@ -12,7 +12,6 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import EditNotificationsIcon from "@mui/icons-material/EditNotifications";
 
 
-
 export default function DisplayEventItem(props) {
   const { dataItem, patientInfo, setDisplayItem } = props;
 
@@ -51,7 +50,7 @@ export default function DisplayEventItem(props) {
           bgcolor: '#0f003d',
           color: 'white',
         }}>
-        <CloseIcon />
+        <CloseIcon onClick={() => setDisplayItem(false)} sx={{m:1.5}}/>
         <Typography
           sx={{ mt: 4, mb: 2, color: "white", textAlign: "center" }}
           variant="h6"

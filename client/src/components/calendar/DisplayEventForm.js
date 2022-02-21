@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import axios from "axios";
 import Moment from 'moment';
+import CloseIcon from "@mui/icons-material/Close";
+
 
 //different color used for appointments by the user
 const colors = [
@@ -34,7 +36,7 @@ const colors = [
 ];
 
 export default function DisplayEventForm(props) {
-  const { patientInfo, events, setEvents } = props;
+  const { patientInfo, events, setEvents, setDisplayForm } = props;
 
   //////STATES
   const [startAt, setStartAt] = useState(new Date());
@@ -87,6 +89,7 @@ export default function DisplayEventForm(props) {
   return (
     <div className="display-form">
       <Paper elevation={24} sx={{padding: 2.5, backgroundColor:"#e1e6f662"}}>
+        <CloseIcon onClick={() => setDisplayForm(false)} sx={{m:1.5}}/>
         <FormControl fullWidth={true} required={true}>
           <InputLabel htmlFor="my-input">Title</InputLabel>
           <Input

@@ -10,7 +10,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import PersonIcon from "@mui/icons-material/Person";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import EditNotificationsIcon from "@mui/icons-material/EditNotifications";
-import Button from "@mui/material/Button";
 
 
 export default function DisplayEventItem(props) {

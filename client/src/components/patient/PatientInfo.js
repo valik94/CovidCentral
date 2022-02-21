@@ -125,9 +125,7 @@ function PatientInfo() {
           <Button
             variant="contained"
             disabled={edit}
-            onClick={(e) => {
-              validationPatient(e.target.value);
-            }}
+            onClick={(e) => { validationPatient(e.target.value) }}
             sx={{ bgcolor: '#0f003d', color: 'white', borderRadius: 7, '&:hover': { bgcolor: 'white', color: "black" } }}
           >
             Save Changes

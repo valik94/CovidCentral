@@ -9,7 +9,7 @@ An online charting application allowing healthcare providers to access patient i
 
 
 ## User Stories
-As a user (healthcare projessional) I want to
+As a user (healthcare professional) I want to
 1. Login
 2. Register
 3. Add patients

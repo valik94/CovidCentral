@@ -45,6 +45,23 @@ journey
 		is able to chart & update notes on patient: 2: Practitioner
 		updates database, account logs out: 5: Patient
 ```
+**USER README**
+1. Fork and/or clone the repo on your local machine
+2. Change directory into the repo folder.
+3. Open 2 terminals, on the first one - change into the client folder and on the second one change into the server folder
+4. run the command `npm install` to install development dependencies for the program to work. NOTE: run this command in both terminals (client and server)
+5. You must have posgress installed to run the database, if you dont, run the following command to install it `$ npm install pg`.
+6. Inside the server folder run the command `npm run db:reset` to ensure you create and seed the database.
+7. Open another terminal (terminal #3), go into the server directory and run postgress using the command `psql`.
+8. Create the database using the `\c __databasename__` command.
+9. to exit psql run `exit` command.
+10. Try to rerun the command `npm run db:reset` to recreate the database if it didnt work earlier.
+11. Re-run `npm run` in both terminal 1 (client) and terminal 2 (server).
+12. Finally, navigate to http://localhost:3000/ to go to the homepage of the app!
+We hope you enjoy using it! Please feel free to reach out to us via github for any feedback and improvement suggestions.
+
+
+**DEVELOPER GUIDE / ADVANCED USER**
 **STRETCH USER Stories**
 1. Filter list of patients by latest/earlier viewed
 2. Be able to fill a patient medical history form
